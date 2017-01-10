@@ -12,11 +12,14 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import dj_database_url
-from django.conf.global_settings import TEMPLATES
+from django.conf import settings
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start myproject settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -30,6 +33,12 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Application definition
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = 'automail.empower@gmail.com'
+EMAIL_HOST_PASSWORD = 'empower@123'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,16 +47,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # Third Part App
+    'contact_form',
     'haystack',
     'whoosh',
     'registration',
     'crispy_forms',
     'el_pagination',
+    'taggit',
+    'tinymce',
+    'django_extensions',
+    'sorl.thumbnail',
+    'newsletter',
+    'pytz',
+    'djrichtextfield',
 
     # MY Apps
-    'sharpurskill',
     'myproject',
 
 ]
@@ -125,25 +142,30 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Update database configuration with $DATABASE_URL.
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT), "mytutorials", "static_in_env", "static_root")
+STATIC_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT), "static_in_env", "static_root")
 # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, "static"),
+    os.path.join(BASE_DIR, "static"),
 
 )
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "mytutorials", "static_in_env", "media_root")
+MEDIA_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT), "static_in_env", "media_root")
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
 # Django-Registration-Redux
 ACCOUNT_ACTIVATION_DAYS = 7
@@ -154,7 +176,7 @@ LOGIN_REDIRECT_URL = '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-EL_PAGINATION_PER_PAGE = 5
+EL_PAGINATION_PER_PAGE = 2
 
 HAYSTACK_CONNECTIONS = {
     'default': {
@@ -164,3 +186,33 @@ HAYSTACK_CONNECTIONS = {
 }
 
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+TAGGIT_CASE_INSENSITIVE = True
+
+NEWSLETTER_CONFIRM_EMAIL = False
+
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "table,spellchecker,paste,searchreplace",
+    'theme': "advanced",
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+}
+TINYMCE_SPELLCHECKER = True
+TINYMCE_COMPRESSOR = True
+
+# Using django-tinymce
+NEWSLETTER_RICHTEXT_WIDGET = "tinymce.widgets.TinyMCE"
+
+DEFAULT_SETTINGS = {
+    'POSITIONS': (
+        (1, 'Leaderboard'),
+        (2, 'Medium Rectangle'),
+        (3, 'Button 1 (1)'),
+        (4, 'Button 1 (2)'),
+    ),
+    'DEFAULT_TEMPLATE': 'newsletters/default.html',
+    'ADVERTISEMENT_STORAGE': settings.DEFAULT_FILE_STORAGE,
+    'AUTO_CONFIRM': True,
+    'EMAIL_NOTIFICATION_SUBJECT': 'Newsletter Subscription Change',
+
+}

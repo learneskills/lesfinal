@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Log in" %}{% endblock %}
+
+{% block content %}
+    <main id="authentication" class="inner-bottom-md">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 col-md-offset-3">
+                    <section class="section sign-in inner-right-xs">
+                        <h2 class="bordered">Sign In</h2>
+                        <p>Hello, Welcome to your account</p>
+
+                        <div class="social-auth-buttons">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn-block btn-lg btn btn-facebook"><i class="fa fa-facebook"></i>
+                                        Sign In with Facebook
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn-block btn-lg btn btn-twitter"><i class="fa fa-twitter"></i> Sign
+                                        In with Twitter
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form role="form" class="login-form cf-style-1" method="POST" action="">
+                            <div class="field-row">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                            </div><!-- /.field-row -->
+                            <div class="buttons-holder">
+                                <button type="submit" class="le-button huge">Secure Sign In</button>
+                            </div><!-- /.buttons-holder -->
+                        </form><!-- /.cf-style-1 -->
+
+                        <p>{% trans "Forgot your password?" %}
+                                <a href="{% url 'auth_password_reset' %}"><strong>{% trans "Reset it" %}</strong></a>.</p>
+                        <p>{% trans "Not a member?" %}
+                               <a href="{% url 'registration_register' %}"><strong>{% trans "Register" %}</strong></a>.
+                        </p>
+
+                    </section><!-- /.sign-in -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </main>
+
+{% endblock %}
+

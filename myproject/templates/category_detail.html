@@ -2,7 +2,45 @@
 {% load staticfiles %}
 {% load el_pagination_tags %}
 
+{% block header %}
+    <header>
+        <div class="container no-padding">
 
+            <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
+                <!-- ============================================================= LOGO ============================================================= -->
+                <div class="logo">
+                    <a href="{% url 'index' %}">
+                        <img alt="logo" src="{% static 'assets/images/logo.png' %}" width="233" height="54"/>
+                    </a>
+                </div><!-- /.logo -->
+                <!-- ============================================================= LOGO : END ============================================================= -->
+            </div><!-- /.logo-holder -->
+
+            <div class="col-xs-12 col-sm-12 col-md-6 top-search-holder no-margin">
+                <div class="contact-row">
+                    <div class="phone inline">
+                    </div>
+                    <div class="contact inline">
+                        <i class="fa fa-envelope"></i><span class="le-color"> contact@booksntutorials.com</span>
+                    </div>
+                </div><!-- /.contact-row -->
+                <!-- ============================================================= SEARCH AREA ============================================================= -->
+                <div class="search-area">
+                    <form action="/search/" method="GET" role="form">
+                        <div class="control-group">
+
+                            <input class="search-field" name="q" placeholder="Search for Tutorials and Books "/>
+                            <a type="submit" value="Search" class="search-button"></a>
+                        </div>
+                    </form>
+                </div><!-- /.search-area -->
+
+                <!-- ============================================================= SEARCH AREA : END ============================================================= -->
+            </div><!-- /.top-search-holder -->
+        </div><!-- /.container -->
+    </header>
+
+{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -50,24 +88,31 @@
             </div>
             <!-- ========================================= FEATURED PRODUCTS ========================================= -->
             <div class="widget">
-                <h1 class="border">Featured Products</h1>
+                <h1 class="border">Top Discount</h1>
                 <ul class="product-list">
 
                     <li class="sidebar-product-list-item">
                         <div class="row">
-                            <div class="col-xs-4 col-sm-4 no-margin">
-                                <a href="#" class="thumb-holder">
-                                    <img alt="" src="{% static 'assets/images/blank.gif' %}"
-                                         data-echo="{% static 'assets/images/products/product-small-02.jpg' %}"/>
-                                </a>
-                            </div>
-                            <div class="col-xs-8 col-sm-8 no-margin">
-                                <a href="#">PowerShot Elph 115 16MP Digital Camera</a>
-                                <div class="price">
-                                    <div class="price-prev">$2000</div>
-                                    <div class="price-current">$1873</div>
+                            {% for course in top_discount %}
+                                <div class="col-xs-4 col-sm-4 no-margin">
+                                    <a href="{{ course.get_absolute_url }}" class="thumb-holder">
+                                        {% for img in course.courseimage_set.all %}
+                                            <img height="60" width="75" src="{{ img.image.url }}"/>
+                                        {% endfor %}
+                                    </a>
                                 </div>
-                            </div>
+                                <div class="col-xs-8 col-sm-8 no-margin">
+                                    <a href="{{ course.get_absolute_url }}">{{ course.title | truncatechars:"30" }}</a>
+                                    <div class="price">
+                                        {% if course.discount > 5 %}
+                                            <div class="label-discount">-{{ course.discount }}% off</div>
+                                        {% endif %}
+                                        <div class="price-prev">${{ course.actual_price }}</div>
+                                        <div class="price-current">${{ course.sale_price }}</div>
+                                    </div>
+                                <hr>
+                                </div>
+                            {% endfor %}
                         </div>
                     </li><!-- /.sidebar-product-list-item -->
                 </ul><!-- /.product-list -->
@@ -89,12 +134,19 @@
 
                     <div class="tab-content">
                         <div id="list-view" class="products-grid fade tab-pane in active">
-
                             <div class="products-list">
                                 {% paginate courses %}
                                 {% for course in courses %}
                                     <div class="product-item product-item-holder">
-                                        <div class="ribbon green"><span>-{{ course.discount }}% off</span></div>
+                                        {% if course.discount > 20 %}
+                                            <div class="ribbon green"><span>-{{ course.discount }}% off</span></div>
+                                        {% endif %}
+                                        {% if course.id >= 3 %}
+                                            <div class="ribbon blue"><span>new!</span></div>
+                                        {% endif %}
+                                        {% if course.discount > 70 %}
+                                            <div class="ribbon red"><span>sale</span></div>
+                                        {% endif %}
                                         <div class="row">
                                             {% for img in course.courseimage_set.all %}
                                                 <div class="no-margin col-xs-12 col-sm-4 image-holder">
@@ -116,7 +168,7 @@
                                                     </div>
 
                                                     <div class="excerpt">
-                                                        <p class="text-default">{{ course.description|truncatechars:'300' }}</p>
+                                                        <p class="text-default">{{ course.description | safe | lower | truncatechars:'300' }}</p>
                                                     </div>
                                                     <div class="title"><a class="review_add" href="#"></a>
                                                     </div>
@@ -126,80 +178,79 @@
                                                 <div class="right-clmn">
                                                     <div class="price-current">$ {{ course.sale_price }}</div>
                                                     <div class="price-prev">
-                                                        <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span></div>
+                                                        <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
+                                                    </div>
                                                     <div class="title ">Provider:
                                                         <label class="text-primary">{{ course.course_provider }}</label>
                                                     </div>
                                                     <a class="le-button" href="{{ course.url }}">Course</a>
-                                                    <div class="title">Enrolled: <label class="text-primary">5,000+
-                                                        students</label></div>
+                                                    <div class="title">Enrolled: <label
+                                                            class="text-primary">{{ course.student_enrolled }}+
+                                                        students </label></div>
                                                 </div><!-- /.price-area -->
                                             </div><!-- /.row -->
-
-
                                         </div><!-- /.product-item -->
-
                                     </div><!-- /.products-list -->
                                 {% endfor %}
                                 {% get_pages %}
-
-                                <!-- Pagination Section START -->
-                                <div class="col-md-offset-3">
-                                    <ul class="pagination">
-                                        {% if pages.paginated %}
-                                            <li class="page-item">
-                                                <a class="page-link" href="{{ pages.first.path }}"
-                                                   aria-label="First">
-                                                    <span aria-hidden="true">&lt;&lt;</span>
-                                                    <span class="sr-only">First</span>
-                                                </a>
-                                            </li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="{{ pages.previous.path }}"
-                                                   aria-label="Previous">
-                                                    <span aria-hidden="true">&lt;</span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                            </li>
-                                            {% for page in pages %}
-                                                {% if page == None %}
-                                                    <li class="page-item disabled">
-                                                        <a class="page-link" href="#" aria-label="...">
-                                                            <span aria-hidden="true">...</span>
-                                                            <span class="sr-only">...</span>
-                                                        </a>
-                                                    </li>
-                                                {% else %}
-                                                    <li class="page-item {% if page.is_current %} active {% endif %}">
-                                                        <a class="page-link" href="{{ page.path }}"
-                                                           aria-label="Page {{ page.number }}">
-                                                            <span aria-hidden="true">{{ page.label|safe }}</span>
-                                                            <span class="sr-only">Page {{ page.number }}</span>
-                                                        </a>
-                                                    </li>
-                                                {% endif %}
-                                            {% endfor %}
-                                            <li class="page-item">
-                                                <a class="page-link" href="{{ pages.next.path }}" aria-label="Next">
-                                                    <span aria-hidden="true">&gt;</span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
-                                            </li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="{{ pages.last.path }}" aria-label="Last">
-                                                    <span aria-hidden="true">&gt;&gt;</span>
-                                                    <span class="sr-only">Last</span>
-                                                </a>
-                                            </li>
-                                        {% endif %}
-                                    </ul>
-                                </div>
-                                <!-- /.pagination-holder -->
                             </div><!-- /.products-grid #list-view -->
+                            <!-- Pagination Section START -->
+                            <div class="col-md-offset-3">
+                                <ul class="pagination">
+                                    {% if pages.paginated %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ pages.first.path }}"
+                                               aria-label="First">
+                                                <span aria-hidden="true">&lt;&lt;</span>
+                                                <span class="sr-only">First</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ pages.previous.path }}"
+                                               aria-label="Previous">
+                                                <span aria-hidden="true">&lt;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        {% for page in pages %}
+                                            {% if page == None %}
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#" aria-label="...">
+                                                        <span aria-hidden="true">...</span>
+                                                        <span class="sr-only">...</span>
+                                                    </a>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item {% if page.is_current %} active {% endif %}">
+                                                    <a class="page-link" href="{{ page.path }}"
+                                                       aria-label="Page {{ page.number }}">
+                                                        <span aria-hidden="true">{{ page.label|safe }}</span>
+                                                        <span class="sr-only">Page {{ page.number }}</span>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ pages.next.path }}" aria-label="Next">
+                                                <span aria-hidden="true">&gt;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ pages.last.path }}" aria-label="Last">
+                                                <span aria-hidden="true">&gt;&gt;</span>
+                                                <span class="sr-only">Last</span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <!-- /.pagination-holder -->
                         </div><!-- /.tab-content -->
                     </div><!-- /.grid-list-products -->
                 </div>
             </section><!-- /#gaming -->
+
         </div><!-- /.col -->
         <!-- ========================================= CONTENT : END ========================================= -->
     </div><!-- /.container -->

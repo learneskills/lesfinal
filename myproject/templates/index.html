@@ -1,10 +1,49 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block header %}
+    <header>
+        <div class="container no-padding">
+
+            <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
+                <!-- ============================================================= LOGO ============================================================= -->
+                <div class="logo">
+                    <a href="{% url 'index' %}">
+                        <img alt="logo" src="{% static 'assets/images/logo.png' %}" width="233" height="54"/>
+                    </a>
+                </div><!-- /.logo -->
+                <!-- ============================================================= LOGO : END ============================================================= -->
+            </div><!-- /.logo-holder -->
+
+            <div class="col-xs-12 col-sm-12 col-md-6 top-search-holder no-margin">
+                <div class="contact-row">
+                    <div class="phone inline">
+                    </div>
+                    <div class="contact inline">
+                        <i class="fa fa-envelope"></i><span class="le-color"> contact@booksntutorials.com</span>
+                    </div>
+                </div><!-- /.contact-row -->
+                <!-- ============================================================= SEARCH AREA ============================================================= -->
+                <div class="search-area">
+                    <form action="/search/" method="GET" role="form">
+                        <div class="control-group">
+
+                            <input class="search-field" name="q" placeholder="Search for Tutorials and Books "/>
+                            <a type="submit" value="Search" class="search-button"></a>
+                        </div>
+                    </form>
+                </div><!-- /.search-area -->
+
+                <!-- ============================================================= SEARCH AREA : END ============================================================= -->
+            </div><!-- /.top-search-holder -->
+        </div><!-- /.container -->
+    </header>
+
+{% endblock %}
 
 {% block content %}
-
     <div class="container">
-
         <div class="col-xs-12 col-sm-4 col-md-3 sidemenu-holder">
             <!-- ================================== TOP NAVIGATION ================================== -->
             <div class="side-menu animate-dropdown">
@@ -101,7 +140,7 @@
     <section id="banner-holder" class="wow fadeInUp">
         <div class="container">
             <div class="col-xs-12 col-lg-6 no-margin banner">
-                <a href="category-grid.html">
+                <a href="{% url 'all_course' %}">
                     <div class="banner-text">
                         <h1></h1>
                         <span class="tagline"></span>
@@ -160,6 +199,7 @@
                                         {% endfor %}
                                         <div class="body">
                                             <div class="label-discount green">-{{ course.discount }}% sale</div>
+
                                             <div class="title">
                                                 <a href="{{ course.get_absolute_url }}"> {{ course.title | truncatechars:'50' }}</a>
                                             </div>
@@ -172,11 +212,14 @@
 
                                         <div class="hover-area">
                                             <div class="add-cart-button">
-                                                <a href="single-product.html" class="le-button">take this course</a>
+                                                <a href="{{ course.get_absolute_url }}" class="le-button">take this
+                                                    course</a>
                                             </div>
                                             <div class="wish-compare">
                                                 <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
                                                 <a class="btn-add-to-compare" href="#">compare</a>
+                                                {#                                                <p class="text-center"><span class="title bold text-primary"> {{ course.student_enrolled }}+ students enrolled</span> </p>#}
+
                                             </div>
                                         </div>
                                     </div>
@@ -211,7 +254,9 @@
                         <div class="product-grid-holder">
 
                             <!-- Dynamic Course Details -->
+
                             {% for course in course_detail_discount_list %}
+                                {% if course.discount < 99 %}
                                 <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">
                                     <div class="product-item">
                                         {# <div class="ribbon blue"><span>new!</span></div>#}
@@ -226,7 +271,7 @@
                                         <div class="body">
                                             <div class="label-discount green">-{{ course.discount }}% sale</div>
                                             <div class="title">
-                                                <a href="single-product.html"> {{ course.title | truncatechars:'50' }}</a>
+                                                <a href="{{ course.get_absolute_url }}"> {{ course.title | truncatechars:'50' }}</a>
                                             </div>
                                             <div class="text-default small">{{ course.sub_title | lower |truncatechars:'70' }}</div>
                                         </div>
@@ -238,7 +283,7 @@
 
                                         <div class="hover-area">
                                             <div class="add-cart-button">
-                                                <a href="single-product.html" class="le-button">take this course</a>
+                                                <a href="{{ course.get_absolute_url }}" class="le-button">take this course</a>
                                             </div>
                                             <div class="wish-compare">
                                                 <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -247,7 +292,9 @@
                                         </div>
                                     </div>
                                 </div>
+                              {% endif %}
                             {% endfor %}
+
                             <!-- Dynamic Course Detail END -->
                         </div>
                         <div class="loadmore-holder text-center">
@@ -553,7 +600,6 @@
                             </div>
                         </div><!-- /.product-item -->
                     </div><!-- /.product-item-holder -->
-
 
 
                     <div class=" no-margin carousel-item product-item-holder size-small hover">

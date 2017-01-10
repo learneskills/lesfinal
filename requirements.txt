@@ -1,3 +1,4 @@
+haystack
 certifi==2016.9.26
 dj-database-url==0.4.1
 Django==1.10.3

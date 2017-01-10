@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<html lang="en">
+
+{% block content %}
+
+    <body>
+
+    <div class="wrapper">
+
+        <main id="contact-us" class="inner-bottom-md">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-8 col-md-offset-2">
+                        <section class="section leave-a-message">
+                            <h2 class="bordered">Leave a Message</h2>
+                            <p>We are happy to hear you. Please leave a message, we will get back to you within 24 hrs.</p>
+                            <form id="contact-form" class="contact-form cf-style-1 inner-top-xs" method="POST">
+                                <div class="row field-row">
+                                    <div class="col-xs-12 col-sm-8">{% csrf_token %}
+                                        {{ form | crispy }}
+                                        <div class="buttons-holder">
+                                            <button type="submit" class="le-button big">Send Message</button>
+                                        </div><!-- /.buttons-holder -->
+                                    </div>
+                                </div>
+                            </form><!-- /.contact-form -->
+                        </section><!-- /.leave-a-message -->
+                    </div><!-- /.col -->
+
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </main>
+    </div>
+    <!-- ========================================= MAIN : END ========================================= -->
+    <!-- ============================================================= FOOTER ============================================================= -->
+    </body>
+{% endblock %}
+</html>

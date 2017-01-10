@@ -32,3 +32,10 @@ class CourseModelImage(forms.ModelForm):
     class Meta:
         model = CourseImage
         fields = ['course', 'image']
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(required=True)
+    contact_email = forms.CharField(required=True)
+    subject = forms.CharField(required=True, max_length=200)
+    message = forms.CharField(widget=forms.Textarea)

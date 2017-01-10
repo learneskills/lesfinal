@@ -16,27 +16,17 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-import myproject.urls
-import myproject.urls_categories
 from webproject import settings
-from sharpurskill.views import single_product, category_grid, authentication, Contact_Us
-from myproject.views import course_model_form
+
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
-    url(r'^single-product/$', single_product, name='single-product'),
-    url(r'^category-grid/$', category_grid, name='category-grid'),
-    url(r'^authentication/$', authentication, name='authentication'),
-    # url(r'^sample/$', 'sharpurskill.views.sample', name='sample'),
-    url(r'^contact/$', Contact_Us, name='contact'),
-    url(r'^submit/$', course_model_form, name='submit'),
-    # url(r'^submit_img/$', image_model_form, name='submit_img'),
-
     url(r'^search/', include('haystack.urls'), name='search'),
-    url(r'', include(myproject.urls)),
-    url(r'', include(myproject.urls_categories)),
-
-    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'', include('myproject.urls_categories')),
+    url(r'^accounts/', include('registration.urls')),
+    url(r'^newsletter/', include('newsletter.urls')),
+    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^djrichtextfield/', include('djrichtextfield.urls'))
 ]
 
 if settings.DEBUG:

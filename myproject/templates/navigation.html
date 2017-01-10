@@ -1,0 +1,20 @@
+<nav class="top-bar animate-dropdown">
+    <div class="container">
+
+        <div class="no-margin">
+            <ul>
+                <li class="pull-left"><a href="{% url 'index' %}">Home</a></li>
+                <li class="pull-left"><a href="/tag/100-free/"> 100% Free Udemy Course</a></li>
+                <li class="pull-left"><a href="{% url 'blog' %}">Blog</a></li>
+                <li class="pull-left"><a href="{% url 'email' %}">Contact</a></li>
+
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'auth_login' %}"> Login</a></li>
+                    <li><a href="{% url 'registration_register' %}"> Register </a></li>
+                {% endif %}
+            </ul>
+        </div><!-- /.col -->
+    </div><!-- /.container -->
+</nav><!-- /.top-bar -->

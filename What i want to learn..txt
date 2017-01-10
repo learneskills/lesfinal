@@ -1,9 +1,9 @@
-jaap3/django- richtextfield
+'djrichtextfield' - richtextfield
 
 Pending work: - Done
 
 > Search Courses (on Home Page)
-> Category Tree
+> Category Tree - Done
 > Footer
 > Enable Social Sharing Page
 > No.Of View on Each Course

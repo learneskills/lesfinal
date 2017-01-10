@@ -13,6 +13,37 @@
             <!-- ========================================= SIDEBAR ========================================= -->
             <div class="col-xs-12 col-sm-3 no-margin sidebar narrow">
 
+                        <!-- ========================================= CATEGORY TREE ========================================= -->
+            <div class="widget accordion-widget category-accordions">
+                <div class="body bordered">
+                    <h1 class="border text-primary">Category Tree</h1>
+                    {% for main in main_category %}
+                        <div class="accordion">
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle active" data-toggle="collapse" href="#{{ main.id }}">
+                                        {{ main.title }}
+                                    </a>
+                                </div>
+                                <div id="{{ main.id }}" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        {% for category in main.default_main_category.all %}
+                                            <ul>
+                                                <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
+                                    </div><!-- /.accordion-inner -->
+                                </div>
+                            </div><!-- /.accordion -->
+                        </div><!-- /.category-accordions -->
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ========================================= CATEGORY TREE : END ========================================= -->
+
+
+
                 <!-- ========================================= PRODUCT FILTER ========================================= -->
 
                 <div class="widget">
@@ -28,20 +59,20 @@
                         <li class="sidebar-product-list-item">
                             {% for course in recently_updated %}
                                 <div class="row">
-
                                     <div class="col-xs-4 col-sm-4 no-margin">
                                         {% for img in course.courseimage_set.all %}
                                             <a href="{{ img.get_absolute_url }}" class="thumb-holder">
-                                                <img alt="" src="{{ img }}"
+                                                <img height="70" width="75" src="{{ img }}"
                                                      data-echo="{{ img.image.url }}"/>
                                             </a>
                                         {% endfor %}
                                     </div>
                                     <div class="col-xs-8 col-sm-8 no-margin">
-                                        <a href="{{ course.get_absolute_url }}">{{ course.title | truncatewords:"5" }}</a>
+                                        <a href="{{ course.get_absolute_url }}">{{ course.title | truncatechars:"30" }}</a>
+
                                         <div class="price">
-                                            <div class="price-prev">{{ course.actual_price }}</div>
-                                            <div class="price-current">{{ course.sale_price }}</div>
+                                            <div class="price-prev">${{ course.actual_price }}</div>
+                                            <div class="price-current">${{ course.sale_price }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -67,54 +98,62 @@
                                     {% paginate top_discount %}
                                     {% for course in top_discount %}
                                         <div class="product-item product-item-holder">
+                                        {% if course.discount > 5 %}
                                             <div class="ribbon green"><span>-{{ course.discount }}% off</span></div>
+                                        {% endif %}
                                             <div class="row">
 
                                                 {% for img in course.courseimage_set.all %}
                                                     <div class="no-margin col-xs-12 col-sm-4 image-holder">
                                                         <div class="image">
-                                                            <img id="img" alt="" src="{{ img.image.url }} "/>
+                                                            <img id="img" height="170" width="250" alt="" src="{{ img.image.url }} "/>
                                                         </div>
                                                     </div><!-- /.image-holder -->
                                                 {% endfor %}
 
                                                 <div class="no-margin col-xs-12 col-sm-5 body-holder">
-                                                    <div class="body">
-                                                        <!--    <div class="label-discount green">-50% sale</div> -->
-                                                        <div class="title">
-                                                            <a href="{{ course.get_absolute_url }}">{{ course.title }}</a>
-                                                        </div>
-                                                        <div class="brand"><strong> {{ course.sub_title }} </strong>
-                                                        </div>
-
-                                                        <div class="excerpt">
-                                                            <p>{{ course.description|truncatechars:'200' }}</p>
-                                                        </div>
-                                                        <div class="title"><a class="review_add" href="#">*****</a>
-                                                        </div>
+                                                <div class="body">
+                                                    <!--    <div class="label-discount green">-50% sale</div> -->
+                                                    <div class="title">
+                                                        <a href="{{ course.get_absolute_url }}">{{ course.title }}</a>
                                                     </div>
-                                                </div><!-- /.body-holder -->
+
+                                                    <div class="text-default">{{ course.sub_title | capfirst| truncatechars:'118' }}
+                                                    </div>
+
+                                                    <div class="excerpt">
+                                                        <p class="text-default">{{ course.description| safe | lower |truncatechars:'300' }}</p>
+                                                    </div>
+                                                    <div class="title"><a class="review_add" href="#"></a>
+                                                    </div>
+                                                </div>
+                                            </div><!-- /.body-holder -->
                                                 <div class="no-margin col-xs-12 col-sm-3 price-area">
-                                                    <div class="right-clmn">
-                                                        <div class="price-current">$ {{ course.sale_price }}</div>
-                                                        <div class="price-prev">
-                                                            <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
-                                                        </div>
-                                                        <div class="availability"><label>Author:</label><span
-                                                                class="available">Author Name</span></div>
-                                                        <a class="le-button" href="#">Take This Course</a>
+                                                <div class="right-clmn">
+                                                    <div class="price-current">$ {{ course.sale_price }}</div>
+                                                    <div class="price-prev">
+                                                        <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
                                                     </div>
-
-
+                                                    <div class="title ">Provider:
+                                                        <label class="text-primary">{{ course.course_provider }}</label>
+                                                    </div>
+                                                    <a class="le-button" href="{{ course.url }}">Course</a>
+                                                    <div class="title">Enrolled: <label
+                                                            class="text-primary">{{ course.student_enrolled }}+
+                                                        students </label></div>
                                                 </div><!-- /.price-area -->
+                                            </div><!-- /.row -->
 
 
                                             </div><!-- /.row -->
                                         </div><!-- /.product-item -->
                                     {% endfor %}
                                     {% get_pages %}
+                                </div><!-- /.products-list -->
 
-                                    <!-- Pagination Section START -->
+                            </div><!-- /.products-grid #list-view -->
+
+                           <!-- Pagination Section START -->
                                     <div class="col-md-offset-3">
                                         <ul class="pagination">
                                             {% if pages.paginated %}
@@ -165,12 +204,6 @@
                                             {% endif %}
                                         </ul>
                                     </div>
-
-
-                                </div><!-- /.products-list -->
-
-                            </div><!-- /.products-grid #list-view -->
-
                         </div><!-- /.tab-content -->
                     </div><!-- /.grid-list-products -->
 

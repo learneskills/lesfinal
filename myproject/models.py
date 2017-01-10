@@ -4,6 +4,11 @@ from django.db import models
 # Create your models here.
 from django.utils.text import slugify
 from django.db.models.signals import post_save, pre_save
+from taggit.managers import TaggableManager
+from tinymce import models as tinymce_models
+from djrichtextfield.models import RichTextField
+from tinymce.widgets import TinyMCE
+
 
 
 class CourseQuerySet(models.query.QuerySet):
@@ -65,16 +70,18 @@ class Course_detail(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(null=True, blank=True)
     sub_title = models.CharField(max_length=200)
-    description = models.TextField(null=True)
+    description = tinymce_models.HTMLField(null=True)
     actual_price = models.DecimalField(null=True, decimal_places=2, max_digits=6)
     sale_price = models.DecimalField(null=True, decimal_places=2, max_digits=6)
     discount = models.PositiveIntegerField(null=True)
     review = models.BooleanField(default=True)
     url = models.URLField(blank=True, max_length=200)
     course_provider = models.CharField(max_length=50, blank=True)
+    student_enrolled = models.PositiveIntegerField(null=True)
     active = models.BooleanField(default=True)
 
     objects = CourseManager()
+    tags = TaggableManager()
 
     def save(self, *args, **kwargs):
         if not self.slug and self.title:
@@ -95,6 +102,9 @@ class Course_detail(models.Model):
         if img:
             return img.image.url
         return img
+
+    def get_tag_url(self):
+        return reverse("tagged", kwargs={"slug": self.slug})
 
 
 # Course Images
