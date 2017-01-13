@@ -175,7 +175,7 @@ class SearchDetailView(DetailView):
         course_set = obj.course_detail_set.all()
         default_product = obj.default_category.all()
         courses = (course_set | default_product)
-        context['courses'] = courses
+        context['myproject'] = courses
         return context
 
 

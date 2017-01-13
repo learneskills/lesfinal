@@ -59,6 +59,17 @@
                                         <div class="row">
                                             <div class="col-xs-12 col-lg-4">
                                                 <ul>
+                                                    <h4 class="text-primary col-sm-offset-3"><u>Courses</u></h4>
+                                                    {% for category in main.category_set.all %}
+                                                        <li>
+                                                            <a href="{{ category.get_absolute_url }}">{{ category.title }}
+                                                                ({{ category.course_detail_set.count }})</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            <div class="col-xs-12 col-lg-4">
+                                                <h4 class="text-primary col-sm-offset-3"><u>Books</u></h4>
+                                                <ul>
                                                     {% for category in main.category_set.all %}
                                                         <li>
                                                             <a href="{{ category.get_absolute_url }}">{{ category.title }}
