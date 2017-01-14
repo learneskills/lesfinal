@@ -13,6 +13,7 @@ from myproject.models import Category, MainCategory
 from webproject import settings
 from .forms import CourseModelForm, CourseModelImage
 from .models import Course_detail
+from books.models import BookMainCategory, BookCategory, BookDetail
 
 
 # Create your views here.
@@ -76,6 +77,11 @@ class CategoryListView(ListView):
             'course_detail_recently_updated_list': Course_detail.objects.order_by('-pk').distinct()[:4],
             'course_all': Course_detail.objects.order_by('-title'),
             'main_category': MainCategory.objects.all(),
+            'book_main_category': BookMainCategory.objects.all(),
+            'book_category': BookCategory.objects.all(),
+            'book_all': BookDetail.objects.order_by('-title'),
+            'top_discount_book': BookDetail.objects.order_by('-discount').distinct()[:4],
+            'recently_updated_book': BookDetail.objects.order_by('-id').distinct()[:4],
         })
         return context
 

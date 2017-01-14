@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load el_pagination_tags %}
+
+{% block header %}
+    <header>
+        <div class="container no-padding">
+
+            <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
+                <!-- ============================================================= LOGO ============================================================= -->
+                <div class="logo">
+                    <a href="{% url 'index' %}">
+                        <img alt="logo" src="{% static 'assets/images/logo.png' %}" width="233" height="54"/>
+                    </a>
+                </div><!-- /.logo -->
+                <!-- ============================================================= LOGO : END ============================================================= -->
+            </div><!-- /.logo-holder -->
+
+            <div class="col-xs-12 col-sm-12 col-md-6 top-search-holder no-margin">
+                <div class="contact-row">
+                    <div class="phone inline">
+                    </div>
+                    <div class="contact inline">
+                        <i class="fa fa-envelope"></i><span class="le-color"> contact@booksntutorials.com</span>
+                    </div>
+                </div><!-- /.contact-row -->
+                <!-- ============================================================= SEARCH AREA ============================================================= -->
+                <div class="search-area">
+                    <form action="/search/" method="GET" role="form">
+                        <div class="control-group">
+
+                            <input class="search-field" name="q" placeholder="Search for Tutorials and Books "/>
+                            <a type="submit" value="Search" class="search-button"></a>
+                        </div>
+                    </form>
+                </div><!-- /.search-area -->
+
+                <!-- ============================================================= SEARCH AREA : END ============================================================= -->
+            </div><!-- /.top-search-holder -->
+        </div><!-- /.container -->
+    </header>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <!-- ========================================= SIDEBAR ========================================= -->
+        <div class="col-xs-12 col-sm-3 no-margin sidebar narrow">
+
+            <!-- ========================================= PRODUCT FILTER ========================================= -->
+
+            <!-- =========== Category Tree ============= -->
+            <!-- ========================================= CATEGORY TREE ========================================= -->
+            <div class="widget accordion-widget category-accordions">
+                <div class="body bordered">
+                    <h1 class="border text-primary">Category Tree</h1>
+                    {% for main in main_category %}
+                        <div class="accordion">
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle active" data-toggle="collapse" href="#{{ main.id }}">
+                                        {{ main.title }}
+                                    </a>
+                                </div>
+                                <div id="{{ main.id }}" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        {% for category in main.default_main_category.all %}
+                                            <ul>
+                                                <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
+                                    </div><!-- /.accordion-inner -->
+                                </div>
+                            </div><!-- /.accordion -->
+                        </div><!-- /.category-accordions -->
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ========================================= CATEGORY TREE : END ========================================= -->
+
+
+            <div class="widget">
+                <div class="simple-banner">
+                    <a href="#"><img alt="" class="img-responsive" src="{% static 'assets/images/blank.gif' %}"
+                                     data-echo="{% static 'assets/images/banners/banner-simple.jpg' %}"/></a>
+                </div>
+            </div>
+            <!-- ========================================= FEATURED PRODUCTS ========================================= -->
+            <div class="widget">
+                <h1 class="border">Top Discount</h1>
+                <ul class="product-list">
+
+                    <li class="sidebar-product-list-item">
+                        <div class="row">
+                            {% for course in top_discount %}
+                                <div class="col-xs-4 col-sm-4 no-margin">
+                                    <a href="{{ course.get_absolute_url }}" class="thumb-holder">
+                                        {% for img in course.courseimage_set.all %}
+                                            <img height="60" width="75" src="{{ img.image.url }}"/>
+                                        {% endfor %}
+                                    </a>
+                                </div>
+                                <div class="col-xs-8 col-sm-8 no-margin">
+                                    <a href="{{ course.get_absolute_url }}">{{ course.title | truncatechars:"30" }}</a>
+                                    <div class="price">
+                                        {% if course.discount > 5 %}
+                                            <div class="label-discount">-{{ course.discount }}% off</div>
+                                        {% endif %}
+                                        <div class="price-prev">${{ course.actual_price }}</div>
+                                        <div class="price-current">${{ course.sale_price }}</div>
+                                    </div>
+                                <hr>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </li><!-- /.sidebar-product-list-item -->
+                </ul><!-- /.product-list -->
+            </div><!-- /.widget -->
+            <!-- ========================================= FEATURED PRODUCTS : END ========================================= -->
+        </div>
+
+        <div class="col-xs-12 col-sm-9 no-margin wide sidebar">
+            {% for cat_img in category.categoryimage_set.all %}
+                <div id="grid-page-banner">
+                    <img height="227" width="899"
+                         src="{{ cat_img.image.url }}" alt=""/>
+                    {# {% static 'assets/images/banners/web-development-banner-cheapes.jpg' %} #}
+                </div>
+            {% endfor %}
+            <section id="gaming">
+                <div class="grid-list-products">
+                    <h2 class="section-title">{{ object.title }}</h2>
+
+                    <div class="tab-content">
+                        <div id="list-view" class="products-grid fade tab-pane in active">
+                            <div class="products-list">
+                                {% paginate courses %}
+                                {% for course in courses %}
+                                    <div class="product-item product-item-holder">
+                                        {% if course.discount > 20 %}
+                                            <div class="ribbon green"><span>-{{ course.discount }}% off</span></div>
+                                        {% endif %}
+                                        {% if course.id >= 3 %}
+                                            <div class="ribbon blue"><span>new!</span></div>
+                                        {% endif %}
+                                        {% if course.discount > 70 %}
+                                            <div class="ribbon red"><span>sale</span></div>
+                                        {% endif %}
+                                        <div class="row">
+                                            {% for img in course.courseimage_set.all %}
+                                                <div class="no-margin col-xs-12 col-sm-4 image-holder">
+                                                    <div class="image">
+                                                        <img height="170" width="250" id="img" alt=""
+                                                             src="{{ img.image.url }} "/>
+                                                    </div>
+                                                </div><!-- /.image-holder -->
+                                            {% endfor %}
+
+                                            <div class="no-margin col-xs-12 col-sm-5 body-holder">
+                                                <div class="body">
+                                                    <!--    <div class="label-discount green">-50% sale</div> -->
+                                                    <div class="title">
+                                                        <a href="{{ course.get_absolute_url }}">{{ course.title }}</a>
+                                                    </div>
+
+                                                    <div class="text-default">{{ course.sub_title | capfirst| truncatechars:'118' }}
+                                                    </div>
+
+                                                    <div class="excerpt">
+                                                        <p class="text-default">{{ course.description | safe | lower | truncatechars:'300' }}</p>
+                                                    </div>
+                                                    <div class="title"><a class="review_add" href="#"></a>
+                                                    </div>
+                                                </div>
+                                            </div><!-- /.body-holder -->
+                                            <div class="no-margin col-xs-12 col-sm-3 price-area">
+                                                <div class="right-clmn">
+                                                    <div class="price-current">$ {{ course.sale_price }}</div>
+                                                    <div class="price-prev">
+                                                        <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
+                                                    </div>
+                                                    <div class="title ">Provider:
+                                                        <label class="text-primary">{{ course.course_provider }}</label>
+                                                    </div>
+                                                    <a class="le-button" href="{{ course.url }}">Course</a>
+                                                    <div class="title">Enrolled: <label
+                                                            class="text-primary">{{ course.student_enrolled }}+
+                                                        students </label></div>
+                                                </div><!-- /.price-area -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.product-item -->
+                                    </div><!-- /.products-list -->
+                                {% endfor %}
+                                {% get_pages %}
+                            </div><!-- /.products-grid #list-view -->
+                            <!-- Pagination Section START -->
+                            <div class="col-md-offset-3">
+                                <ul class="pagination">
+                                    {% if pages.paginated %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ pages.first.path }}"
+                                               aria-label="First">
+                                                <span aria-hidden="true">&lt;&lt;</span>
+                                                <span class="sr-only">First</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ pages.previous.path }}"
+                                               aria-label="Previous">
+                                                <span aria-hidden="true">&lt;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        {% for page in pages %}
+                                            {% if page == None %}
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#" aria-label="...">
+                                                        <span aria-hidden="true">...</span>
+                                                        <span class="sr-only">...</span>
+                                                    </a>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item {% if page.is_current %} active {% endif %}">
+                                                    <a class="page-link" href="{{ page.path }}"
+                                                       aria-label="Page {{ page.number }}">
+                                                        <span aria-hidden="true">{{ page.label|safe }}</span>
+                                                        <span class="sr-only">Page {{ page.number }}</span>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ pages.next.path }}" aria-label="Next">
+                                                <span aria-hidden="true">&gt;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ pages.last.path }}" aria-label="Last">
+                                                <span aria-hidden="true">&gt;&gt;</span>
+                                                <span class="sr-only">Last</span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <!-- /.pagination-holder -->
+                        </div><!-- /.tab-content -->
+                    </div><!-- /.grid-list-products -->
+                </div>
+            </section><!-- /#gaming -->
+
+        </div><!-- /.col -->
+        <!-- ========================================= CONTENT : END ========================================= -->
+    </div><!-- /.container -->
+
+{% endblock %}

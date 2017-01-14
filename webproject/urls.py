@@ -26,7 +26,8 @@ urlpatterns = [
     url(r'^accounts/', include('registration.urls')),
     url(r'^newsletter/', include('newsletter.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^djrichtextfield/', include('djrichtextfield.urls'))
+    url(r'^djrichtextfield/', include('djrichtextfield.urls')),
+
 ]
 
 if settings.DEBUG:
