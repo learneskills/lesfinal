@@ -1,35 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49ee4d1d-c919-4bbc-a9fe-9af39496642f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/books/search_indexes.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/books/templates/search/indexes/books/bookdetail_text.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/books/templates/search/indexes/books/bookmaincategory_text.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/books/templates/search/search.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/books/migrations/0002_auto_20170113_2121.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/books/migrations/0003_auto_20170113_2126.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myproject/migrations/0002_course_detail_student_enrolled.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myproject/migrations/0003_course_detail_tags.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myproject/migrations/0004_auto_20170108_1831.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myproject/migrations/0005_auto_20170108_1857.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myproject/migrations/0006_auto_20170108_1901.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN.tmp/vpui9l0fd6am9voa4zfgz03u3506.ctmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_12lmhos87q98vgud.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_b5d3k80dq45u3f9f.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_htgud38ab3v01mms.pst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_htgud38ab3v01mms.trm" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_mxcrtabdiodh0dqs.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/_MAIN_43.toc" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/books/views.py" afterPath="$PROJECT_DIR$/books/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/search_indexes.py" afterPath="$PROJECT_DIR$/myproject/search_indexes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/templates/search/search.html" afterPath="$PROJECT_DIR$/myproject/templates/search/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/urls_categories.py" afterPath="$PROJECT_DIR$/myproject/urls_categories.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/views.py" afterPath="$PROJECT_DIR$/myproject/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webproject/settings.py" afterPath="$PROJECT_DIR$/webproject/settings.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_WRITELOCK" afterPath="$PROJECT_DIR$/books/templates/search/indexes/books/bookcategory_text.txt" />
-    </list>
+    <list default="true" id="49ee4d1d-c919-4bbc-a9fe-9af39496642f" name="Default" comment="" />
     <ignored path="mytutorials.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
