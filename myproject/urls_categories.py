@@ -22,8 +22,8 @@ urlpatterns = [
     url(r'^blog/$', blog, name='blog'),
 
     # Course URLS
-    url(r'^(?P<slug>[\w-]+)/$', CategoryDetailView.as_view(), name='category_detail'),
-    url(r'^(?P<pk>\d+)/(?P<slug>[-\w]+)/$', SingleProductDetailView.as_view(), name='single-product'),
+    url(r'^course/(?P<slug>[\w-]+)/$', CategoryDetailView.as_view(), name='category_detail'),
+    url(r'^course/(?P<pk>\d+)/(?P<slug>[-\w]+)/$', SingleProductDetailView.as_view(), name='single-product'),
 
     # Books URL
     url(r'^(?P<slug>[\w-]+)/$', BookCategoryDetailView.as_view(), name='book_category_detail'),

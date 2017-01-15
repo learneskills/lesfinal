@@ -176,12 +176,15 @@ class SearchDetailView(DetailView):
         context = super(SearchDetailView, self).get_context_data(**kwargs)
         context.update({
             'main_category': MainCategory.objects.all(),
+            'book_maincategory': BookMainCategory.objects.all(),
+            'book_category': BookCategory.objects.all(),
+            'book_list': BookDetail.objects.all(),
         })
         obj = self.get_object()
         course_set = obj.course_detail_set.all()
         default_product = obj.default_category.all()
         courses = (course_set | default_product)
-        context['myproject'] = courses
+        context['books'] = courses
         return context
 
 
