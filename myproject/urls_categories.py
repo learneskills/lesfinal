@@ -33,7 +33,4 @@ urlpatterns = [
     url(r'^tag/(?P<slug>[-\w]+)/$', TagIndexBookView.as_view(), name='book-tagged'),
     url(r'^tag/(?P<slug>[-\w]+)/$', TagIndexView.as_view(), name='tagged'),
 
-
-
-
 ]
