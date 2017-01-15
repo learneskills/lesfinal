@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49ee4d1d-c919-4bbc-a9fe-9af39496642f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_8wlu9nnjgzgei7z0.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_WRITELOCK" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_l3y19xicmlwh5eo3.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_rym41otic28cwzqh.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/_MAIN_16.toc" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="49ee4d1d-c919-4bbc-a9fe-9af39496642f" name="Default" comment="" />
     <ignored path="mytutorials.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -561,7 +554,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1370" height="745" extended-state="0" />
+    <frame x="-7" y="0" width="1370" height="745" extended-state="1" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1557252" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
