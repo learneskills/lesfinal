@@ -5,7 +5,6 @@ from books.views import AllBook, RecentlyUpdatedBookList, TopDiscountBookList, S
 
 urlpatterns = [
     # Course URLS
-    url(r'^$', CategoryListView.as_view(), name='index'),
     url(r'^recently-updated-list/$', RecentlyUpdatedList.as_view(), name='recently_added'),
     url(r'^top-discount-list/$', TopDiscountList.as_view(), name='top_discount'),
     url(r'^all-course/$', AllCourse.as_view(), name='all_course'),
