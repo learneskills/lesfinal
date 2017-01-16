@@ -10,27 +10,16 @@ urlpatterns = [
     url(r'^top-discount-list/$', TopDiscountList.as_view(), name='top_discount'),
     url(r'^all-course/$', AllCourse.as_view(), name='all_course'),
 
-    # Books URLS
-    url(r'^recently-updated-books-list/$', RecentlyUpdatedBookList.as_view(), name='recently_added_book_list'),
-    url(r'^top-discount-books-list/$', TopDiscountBookList.as_view(), name='top_discount_book_list'),
-    url(r'^all-books/$', AllBook.as_view(), name='all_books'),
 
-    # url(r'contact/$', contact_us, name='contact'),
     url(r'^email/$', email, name='email'),
     url(r'^success/$', success, name='success'),
     url(r'^submit/$', course_model_form, name='submit'),
     url(r'^blog/$', blog, name='blog'),
 
     # Course URLS
-    url(r'^course/(?P<slug>[\w-]+)/$', CategoryDetailView.as_view(), name='category_detail'),
-    url(r'^course/(?P<pk>\d+)/(?P<slug>[-\w]+)/$', SingleProductDetailView.as_view(), name='single-product'),
+    url(r'^(?P<slug>[\w-]+)/$', CategoryDetailView.as_view(), name='category_detail'),
+    url(r'^(?P<pk>\d+)/(?P<slug>[-\w]+)/$', SingleProductDetailView.as_view(), name='single-product'),
+    url(r'^tag/course/(?P<slug>[-\w]+)/$', TagIndexView.as_view(), name='tagged'),
 
-    # Books URL
-    url(r'^(?P<slug>[\w-]+)/$', BookCategoryDetailView.as_view(), name='book_category_detail'),
-    url(r'^book/(?P<slug>[-\w]+)/$', SingleBookDetailView.as_view(), name='single-book-detail'),
-
-    # Tag URL - Course & Books
-    url(r'^tag/(?P<slug>[-\w]+)/$', TagIndexBookView.as_view(), name='book-tagged'),
-    url(r'^tag/(?P<slug>[-\w]+)/$', TagIndexView.as_view(), name='tagged'),
 
 ]

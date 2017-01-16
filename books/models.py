@@ -90,7 +90,7 @@ class BookDetail(models.Model):
         ordering = ["-title"]
 
     def get_absolute_url(self):
-        return reverse("single-book-detail", kwargs={"slug": self.slug})
+        return reverse("single-book-detail", kwargs={"slug": self.slug, "pk": self.pk})
 
     def get_image_url(self):
         img = self.courseimage_set.first()
@@ -99,7 +99,7 @@ class BookDetail(models.Model):
         return img
 
     def get_tag_url(self):
-        return reverse("book-tagged", kwargs={"slug": self.slug})
+        return reverse("book-tagged", kwargs={"slug_book": self.slug})
 
 
 # Course Images

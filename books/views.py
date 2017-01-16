@@ -46,7 +46,7 @@ class TagIndexBookView(TagMixin, ListView):
     template_name = 'books/tag_book_detail.html'
 
     def get_queryset(self):
-        return BookDetail.objects.filter(tags__slug=self.kwargs.get('slug'))
+        return BookDetail.objects.filter(tags__slug=self.kwargs.get('slug_book'))
 
     def get_context_data(self, **kwargs):
         context = super(TagIndexBookView, self).get_context_data(**kwargs)

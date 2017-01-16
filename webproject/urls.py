@@ -16,17 +16,20 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
+
 from webproject import settings
 
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
     url(r'^search/', include('haystack.urls'), name='search'),
-    url(r'', include('myproject.urls_categories')),
+    url(r'^course/', include('myproject.urls_categories')),
+    url(r'^books/', include('books.urls')),
     url(r'^accounts/', include('registration.urls')),
     url(r'^newsletter/', include('newsletter.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^djrichtextfield/', include('djrichtextfield.urls')),
+
 
 ]
 

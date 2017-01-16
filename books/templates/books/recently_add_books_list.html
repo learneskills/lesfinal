@@ -1,1 +1,18 @@
-<h1> Hello </h1>
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Page Under Construction !!</h1><br><br>
+                <p> Go to Home Page,</p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="{% url 'index' %}">Home Page</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -4,7 +4,7 @@ from tinymce.models import HTMLField
 from tinymce.widgets import TinyMCE
 
 from myproject import models
-from .models import Category, Course_detail, CourseImage, MainCategory, CategoryImage
+from .models import Category, Course_detail, CourseImage, MainCategory, CategoryImage, CourseProvider
 
 
 # Register your models here.
@@ -21,3 +21,4 @@ admin.site.register(CourseImage)
 admin.site.register(MainCategory)
 admin.site.register(Category)
 admin.site.register(CategoryImage)
+admin.site.register(CourseProvider)

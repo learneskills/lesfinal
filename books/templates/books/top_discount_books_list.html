@@ -88,7 +88,7 @@
 
                 <section id="gaming">
                     <div class="grid-list-products">
-                        <h2 class="section-title">Top Discount</h2>
+                        <h2 class="section-title">Top Discount Books</h2>
 
                         <div class="tab-content">
 
@@ -105,7 +105,7 @@
                                                 {% for img in course.bookimage_set.all %}
                                                     <div class="no-margin col-xs-12 col-sm-4 image-holder">
                                                         <div class="image">
-                                                            <img id="img" height="170" width="200" alt=""
+                                                            <img id="img" height="180" width="180" alt=""
                                                                  src="{{ img.image.url }} "/>
                                                         </div>
                                                     </div><!-- /.image-holder -->
@@ -118,11 +118,8 @@
                                                             <a href="{{ course.get_absolute_url }}">{{ course.title }}</a>
                                                         </div>
 
-                                                        <div class="text-default">{{ course.sub_title | capfirst| truncatechars:'118' }}
-                                                        </div>
-
                                                         <div class="excerpt">
-                                                            <p class="text-default">{{ course.description| safe | lower |truncatechars:'300' }}</p>
+                                                            <p class="text-default">{{ course.description| safe | lower |truncatechars:'400' }}</p>
                                                         </div>
                                                         <div class="title"><a class="review_add" href="#"></a>
                                                         </div>
@@ -134,13 +131,13 @@
                                                         <div class="price-prev">
                                                             <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
                                                         </div>
-                                                        <div class="title ">Provider:
-                                                            <label class="text-primary">{{ course.course_provider }}</label>
-                                                        </div>
-                                                        <a class="le-button" href="{{ course.url }}">Course</a>
-                                                        <div class="title">Enrolled: <label
-                                                                class="text-primary">{{ course.student_enrolled }}+
-                                                            students </label></div>
+                                                        <div class="title ">Author:
+                                                            <label class="text-primary">{{ course.author_name }}</label>
+                                                        </div><br>
+                                                        <a class="le-button" href="{{ course.get_absolute_url }}">Book Detail</a>
+{#                                                        <div class="title">Enrolled: <label#}
+{#                                                                class="text-primary">{{ course.student_enrolled }}+#}
+{#                                                            students </label></div>#}
                                                     </div><!-- /.price-area -->
                                                 </div><!-- /.row -->
 
