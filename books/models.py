@@ -21,9 +21,9 @@ class BookManager(models.Manager):
         return self.get_queryset().active()
 
     def get_related(self, instance):
-        course_one = self.get_queryset().filter(categories__in=instance.categories.all())
-        course_two = self.get_queryset().filter(default=instance.default)
-        qs = (course_one | course_two).exclude(id=instance.id).distinct()
+        book_one = self.get_queryset().filter(categories__in=instance.categories.all())
+        book_two = self.get_queryset().filter(default=instance.default)
+        qs = (book_one | book_two).exclude(id=instance.id).distinct()
 
         return qs
 

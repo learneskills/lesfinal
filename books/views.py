@@ -96,9 +96,9 @@ class BookCategoryDetailView(DetailView):
             'top_discount': BookDetail.objects.order_by('-discount').distinct()[:10],
         })
         obj = self.get_object()
-        course_set = obj.course_detail_set.all()
+        book_set = obj.bookdetail_set.all()
         default_product = obj.default_category.all()
-        courses = (course_set | default_product)
+        courses = (book_set | default_product)
         context['courses'] = courses
         return context
 
@@ -112,7 +112,7 @@ class BookCategoryDetailView(DetailView):
 
 class CategoryTreeView(ListView):
     model = BookCategory
-    template_name = 'category_tree.html'
+    template_name = 'myproject/category_tree.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(CategoryTreeView, self).get_context_data(**kwargs)

@@ -26,7 +26,7 @@
                 </div><!-- /.contact-row -->
                 <!-- ============================================================= SEARCH AREA ============================================================= -->
                 <div class="search-area">
-                    <form action="/search/" method="GET" role="form">
+                    <form action="/search" method="GET" role="form">
                         <div class="control-group">
 
                             <input class="search-field" name="q" placeholder="Search for Tutorials and Books "/>
@@ -130,7 +130,7 @@
             {% endfor %}
             <section id="gaming">
                 <div class="grid-list-products">
-                    <h2 class="section-title">{{ object.title }}</h2>
+                    <h2 class="section-title">Course: <span class="text-primary">{{ object.title }}</span></h2>
 
                     <div class="tab-content">
                         <div id="list-view" class="products-grid fade tab-pane in active">

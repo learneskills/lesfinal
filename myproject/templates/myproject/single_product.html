@@ -121,10 +121,10 @@
                         <div class="no-margin col-xs-12 col-sm-6 col-md-5 gallery-holder">
                             <div class="product-item-holder size-big single-product-gallery">
                                 {% for img in object.courseimage_set.all %}
-                                    <div id="owl-single-product">
+                                    <div id="">
                                         <a data-rel="prettyphoto" href="#">
                                             <div class="ribbon green"><span>-{{ object.discount }}% off</span></div>
-                                            <img class="img-responsive" alt="" src="{{ img.image.url }}">
+                                            <img height="400" width="420" alt="" src="{{ img.image.url }}">
                                         </a>
                                     </div><!-- /.single-product-slider -->
                                 {% endfor %}

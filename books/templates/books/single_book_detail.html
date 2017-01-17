@@ -289,7 +289,7 @@
                                                     <div class="title">
                                                         <a href="{{ course.get_absolute_url }}">{{ course.title| truncatechars:'60' }}</a>
                                                     </div>
-                                                    <div class="brand">{{ course.sub_title|truncatechars:'50' }}</div>
+                                                    <div class="brand">Author: <strong class="text-success">{{ course.author_name }}</strong></div>
                                                 </div>
                                                 <div class="prices">
                                                     <div class="price-current text-right">${{ course.sale_price }}</div>

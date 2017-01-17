@@ -29,7 +29,7 @@ class TagMixin(object):
 class SingleProductDetailView(TagMixin, DetailView):
     model = Course_detail
     queryset = Course_detail.objects.all()
-    template_name = 'single_product.html'
+    template_name = 'myproject/single_product.html'
 
     def get_context_data(self, **kwargs):
         context = super(SingleProductDetailView, self).get_context_data(**kwargs)
@@ -96,7 +96,7 @@ class CategoryListView(ListView):
 class CategoryDetailView(DetailView):
     model = Category
     queryset = Category.objects.all()
-    template_name = 'category_detail.html'
+    template_name = 'myproject/category_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super(CategoryDetailView, self).get_context_data(**kwargs)
@@ -121,7 +121,7 @@ class CategoryDetailView(DetailView):
 
 class CategoryTreeView(ListView):
     model = Category
-    template_name = 'category_tree.html'
+    template_name = 'myproject/category_tree.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(CategoryTreeView, self).get_context_data(**kwargs)
@@ -134,7 +134,7 @@ class CategoryTreeView(ListView):
 
 class RecentlyUpdatedList(ListView):
     model = Course_detail
-    template_name = 'recently_add_list.html'
+    template_name = 'myproject/recently_add_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(RecentlyUpdatedList, self).get_context_data()
@@ -155,7 +155,7 @@ class RecentlyUpdatedList(ListView):
 
 class TopDiscountList(ListView):
     model = Course_detail
-    template_name = 'top_discount_list.html'
+    template_name = 'myproject/top_discount_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(TopDiscountList, self).get_context_data()
@@ -214,7 +214,7 @@ def blog(request):
 
 class AllCourse(ListView):
     model = Course_detail
-    template_name = 'all_course.html'
+    template_name = 'myproject/all_course.html'
 
     def get_context_data(self, **kwargs):
         context = super(AllCourse, self).get_context_data()

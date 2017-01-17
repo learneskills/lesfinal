@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     # MY Apps
     'myproject',
     'books',
+    'blog',
 
 ]
 

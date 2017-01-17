@@ -96,7 +96,7 @@
                             {% for course in top_discount %}
                                 <div class="col-xs-4 col-sm-4 no-margin">
                                     <a href="{{ course.get_absolute_url }}" class="thumb-holder">
-                                        {% for img in course.courseimage_set.all %}
+                                        {% for img in course.bookimage_set.all %}
                                             <img height="60" width="75" src="{{ img.image.url }}"/>
                                         {% endfor %}
                                     </a>
@@ -130,7 +130,7 @@
             {% endfor %}
             <section id="gaming">
                 <div class="grid-list-products">
-                    <h2 class="section-title">{{ object.title }}</h2>
+                    <h2 class="section-title">Books: <span class="text-primary">{{ object.title }}</span></h2>
 
                     <div class="tab-content">
                         <div id="list-view" class="products-grid fade tab-pane in active">
@@ -148,10 +148,10 @@
                                             <div class="ribbon red"><span>sale</span></div>
                                         {% endif %}
                                         <div class="row">
-                                            {% for img in course.courseimage_set.all %}
+                                            {% for img in course.bookimage_set.all %}
                                                 <div class="no-margin col-xs-12 col-sm-4 image-holder">
                                                     <div class="image">
-                                                        <img height="170" width="250" id="img" alt=""
+                                                        <img height="180" width="180" id="img" alt=""
                                                              src="{{ img.image.url }} "/>
                                                     </div>
                                                 </div><!-- /.image-holder -->
@@ -168,7 +168,7 @@
                                                     </div>
 
                                                     <div class="excerpt">
-                                                        <p class="text-default">{{ course.description | safe | lower | truncatechars:'300' }}</p>
+                                                        <p class="text-default">{{ course.description | safe | lower | truncatechars:'400' }}</p>
                                                     </div>
                                                     <div class="title"><a class="review_add" href="#"></a>
                                                     </div>
@@ -180,13 +180,13 @@
                                                     <div class="price-prev">
                                                         <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
                                                     </div>
-                                                    <div class="title ">Provider:
-                                                        <label class="text-primary">{{ course.course_provider }}</label>
-                                                    </div>
+                                                    <div class="title ">Author:
+                                                        <label class="text-primary">{{ course.author_name }}</label>
+                                                    </div><br>
                                                     <a class="le-button" href="{{ course.url }}">Course</a>
-                                                    <div class="title">Enrolled: <label
-                                                            class="text-primary">{{ course.student_enrolled }}+
-                                                        students </label></div>
+{#                                                    <div class="title">Enrolled: <label#}
+{#                                                            class="text-primary">{{ course.student_enrolled }}+#}
+{#                                                        students </label></div>#}
                                                 </div><!-- /.price-area -->
                                             </div><!-- /.row -->
                                         </div><!-- /.product-item -->

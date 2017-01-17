@@ -88,43 +88,40 @@
             <div id="hero">
                 <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
 
-                    <div class="item" style="background-image: {% static 'assets/images/sliders/slider01.jpg' %};">
+                    <div class="item">
+
+                        <img height="800" src="{% static 'assets/images/banners/featured-img-02.jpg' %}">
                         <div class="container-fluid">
                             <div class="caption vertical-center text-left">
-                                <div class="big-text fadeInDown-1">
-                                    Save up to a<span class="big"><span class="sign">$</span>400</span>
+                                <div class="big-text fadeInDown-1" style="color: white">
+                                    Save up to a<span class="big" style="color: white"><span class="sign" style="color: white">$</span>400</span>
                                 </div>
 
-                                <div class="excerpt fadeInDown-2">
+                                <div class="excerpt fadeInDown-2" style="color: white">
                                     on selected laptops<br>
                                     & desktop pcs or<br>
                                     smartphones
                                 </div>
-                                <div class="small fadeInDown-2">
-                                    terms and conditions apply
-                                </div>
                                 <div class="button-holder fadeInDown-3">
-                                    <a href="single-product.html" class="big le-button ">shop now</a>
+                                    <a href="#" class="big le-button ">shop now</a>
                                 </div>
                             </div><!-- /.caption -->
                         </div><!-- /.container-fluid -->
                     </div><!-- /.item -->
 
-                    <div class="item" style="background-image: {% static 'assets/images/sliders/slider03.jpg' %};">
+                    <div class="item">
+                        <img src="{% static 'assets/images/banners/serviciosmain.png' %}">
                         <div class="container-fluid">
                             <div class="caption vertical-center text-left">
-                                <div class="big-text fadeInDown-1">
-                                    Want a<span class="big"><span class="sign">$</span>200</span>Discount?
+                                <div class="big-text fadeInDown-1" style="color: white">
+                                    Want a<span class="big" style="color: white"><span class="sign" style="color: white">$</span>200</span>Discount?
                                 </div>
 
-                                <div class="excerpt fadeInDown-2">
+                                <div class="excerpt fadeInDown-2" style="color: white">
                                     on selected <br>desktop pcs<br>
                                 </div>
-                                <div class="small fadeInDown-2">
-                                    terms and conditions apply
-                                </div>
                                 <div class="button-holder fadeInDown-3">
-                                    <a href="single-product.html" class="big le-button ">shop now</a>
+                                    <a href="#" class="big le-button ">shop now</a>
                                 </div>
                             </div><!-- /.caption -->
                         </div><!-- /.container-fluid -->
@@ -144,13 +141,13 @@
         <div class="container">
             <div class="col-xs-12 col-lg-6 no-margin banner">
                 <a href="{% url 'all_course' %}">
-                    <div class="banner-text">
-                        <h1></h1>
+                    <div class="banner-text theblue">
+                        <h1> Courses </h1>
                         <span class="tagline"></span>
                     </div>
                     <img height="157" width="570" class="banner-image" alt=""
                          src="{% static 'assets/images/blank.gif' %}"
-                         data-echo="{% static 'assets/images/courses-final.jpg' %}"/>
+                         data-echo="{% static 'assets/images/banners/banner -course.PNG' %}"/>
                 </a>
             </div>
 
@@ -162,7 +159,7 @@
                     </div>
                     <img height="157" width="570" class="banner-image" alt=""
                          src="{% static 'assets/images/blank.gif' %}"
-                         data-echo="{% static 'assets/images/book-image.jpg' %}"/>
+                         data-echo="{% static 'assets/images/banners/banner - books.PNG' %}"/>
                 </a>
             </div>
         </div><!-- /.container -->

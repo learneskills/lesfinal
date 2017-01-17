@@ -776,39 +776,39 @@ model</columns>
       <mandatory>1</mandatory>
       <data-type>VARCHAR(200)(0,-1)|12</data-type>
     </column>
-    <column id="194" parent="21" name="actual_price">
+    <column id="194" parent="21" name="description">
+      <data-type>TEXT(0,-1)|12</data-type>
+    </column>
+    <column id="195" parent="21" name="actual_price">
       <data-type>DECIMAL(0,-1)|6</data-type>
     </column>
-    <column id="195" parent="21" name="sale_price">
+    <column id="196" parent="21" name="sale_price">
       <data-type>DECIMAL(0,-1)|6</data-type>
     </column>
-    <column id="196" parent="21" name="discount">
+    <column id="197" parent="21" name="discount">
       <data-type>INTEGER UNSIGNED(0,-1)|4</data-type>
     </column>
-    <column id="197" parent="21" name="review">
+    <column id="198" parent="21" name="review">
       <mandatory>1</mandatory>
       <data-type>BOOL(0,-1)|4</data-type>
     </column>
-    <column id="198" parent="21" name="url">
+    <column id="199" parent="21" name="url">
       <mandatory>1</mandatory>
       <data-type>VARCHAR(200)(0,-1)|12</data-type>
     </column>
-    <column id="199" parent="21" name="active">
+    <column id="200" parent="21" name="active">
       <mandatory>1</mandatory>
       <data-type>BOOL(0,-1)|4</data-type>
     </column>
-    <column id="200" parent="21" name="Main_Category_id">
+    <column id="201" parent="21" name="Main_Category_id">
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="201" parent="21" name="default_id">
+    <column id="202" parent="21" name="default_id">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="202" parent="21" name="student_enrolled">
+    <column id="203" parent="21" name="student_enrolled">
       <data-type>INTEGER UNSIGNED(0,-1)|4</data-type>
-    </column>
-    <column id="203" parent="21" name="description">
-      <data-type>TEXT(0,-1)|12</data-type>
     </column>
     <column id="204" parent="21" name="course_provider_id">
       <data-type>INTEGER(0,-1)|4</data-type>
