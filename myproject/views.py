@@ -208,10 +208,6 @@ def image_model_form(request):
     return render(request, 'img_form.html', {"title": title, "form": form})
 
 
-def blog(request):
-    return render(request, 'blog.html', {})
-
-
 class AllCourse(ListView):
     model = Course_detail
     template_name = 'myproject/all_course.html'

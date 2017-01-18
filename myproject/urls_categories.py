@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from .views import CategoryListView, CategoryDetailView, SingleProductDetailView, TopDiscountList, \
-    RecentlyUpdatedList, blog, TagIndexView, AllCourse, email, success, course_model_form
+    RecentlyUpdatedList, TagIndexView, AllCourse, email, success, course_model_form
 from books.views import AllBook, RecentlyUpdatedBookList, TopDiscountBookList, SingleBookDetailView, TagIndexBookView, BookCategoryDetailView
 
 urlpatterns = [
@@ -13,7 +13,6 @@ urlpatterns = [
     url(r'^email/$', email, name='email'),
     url(r'^success/$', success, name='success'),
     url(r'^submit/$', course_model_form, name='submit'),
-    url(r'^blog/$', blog, name='blog'),
 
     # Course URLS
     url(r'^(?P<slug>[\w-]+)/$', CategoryDetailView.as_view(), name='category_detail'),

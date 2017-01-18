@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^search/', include('haystack.urls'), name='search'),
     url(r'^course/', include('myproject.urls_categories')),
     url(r'^books/', include('books.urls')),
+    url(r'^blog/', include('blog.urls')),
     url(r'^accounts/', include('registration.urls')),
     url(r'^newsletter/', include('newsletter.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
