@@ -347,26 +347,25 @@
                             <div class="post format-image">
                                 <div class="date-wrapper">
                                     <div class="date">
-                                        <span class="month">Jan</span>
-                                        <span class="day">17</span>
+                                        <span class="month">{{ blog.timestamp | date:'M' }}</span>
+                                        <span class="day">{{ blog.timestamp | date:'d' }}</span>
                                     </div>
                                 </div><!-- /.date-wrapper -->
-                                <div class="format-wrapper">
-                                    <a href="#"><i class="fa fa-image"></i></a>
-                                </div><!-- /.format-wrapper -->
+
                                 <div class="post-content">
                                     <div class="post-media">
                                         {% for img in blog.blogimage_set.all %}
                                         <img height="400" width="600" src="{{ img.image.url  }}" alt="">
                                         {% endfor %}
                                     </div>
-                                    <h2 class="post-title">{{ blog.title }}</h2>
+                                    <h2 class="post-title"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h2>
                                     <ul class="meta">
                                         <li>Posted By : <strong>{{ blog.post_by }}</strong></li>
+                                        {% for category in blog.categories.all %}
 
-                                        {% for tag in blog.tags.all %}
-                                            <li><a href="#">{{ tag }}</a></li>
-                                        {% endfor %}
+                                         <li>{{ category.title }}</li>
+
+                                         {% endfor %}
 
                                         <li><a href="#">3 Comments</a></li>
                                     </ul><!-- /.meta -->

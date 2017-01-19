@@ -32,5 +32,6 @@ class BlogDetailView(DetailView):
             'blog_category': BlogCategory.objects.all(),
             'blog_maincategory': BlogMainCategory.objects.all(),
             'recent_post': BlogDetail.objects.order_by('-id'),
+            'all_tags': BlogDetail.tags.all(),
         })
         return context

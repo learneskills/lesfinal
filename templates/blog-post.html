@@ -30,13 +30,13 @@
                         </div><!-- /.clearfix -->
 
                         <div class="post-content">
-                            <h2 class="post-title">{{ object.title }}</h2>
+                            <h2 class="post-title"><span class="text-primary">{{ object.title }}</span></h2>
                             <ul class="meta">
                                 <li>Posted By : <strong>{{ object.post_by }}</strong></li>
                                 <li>{{ object.timestamp.date }}</li>
                                 <li><a href="#">3 Comments</a></li>
                             </ul><!-- /.meta -->
-                                   <div id="hero">
+                            <div id="hero">
                                 <div id="owl-main" class="owl-carousel owl-carousel-blog owl-inner-nav owl-ui-sm">
                                     {% for img in blogdetail.blogimage_set.all %}
                                         <div class="item">
@@ -55,7 +55,7 @@
                         <div class="inline">
                             <label>tag:</label>
                             {% for tag in object.tags.all %}
-                            <span>
+                                <span>
                                     <a href="#">{{ tag }},</a>
                                 </span>
                             {% endfor %}
@@ -218,15 +218,16 @@
                             <h4>Categories</h4>
                             <div class="body">
                                 {% for category in blog_category %}
-                                <ul class="le-links">
-                                    <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
-                                </ul><!-- /.le-links -->
+                                    <ul class="le-links">
+                                        <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
+                                    </ul><!-- /.le-links -->
                                 {% endfor %}
                             </div>
                         </div><!-- /.widget -->
                         <div class="widget">
                             <div class="simple-banner">
-                                <a href="#"><img alt="" class="img-responsive" src="{% static 'assets/images/blank.gif' %}"
+                                <a href="#"><img alt="" class="img-responsive"
+                                                 src="{% static 'assets/images/blank.gif' %}"
                                                  data-echo="{% static 'assets/images/banners/banner-simple.jpg' %}"/></a>
                             </div>
                         </div>
@@ -237,15 +238,18 @@
                                 <ul class="recent-post-list">
                                     <li class="sidebar-recent-post-item">
                                         <div class="media">
-                                            {% for img in object.blogimage_set.all %}
-                                            <a href="{{ object.get_absolute_url }}" class="thumb-holder pull-left">
-                                                    <img src="{{ img.image.url }}" /> </a>
+                                            {% for recent in recent_post %}
+                                                {% for img in recent.blogimage_set.all %}
+                                                    <a href="{{ recent.get_absolute_url }}"
+                                                       class="thumb-holder pull-left">
+                                                        <img src="{{ img.image.url }}"/> </a>
 
+                                                {% endfor %}
+                                                <div class="media-body">
+                                                    <h5><a href="#">{{ recent.title|truncatechars:'50' }}</a></h5>
+                                                    <div class="posted-date">{{ recent.timestamp.date }}</div>
+                                                </div>
                                             {% endfor %}
-                                            <div class="media-body">
-                                                <h5><a href="#">{{ object.title }}</a></h5>
-                                                <div class="posted-date">{{ object.timestamp.date }}</div>
-                                            </div>
                                         </div>
                                     </li><!-- /.sidebar-recent-post-item -->
                                 </ul><!-- /.recent-post-list -->
@@ -256,31 +260,40 @@
                             <h4>Popular Tags</h4>
                             <div class="body">
                                 <div class="tagcloud">
-                                    <a style="font-size: 12pt;" href="#">Beautiful</a>
-                                    <a style="font-size: 20pt;" href="#">Media Center</a>
-                                    <a style="font-size: 10pt;" href="#">Quality</a>
-                                    <a style="font-size: 14pt;" href="#">Website</a>
-                                    <a style="font-size: 16pt;" href="#">Template</a>
-                                    <a style="font-size: 12pt;" href="#">Professional</a>
-                                    <a style="font-size: 20pt;" href="#">Design</a>
-                                    <a style="font-size: 10pt;" href="#">Multipurpose</a>
-                                    <a style="font-size: 16pt;" href="#">Portfolio</a>
-                                    <a style="font-size: 10pt;" href="#">Customization</a>
-                                    <a style="font-size: 19pt;" href="#">Bootstrap</a>
-                                    <a style="font-size: 9pt;" href="#">Mobile</a>
-                                    <a style="font-size: 14pt;" href="#">Features</a>
-                                    <a style="font-size: 9pt;" href="#">Styles</a>
-                                    <a style="font-size: 13pt;" href="#">Responsive</a>
-                                    <a style="font-size: 9pt;" href="#">Font Icons</a>
-                                    <a style="font-size: 22pt;" href="#">Love</a>
-                                    <a style="font-size: 10pt;" href="#">Digital</a>
-                                    <a style="font-size: 18pt;" href="#">Awesome</a>
-                                    <a style="font-size: 12pt;" href="#">Passion</a>
-                                    <a style="font-size: 13pt;" href="#">Typography</a>
-                                    <a style="font-size: 13pt;" href="#">Clean</a>
-                                    <a style="font-size: 9pt;" href="#">Easy to use</a>
-                                    <a style="font-size: 20pt;" href="#">Buy it</a>
-                                    <a style="font-size: 12pt;" href="#">Success</a>
+                                    {% for tag in all_tags %}
+                                        {% if forloop.counter|divisibleby:'2' %}
+                                            <a style="font-size: 12pt;" href="#">{{ tag }},</a>
+                                        {% elif tag %}
+                                            <a style="font-size: 20pt;" href="#">{{ tag }},</a>
+                                        {% elif tag %}
+                                            <a style="font-size: 10pt;" href="#">{{ tag }},</a>
+                                        {% elif tag %}
+                                            <a style="font-size: 14pt;" href="#">{{ tag }},</a>
+                                        {% elif tag %}
+                                            <a style="font-size: 16pt;" href="#">{{ tag }},</a>
+                                        {% elif tag %}
+                                            <a style="font-size: 12pt;" href="#">{{ tag }},</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {#                                    <a style="font-size: 20pt;" href="#">Design</a>#}
+                                    {#                                    <a style="font-size: 10pt;" href="#">Multipurpose</a>#}
+                                    {#                                    <a style="font-size: 16pt;" href="#">Portfolio</a>#}
+                                    {#                                    <a style="font-size: 10pt;" href="#">Customization</a>#}
+                                    {#                                    <a style="font-size: 19pt;" href="#">Bootstrap</a>#}
+                                    {#                                    <a style="font-size: 9pt;" href="#">Mobile</a>#}
+                                    {#                                    <a style="font-size: 14pt;" href="#">Features</a>#}
+                                    {#                                    <a style="font-size: 9pt;" href="#">Styles</a>#}
+                                    {#                                    <a style="font-size: 13pt;" href="#">Responsive</a>#}
+                                    {#                                    <a style="font-size: 9pt;" href="#">Font Icons</a>#}
+                                    {#                                    <a style="font-size: 22pt;" href="#">Love</a>#}
+                                    {#                                    <a style="font-size: 10pt;" href="#">Digital</a>#}
+                                    {#                                    <a style="font-size: 18pt;" href="#">Awesome</a>#}
+                                    {#                                    <a style="font-size: 12pt;" href="#">Passion</a>#}
+                                    {#                                    <a style="font-size: 13pt;" href="#">Typography</a>#}
+                                    {#                                    <a style="font-size: 13pt;" href="#">Clean</a>#}
+                                    {#                                    <a style="font-size: 9pt;" href="#">Easy to use</a>#}
+                                    {#                                    <a style="font-size: 20pt;" href="#">Buy it</a>#}
+                                    {#                                    <a style="font-size: 12pt;" href="#">Success</a>#}
                                 </div><!-- /.tagcloud -->
                             </div><!-- /.body -->
                         </div><!-- /.widget -->
