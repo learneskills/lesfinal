@@ -45,10 +45,11 @@
     <script type="text/javascript" src="{% static "tiny_mce/tiny_mce.js" %}"></script>
     <script type="text/javascript" src="{% static "tiny_mce/tiny_mce_src.js" %}"></script>
     <script type="text/javascript" src="{% static "tiny_mce/tiny_mce_popup.js" %}"></script>
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+{#    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>#}
     <script type="text/javascript">
         tinymce.init({
-            selector: '#myTextarea',
+            selector: 'textarea',
+            remove_linebreaks : True,
             theme: 'modern',
             width: 600,
             height: 300,

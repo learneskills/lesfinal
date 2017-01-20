@@ -237,8 +237,9 @@
                             <div class="body">
                                 <ul class="recent-post-list">
                                     <li class="sidebar-recent-post-item">
-                                        <div class="media">
-                                            {% for recent in recent_post %}
+                                        {% for recent in recent_post %}
+                                            <div class="media">
+
                                                 {% for img in recent.blogimage_set.all %}
                                                     <a href="{{ recent.get_absolute_url }}"
                                                        class="thumb-holder pull-left">
@@ -246,11 +247,14 @@
 
                                                 {% endfor %}
                                                 <div class="media-body">
-                                                    <h5><a href="#">{{ recent.title|truncatechars:'50' }}</a></h5>
+                                                    <h5>
+                                                        <a href="{{ recent.get_absolute_url }}">{{ recent.title|truncatechars:'60' }}</a>
+                                                    </h5>
                                                     <div class="posted-date">{{ recent.timestamp.date }}</div>
                                                 </div>
-                                            {% endfor %}
-                                        </div>
+
+                                            </div>
+                                        {% endfor %}
                                     </li><!-- /.sidebar-recent-post-item -->
                                 </ul><!-- /.recent-post-list -->
                             </div><!-- /.body -->
@@ -261,39 +265,15 @@
                             <div class="body">
                                 <div class="tagcloud">
                                     {% for tag in all_tags %}
-                                        {% if forloop.counter|divisibleby:'2' %}
-                                            <a style="font-size: 12pt;" href="#">{{ tag }},</a>
-                                        {% elif tag %}
-                                            <a style="font-size: 20pt;" href="#">{{ tag }},</a>
-                                        {% elif tag %}
-                                            <a style="font-size: 10pt;" href="#">{{ tag }},</a>
-                                        {% elif tag %}
-                                            <a style="font-size: 14pt;" href="#">{{ tag }},</a>
-                                        {% elif tag %}
-                                            <a style="font-size: 16pt;" href="#">{{ tag }},</a>
-                                        {% elif tag %}
-                                            <a style="font-size: 12pt;" href="#">{{ tag }},</a>
+                                        {% if forloop.counter|divisibleby:'4' %}
+                                            <a style="font-size: 15pt;" href="{% url 'blog_tagged' tag.slug %}">{{ tag }},</a>
+
+                                         {% elif tag.name == 'programming' %}
+                                            <a style="font-size: 18pt;" href="{% url 'blog_tagged' tag.slug %}"> {{ tag }}</a>
+                                        {% else %}
+                                            <a style="font-size: 10pt;" href="{% url 'blog_tagged' tag.slug %}">{{ tag }},</a>
                                         {% endif %}
                                     {% endfor %}
-                                    {#                                    <a style="font-size: 20pt;" href="#">Design</a>#}
-                                    {#                                    <a style="font-size: 10pt;" href="#">Multipurpose</a>#}
-                                    {#                                    <a style="font-size: 16pt;" href="#">Portfolio</a>#}
-                                    {#                                    <a style="font-size: 10pt;" href="#">Customization</a>#}
-                                    {#                                    <a style="font-size: 19pt;" href="#">Bootstrap</a>#}
-                                    {#                                    <a style="font-size: 9pt;" href="#">Mobile</a>#}
-                                    {#                                    <a style="font-size: 14pt;" href="#">Features</a>#}
-                                    {#                                    <a style="font-size: 9pt;" href="#">Styles</a>#}
-                                    {#                                    <a style="font-size: 13pt;" href="#">Responsive</a>#}
-                                    {#                                    <a style="font-size: 9pt;" href="#">Font Icons</a>#}
-                                    {#                                    <a style="font-size: 22pt;" href="#">Love</a>#}
-                                    {#                                    <a style="font-size: 10pt;" href="#">Digital</a>#}
-                                    {#                                    <a style="font-size: 18pt;" href="#">Awesome</a>#}
-                                    {#                                    <a style="font-size: 12pt;" href="#">Passion</a>#}
-                                    {#                                    <a style="font-size: 13pt;" href="#">Typography</a>#}
-                                    {#                                    <a style="font-size: 13pt;" href="#">Clean</a>#}
-                                    {#                                    <a style="font-size: 9pt;" href="#">Easy to use</a>#}
-                                    {#                                    <a style="font-size: 20pt;" href="#">Buy it</a>#}
-                                    {#                                    <a style="font-size: 12pt;" href="#">Success</a>#}
                                 </div><!-- /.tagcloud -->
                             </div><!-- /.body -->
                         </div><!-- /.widget -->

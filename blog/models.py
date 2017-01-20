@@ -107,7 +107,7 @@ class BlogDetail(models.Model):
         return img
 
     def get_tag_url(self):
-        return reverse("tagged", kwargs={"slug": self.slug})
+        return reverse("blog_tagged", kwargs={"slug": self.slug})
 
 
 # Course Images

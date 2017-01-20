@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% load tinymce_tags %}
+{% load crispy_forms_tags %}
+{% load el_pagination_tags %}
 
 
 <!DOCTYPE html>
@@ -343,7 +344,7 @@
                 <div class="col-md-9">
 
                     <div class="posts sidemeta">
-                        {% for blog in blog_list_content %}
+                        {% for blog in blogdetail_list %}
 
                             <div class="post format-image">
                                 <div class="date-wrapper">
