@@ -177,7 +177,7 @@ class SearchDetailView(DetailView):
 
 
 def blog(request):
-    return render(request, 'blog.html', {})
+    return render(request, 'blog/blog.html', {})
 
 
 class AllBook(ListView):

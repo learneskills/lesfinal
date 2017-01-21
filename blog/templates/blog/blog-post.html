@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load disqus_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -81,75 +82,29 @@
                     </div><!-- /.blog-post-author -->
 
                     <section id="comments" class="inner-bottom-xs">
-                        <h3>2 Comments</h3>
+                        <h3>Comments</h3>
+                        <div id="disqus_thread"></div>
+                        <script>
 
-                        <div class="comment-item">
-                            <div class="row no-margin">
-                                <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
-                                    <div class="avatar">
-                                        <img src="assets/images/default-avatar.jpg" alt="avatar">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-lg-11 col-sm-10 no-margin-right">
-                                    <div class="comment-body">
-                                        <div class="meta-info">
-                                            <header class="row no-margin">
-                                                <div class="pull-left">
-                                                    <h4 class="author"><a href="#">Angela</a></h4>
-                                                    <span class="date">- 21 hours ago</span>
-                                                    <span class="likes"><a href="#"><span
-                                                            class="likes-count">22</span><i
-                                                            class="icon fa fa-thumbs-up"></i></a></span>
-                                                    <span class="dislikes"><a href="#"><i
-                                                            class="icon fa fa-thumbs-down"></i></a></span>
-                                                </div>
-                                                <div class="pull-right">
-                                                    <a class="comment-reply" href="#">Reply</a>
-                                                </div>
-                                            </header>
-                                        </div>
-                                        <p class="comment-content">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                            elit,
-                                            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                            volutpat. </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="comment-item">
-                            <div class="row no-margin">
-                                <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
-                                    <div class="avatar">
-                                        <img src="assets/images/default-avatar.jpg" alt="avatar">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-lg-11 col-sm-10 no-margin-right">
-                                    <div class="comment-body">
-                                        <div class="meta-info">
-                                            <header class="row no-margin">
-                                                <div class="pull-left">
-                                                    <h4 class="author"><a href="#">Angela</a></h4>
-                                                    <span class="date">- 21 hours ago</span>
-                                                    <span class="likes"><a href="#"><span
-                                                            class="likes-count">22</span><i
-                                                            class="icon fa fa-thumbs-up"></i></a></span>
-                                                    <span class="dislikes"><a href="#"><i
-                                                            class="icon fa fa-thumbs-down"></i></a></span>
-                                                </div>
-                                                <div class="pull-right">
-                                                    <a class="comment-reply" href="#">Reply</a>
-                                                </div>
-                                            </header>
-                                        </div>
-                                        <p class="comment-content">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                            elit,
-                                            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                            volutpat. </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            /**
+                             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                            /*
+                             var disqus_config = function () {
+                             this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                             this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                             };
+                             */
+                            (function () { // DON'T EDIT BELOW THIS LINE
+                                var d = document, s = d.createElement('script');
+                                s.src = '//dealsndiscount.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a
+                                href="https://disqus.com/?ref_noscript">comments
+                            powered by Disqus.</a></noscript>
                     </section>
                     <section id="reply-block" class="leave-reply">
                         <h3>Leave a Reply</h3>
@@ -266,12 +221,15 @@
                                 <div class="tagcloud">
                                     {% for tag in all_tags %}
                                         {% if forloop.counter|divisibleby:'4' %}
-                                            <a style="font-size: 15pt;" href="{% url 'blog_tagged' tag.slug %}">{{ tag }},</a>
+                                            <a style="font-size: 15pt;"
+                                               href="{% url 'blog_tagged' tag.slug %}">{{ tag }},</a>
 
-                                         {% elif tag.name == 'programming' %}
-                                            <a style="font-size: 18pt;" href="{% url 'blog_tagged' tag.slug %}"> {{ tag }}</a>
+                                        {% elif tag.name == 'programming' %}
+                                            <a style="font-size: 18pt;"
+                                               href="{% url 'blog_tagged' tag.slug %}"> {{ tag }}</a>
                                         {% else %}
-                                            <a style="font-size: 10pt;" href="{% url 'blog_tagged' tag.slug %}">{{ tag }},</a>
+                                            <a style="font-size: 10pt;"
+                                               href="{% url 'blog_tagged' tag.slug %}">{{ tag }},</a>
                                         {% endif %}
                                     {% endfor %}
                                 </div><!-- /.tagcloud -->
@@ -640,7 +598,7 @@
             <div class="container">
                 <div class="col-xs-12 col-sm-6 no-margin">
                     <div class="copyright">
-                        &copy; <a href="index.html">Media Center</a> - all rights reserved
+                        &copy; <a href="../../../templates/index.html">Media Center</a> - all rights reserved
                     </div><!-- /.copyright -->
                 </div>
                 <div class="col-xs-12 col-sm-6 no-margin">
@@ -669,7 +627,7 @@
             <li class="dropdown">
                 <button class="dropdown-toggle btn le-button btn-block" data-toggle="dropdown">View Pages</button>
                 <ul class="dropdown-menu">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="../../../templates/index.html">Home</a></li>
                     <li><a href="index-2.html">Home Alt</a></li>
                     <li><a href="category-grid.html">Category - Grid/List</a></li>
                     <li><a href="category-grid-2.html">Category 2 - Grid/List</a></li>
@@ -678,7 +636,7 @@
                     <li><a href="cart.html">Shopping Cart</a></li>
                     <li><a href="checkout.html">Checkout</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="../../../templates/contact.html">Contact Us</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="blog-fullwidth.html">Blog Full Width</a></li>
                     <li><a href="blog-post.html">Blog Post</a></li>
@@ -706,7 +664,7 @@
     <a class="show-theme-options" href="#"><i class="fa fa-wrench"></i></a>
 </div>
 <!-- For demo purposes – can be removed on production : End -->
-
+<script id="dsq-count-scr" src="//dealsndiscount.disqus.com/count.js" async></script>
 <!-- JavaScripts placed at the end of the document so the pages load faster -->
 <script src="assets/js/jquery-1.10.2.min.js"></script>
 <script src="assets/js/jquery-migrate-1.2.1.js"></script>

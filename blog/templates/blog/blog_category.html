@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load tinymce_tags %}
+{% load el_pagination_tags %}
 
 
 <!DOCTYPE html>
@@ -343,7 +344,8 @@
                 <div class="col-md-9">
 
                     <div class="posts sidemeta">
-                        {% for blog in blog_list_content %}
+                        {% paginate blogs %}
+                        {% for blog in blogs %}
 
                             <div class="post format-image">
                                 <div class="date-wrapper">
@@ -356,7 +358,8 @@
                                 <div class="post-content">
                                     <div class="post-media">
                                         {% for img in blog.blogimage_set.all %}
-                                            <img height="400" width="750" src="{{ img.image.url }}" alt="">
+                                            <a href="{{ blog.get_absolute_url }}"><img height="400" width="750"
+                                                                                       src="{{ img.image.url }}" alt=""></a>
                                         {% endfor %}
                                     </div>
                                     <h2 class="post-title"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a>
@@ -376,12 +379,67 @@
                                 </div><!-- /.post-content -->
                             </div><!-- /.post -->
                         {% endfor %}
+                        {% get_pages %}
 
                     </div><!-- /.posts -->
 
                     <hr/>
 
+                    <!-- Pagination Section START -->
                     <ul class="pagination blog-pagination">
+                        {% if pages.paginated %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ pages.first.path }}"
+                                   aria-label="First">
+                                    <span aria-hidden="true">&lt;&lt;</span>
+                                    <span class="sr-only">First</span>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="{{ pages.previous.path }}"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">&lt;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            {% for page in pages %}
+                                {% if page == None %}
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="...">
+                                            <span aria-hidden="true">...</span>
+                                            <span class="sr-only">...</span>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item {% if page.is_current %} active {% endif %}">
+                                        <a class="page-link" href="{{ page.path }}"
+                                           aria-label="Page {{ page.number }}">
+                                            <span aria-hidden="true">{{ page.label|safe }}</span>
+                                            <span class="sr-only">Page {{ page.number }}</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ pages.next.path }}" aria-label="Next">
+                                    <span aria-hidden="true">&gt;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="{{ pages.last.path }}" aria-label="Last">
+                                    <span aria-hidden="true">&gt;&gt;</span>
+                                    <span class="sr-only">Last</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                    <!-- /.pagination-holder -->
+
+
+                    <ul class="pagination blog-pagination">
+
                         <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
@@ -469,13 +527,16 @@
                             <div class="body">
                                 <div class="tagcloud">
                                     {% for tag in all_tags %}
-                                        {% if forloop.counter|divisibleby:'4' %}
-                                            <a style="font-size: 15pt;" href="{% url 'blog_tagged' tag.slug %}">{{ tag }},</a>
+                                        {% if forloop.counter|divisibleby:'3' %}
+                                            <a style="font-size: 15pt;"
+                                               href="{% url 'blog_tagged' tag.slug %}">{{ tag }},</a>
 
-                                         {% elif tag.name == 'programming' %}
-                                            <a style="font-size: 18pt;" href="{% url 'blog_tagged' tag.slug %}"> {{ tag }}</a>
+                                        {% elif tag.name == 'programming' %}
+                                            <a style="font-size: 18pt;"
+                                               href="{% url 'blog_tagged' tag.slug %}"> {{ tag }}</a>
                                         {% else %}
-                                            <a style="font-size: 10pt;" href="{% url 'blog_tagged' tag.slug %}">{{ tag }},</a>
+                                            <a style="font-size: 10pt;"
+                                               href="{% url 'blog_tagged' tag.slug %}">{{ tag }},</a>
                                         {% endif %}
                                     {% endfor %}
                                 </div><!-- /.tagcloud -->
@@ -846,7 +907,7 @@
         <div class="container">
             <div class="col-xs-12 col-sm-6 no-margin">
                 <div class="copyright">
-                    &copy; <a href="index.html">Media Center</a> - all rights reserved
+                    &copy; <a href="../../../templates/index.html">Media Center</a> - all rights reserved
                 </div><!-- /.copyright -->
             </div>
             <div class="col-xs-12 col-sm-6 no-margin">
@@ -875,7 +936,7 @@
             <li class="dropdown">
                 <button class="dropdown-toggle btn le-button btn-block" data-toggle="dropdown">View Pages</button>
                 <ul class="dropdown-menu">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="../../../templates/index.html">Home</a></li>
                     <li><a href="index-2.html">Home Alt</a></li>
                     <li><a href="category-grid.html">Category - Grid/List</a></li>
                     <li><a href="category-grid-2.html">Category 2 - Grid/List</a></li>
@@ -884,7 +945,7 @@
                     <li><a href="cart.html">Shopping Cart</a></li>
                     <li><a href="checkout.html">Checkout</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="../../../templates/contact.html">Contact Us</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="blog-fullwidth.html">Blog Full Width</a></li>
                     <li><a href="blog-post.html">Blog Post</a></li>

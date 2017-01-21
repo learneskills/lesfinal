@@ -122,7 +122,7 @@
                             <div class="product-item-holder size-big single-product-gallery">
                                 {% for img in object.courseimage_set.all %}
                                     <div id="">
-                                        <a data-rel="prettyphoto" href="#">
+                                        <a data-rel="prettyphoto" href="{{ object.url }}">
                                             <div class="ribbon green"><span>-{{ object.discount }}% off</span></div>
                                             <img height="400" width="420" alt="" src="{{ img.image.url }}">
                                         </a>

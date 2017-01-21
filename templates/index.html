@@ -191,9 +191,9 @@
                                         {# <div class="ribbon red"><span>sale</span></div>#}
                                         {% for img in course.courseimage_set.all %}
                                             <div class="image">
-
+                                                <a href="{{ course.get_absolute_url }}">
                                                 <img alt="" src="assets/images/blank.gif" height="180" width="250"
-                                                     data-echo="{{ img.image.url }}"/>
+                                                     data-echo="{{ img.image.url }}"/> </a>
 
                                             </div>
                                         {% endfor %}
@@ -264,8 +264,10 @@
                                             <div class="ribbon red"><span>sale</span></div>
                                             {% for img in course.courseimage_set.all %}
                                                 <div class="image">
+                                                <a href="{{ course.get_absolute_url }}">
                                                     <img alt="" src="assets/images/blank.gif" height="180" width="250"
                                                          data-echo="{{ img.image.url }}"/>
+                                                </a>
                                                 </div>
                                             {% endfor %}
                                             <div class="body">
@@ -339,8 +341,10 @@
                                         {#                                        <div class="ribbon red"><span>sale</span></div>#}
                                         {% for img in book.bookimage_set.all %}
                                             <div class="image">
+                                            <a href="{{ book.get_absolute_url }}">
                                                 <img alt="" src="assets/images/blank.gif" height="200" width="220"
                                                      data-echo="{{ img.image.url }}"/>
+                                            </a>
                                             </div><br>
                                         {% endfor %}
                                         <div class="body">
@@ -411,8 +415,10 @@
                                         <div class="ribbon red"><span>-{{ book.discount }}% off</span></div>
                                         {% for img in book.bookimage_set.all %}
                                             <div class="image">
-                                                <img alt="" src="assets/images/blank.gif" height="220" width="220"
-                                                     data-echo="{{ img.image.url }}"/>
+                                                <a href="{{ book.get_absolute_url }}">
+                                                    <img alt="" src="assets/images/blank.gif" height="220" width="220"
+                                                         data-echo="{{ img.image.url }}"/>
+                                                </a>
                                             </div>
                                         {% endfor %}
                                         <div class="body">

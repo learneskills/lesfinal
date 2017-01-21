@@ -49,7 +49,7 @@ class BlogCategory(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("category_detail", kwargs={"slug": self.slug})
+        return reverse("blog_category_detail_view", kwargs={"slug": self.slug})
 
     def get_image_url(self):
         cat_img = self.categoryimage_set.first()

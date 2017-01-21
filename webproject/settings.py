@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'newsletter',
     'pytz',
     'djrichtextfield',
+    'disqus',
 
     # MY Apps
     'myproject',
@@ -218,3 +219,6 @@ DEFAULT_SETTINGS = {
     'EMAIL_NOTIFICATION_SUBJECT': 'Newsletter Subscription Change',
 
 }
+
+DISQUS_API_KEY = 'HCD8KawzX5JFPPKPc0KNJmG1Au2M6JohckcJNsmd6KBAUs6EtQJKapwWZwzccWTH'
+DISQUS_WEBSITE_SHORTNAME = 'dealsndiscount'
