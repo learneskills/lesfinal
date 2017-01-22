@@ -13,6 +13,7 @@ django-newsletter==0.6
 django-pagedown==0.1.1
 django-registration-redux==1.4
 django-richtextfield==1.1
+django-social-share==1.1.0
 django-taggit==0.21.3
 django-tinymce==2.4.0
 django-webtest==1.8.0

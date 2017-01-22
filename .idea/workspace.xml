@@ -1,37 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49ee4d1d-c919-4bbc-a9fe-9af39496642f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/blog/blog_header.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/blog/blog_search.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myproject/templates/myproject/course_provider_store.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/migrations/0002_auto_20170117_2159.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/migrations/0003_auto_20170117_2205.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/migrations/0004_auto_20170117_2206.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myproject/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myproject/migrations/0002_auto_20170115_0934.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myproject/migrations/0003_auto_20170116_2317.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_ehy9ay7191lmku93.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_gntp52o3fu5v4mu2.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/_MAIN_47.toc" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/blog-post.html" afterPath="$PROJECT_DIR$/blog/templates/blog/blog-post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/blog.html" afterPath="$PROJECT_DIR$/blog/templates/blog/blog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/blog_category.html" afterPath="$PROJECT_DIR$/blog/templates/blog/blog_category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/urls.py" afterPath="$PROJECT_DIR$/blog/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/views.py" afterPath="$PROJECT_DIR$/blog/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/books/search_indexes.py" afterPath="$PROJECT_DIR$/books/search_indexes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/books/templates/books/single_book_detail.html" afterPath="$PROJECT_DIR$/books/templates/books/single_book_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/models.py" afterPath="$PROJECT_DIR$/myproject/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/search_indexes.py" afterPath="$PROJECT_DIR$/myproject/search_indexes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/templates/myproject/single_product.html" afterPath="$PROJECT_DIR$/myproject/templates/myproject/single_product.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/templates/search/search.html" afterPath="$PROJECT_DIR$/myproject/templates/search/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/urls_categories.py" afterPath="$PROJECT_DIR$/myproject/urls_categories.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/views.py" afterPath="$PROJECT_DIR$/myproject/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webproject/settings.py" afterPath="$PROJECT_DIR$/webproject/settings.py" />
-    </list>
+    <list default="true" id="49ee4d1d-c919-4bbc-a9fe-9af39496642f" name="Default" comment="" />
     <ignored path="mytutorials.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
