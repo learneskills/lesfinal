@@ -5,16 +5,16 @@ from books.models import BookDetail, BookCategory, BookMainCategory
 
 class NoteIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
-    title = indexes.CharField(model_attr='title')
-    author_name = indexes.CharField(model_attr='author_name')
-    description = indexes.CharField(model_attr='description')
-    actual_price = indexes.IntegerField(model_attr='actual_price')
-    sale_price = indexes.IntegerField(model_attr='sale_price')
-    discount = indexes.IntegerField(model_attr='discount')
-    rating = indexes.BooleanField(model_attr='rating')
-    url = indexes.CharField(model_attr='url')
-    paperback = indexes.IntegerField(model_attr='paperback')
-    active = indexes.BooleanField(model_attr='active')
+    book_title = indexes.CharField(model_attr='title')
+    book_author_name = indexes.CharField(model_attr='author_name')
+    book_description = indexes.CharField(model_attr='description')
+    book_actual_price = indexes.IntegerField(model_attr='actual_price')
+    book_sale_price = indexes.IntegerField(model_attr='sale_price')
+    book_discount = indexes.IntegerField(model_attr='discount')
+    book_rating = indexes.BooleanField(model_attr='rating')
+    book_url = indexes.CharField(model_attr='url')
+    book_paperback = indexes.IntegerField(model_attr='paperback')
+    book_active = indexes.BooleanField(model_attr='active')
 
     def get_model(self):
         return BookDetail
@@ -26,8 +26,8 @@ class NoteIndex(indexes.SearchIndex, indexes.Indexable):
 
 class CategoryIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
-    title2 = indexes.CharField(model_attr='title')
-    timestamp = indexes.DateTimeField(model_attr='timestamp')
+    book_category_title = indexes.CharField(model_attr='title')
+    book_category_timestamp = indexes.DateTimeField(model_attr='timestamp')
 
     def get_model(self):
         return BookCategory
@@ -39,7 +39,7 @@ class CategoryIndex(indexes.SearchIndex, indexes.Indexable):
 
 class MainCategoryIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
-    title1 = indexes.CharField(model_attr='title')
+    book_main_category_title = indexes.CharField(model_attr='title')
 
     def get_model(self):
         return BookMainCategory

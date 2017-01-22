@@ -58,7 +58,7 @@
                                         {% for img in course.courseimage_set.all %}
                                             <div class="col-xs-4 col-sm-4 no-margin">
                                                 <a href="#" class="thumb-holder">
-                                                    <img height="60" width="70" id="img" src="{{ img.image.url }}"/>
+                                                    <img height="73" width="73" id="img" src="{{ img.image.url }}"/>
                                                 </a>
                                             </div>
                                         {% endfor %}
@@ -88,7 +88,7 @@
                                         {% for img in course.courseimage_set.all %}
                                             <div class="col-xs-4 col-sm-4 no-margin">
                                                 <a href="#" class="thumb-holder">
-                                                    <img height="60" width="70" id="img" src="{{ img.image.url }}"/>
+                                                    <img height="63" width="73" id="img" src="{{ img.image.url }}"/>
                                                 </a>
                                             </div>
                                         {% endfor %}
@@ -152,7 +152,8 @@
                                 </div>
                                 <br>
                                 <div class="buttons-holder">
-                                    <a style="color: black" href="#">Course Provider: <span
+
+                                    <a style="color: black" href="{{ object.course_provider.get_absolute_url }}">Course Provider: <span
                                             class="text-primary bold">{{ object.course_provider }}</span> </a>
                                 </div>
                                 <div class="excerpt">

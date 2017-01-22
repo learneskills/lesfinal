@@ -94,7 +94,8 @@
                         <div class="container-fluid">
                             <div class="caption vertical-center text-left">
                                 <div class="big-text fadeInDown-1" style="color: white">
-                                    Save up to a<span class="big" style="color: white"><span class="sign" style="color: white">$</span>400</span>
+                                    Save up to a<span class="big" style="color: white"><span class="sign"
+                                                                                             style="color: white">$</span>400</span>
                                 </div>
 
                                 <div class="excerpt fadeInDown-2" style="color: white">
@@ -114,7 +115,8 @@
                         <div class="container-fluid">
                             <div class="caption vertical-center text-left">
                                 <div class="big-text fadeInDown-1" style="color: white">
-                                    Want a<span class="big" style="color: white"><span class="sign" style="color: white">$</span>200</span>Discount?
+                                    Want a<span class="big" style="color: white"><span class="sign"
+                                                                                       style="color: white">$</span>200</span>Discount?
                                 </div>
 
                                 <div class="excerpt fadeInDown-2" style="color: white">
@@ -192,8 +194,8 @@
                                         {% for img in course.courseimage_set.all %}
                                             <div class="image">
                                                 <a href="{{ course.get_absolute_url }}">
-                                                <img alt="" src="assets/images/blank.gif" height="180" width="250"
-                                                     data-echo="{{ img.image.url }}"/> </a>
+                                                    <img alt="" src="assets/images/blank.gif" height="180" width="250"
+                                                         data-echo="{{ img.image.url }}"/> </a>
 
                                             </div>
                                         {% endfor %}
@@ -264,10 +266,11 @@
                                             <div class="ribbon red"><span>sale</span></div>
                                             {% for img in course.courseimage_set.all %}
                                                 <div class="image">
-                                                <a href="{{ course.get_absolute_url }}">
-                                                    <img alt="" src="assets/images/blank.gif" height="180" width="250"
-                                                         data-echo="{{ img.image.url }}"/>
-                                                </a>
+                                                    <a href="{{ course.get_absolute_url }}">
+                                                        <img alt="" src="assets/images/blank.gif" height="180"
+                                                             width="250"
+                                                             data-echo="{{ img.image.url }}"/>
+                                                    </a>
                                                 </div>
                                             {% endfor %}
                                             <div class="body">
@@ -341,10 +344,10 @@
                                         {#                                        <div class="ribbon red"><span>sale</span></div>#}
                                         {% for img in book.bookimage_set.all %}
                                             <div class="image">
-                                            <a href="{{ book.get_absolute_url }}">
-                                                <img alt="" src="assets/images/blank.gif" height="200" width="220"
-                                                     data-echo="{{ img.image.url }}"/>
-                                            </a>
+                                                <a href="{{ book.get_absolute_url }}">
+                                                    <img alt="" src="assets/images/blank.gif" height="200" width="220"
+                                                         data-echo="{{ img.image.url }}"/>
+                                                </a>
                                             </div><br>
                                         {% endfor %}
                                         <div class="body">
@@ -478,53 +481,63 @@
 
                 <div id="owl-brands" class="owl-carousel brands-carousel">
 
+                    {% for provider in course_provider_list %}
                     <div class="carousel-item">
-                        <a href="#">
-                            <img height="35" src="{% static 'assets/images/brands/udelogo.PNG' %}"/>
+                        <a target="_blank" href="{{ provider.get_absolute_url }}">
+                            <p class="text-primary" style="font-size: x-large">{{ provider.course_provider_name}}</p>
                         </a>
                     </div><!-- /.carousel-item -->
+                    {% endfor %}
 
-                    <div class="carousel-item">
-                        <a href="#">
-                            <img height="35" src="{% static 'assets/images/brands/lynda.com-Logo-and-Website-720x294.jpg' %}"/>
-                        </a>
-                    </div><!-- /.carousel-item -->
-
-                    <div class="carousel-item">
-                        <a href="#">
-                            <img height="35" src="{% static 'assets/images/brands/Treehouse.png' %}"/>
-                        </a>
-                    </div><!-- /.carousel-item -->
-
-                    <div class="carousel-item">
-                        <a href="#">
-                            <img alt="" src="assets/images/brands/brand-04.jpg"/>
-                        </a>
-                    </div><!-- /.carousel-item -->
-
-                    <div class="carousel-item">
-                        <a href="#">
-                            <img alt="" src="assets/images/brands/brand-01.jpg"/>
-                        </a>
-                    </div><!-- /.carousel-item -->
-
-                    <div class="carousel-item">
-                        <a href="#">
-                            <img alt="" src="assets/images/brands/brand-02.jpg"/>
-                        </a>
-                    </div><!-- /.carousel-item -->
-
-                    <div class="carousel-item">
-                        <a href="#">
-                            <img alt="" src="assets/images/brands/brand-03.jpg"/>
-                        </a>
-                    </div><!-- /.carousel-item -->
-
-                    <div class="carousel-item">
-                        <a href="#">
-                            <img alt="" src="assets/images/brands/brand-04.jpg"/>
-                        </a>
-                    </div><!-- /.carousel-item -->
+{#                    <div class="carousel-item">#}
+{#                        <a href="#">#}
+{#                            <img height="35" src="{% static 'assets/images/brands/udelogo.PNG' %}"/>#}
+{#                        </a>#}
+{#                        {% endfor %}#}
+{#                    </div><!-- /.carousel-item -->#}
+{##}
+{#                    <div class="carousel-item">#}
+{#                        <a href="#">#}
+{#                            <img height="35"#}
+{#                                 src="{% static 'assets/images/brands/lynda.com-Logo-and-Website-720x294.jpg' %}"/>#}
+{#                        </a>#}
+{#                    </div><!-- /.carousel-item -->#}
+{##}
+{#                    <div class="carousel-item">#}
+{#                        <a href="#">#}
+{#                            <img height="35" src="{% static 'assets/images/brands/Treehouse.png' %}"/>#}
+{#                        </a>#}
+{#                    </div><!-- /.carousel-item -->#}
+{##}
+{#                    <div class="carousel-item">#}
+{#                        <a href="#">#}
+{#                            <img alt="" src="assets/images/brands/brand-04.jpg"/>#}
+{#                        </a>#}
+{#                    </div><!-- /.carousel-item -->#}
+{##}
+{#                    <div class="carousel-item">#}
+{#                        <a href="#">#}
+{#                            <img alt="" src="assets/images/brands/brand-01.jpg"/>#}
+{#                        </a>#}
+{#                    </div><!-- /.carousel-item -->#}
+{##}
+{#                    <div class="carousel-item">#}
+{#                        <a href="#">#}
+{#                            <img alt="" src="assets/images/brands/brand-02.jpg"/>#}
+{#                        </a>#}
+{#                    </div><!-- /.carousel-item -->#}
+{##}
+{#                    <div class="carousel-item">#}
+{#                        <a href="#">#}
+{#                            <img alt="" src="assets/images/brands/brand-03.jpg"/>#}
+{#                        </a>#}
+{#                    </div><!-- /.carousel-item -->#}
+{##}
+{#                    <div class="carousel-item">#}
+{#                        <a href="#">#}
+{#                            <img alt="" src="assets/images/brands/brand-04.jpg"/>#}
+{#                        </a>#}
+{#                    </div><!-- /.carousel-item -->#}
 
                 </div><!-- /.brands-caresoul -->
 

@@ -51,82 +51,84 @@
 
                 <div class="container">
                     <!-- ========================================= SIDEBAR ========================================= -->
-                    <div class="col-xs-12 col-sm-3 no-margin sidebar narrow">
+                    {#                    <div class="col-xs-12 col-sm-3 no-margin sidebar narrow">#}
+                    {##}
+                    {#                        <!-- ========================================= PRODUCT FILTER ========================================= -->#}
+                    {##}
+                    {#                        <!-- =========== Category Tree ============= -->#}
+                    {#                        <!-- ========================================= CATEGORY TREE ========================================= -->#}
+                    {#                        <div class="widget accordion-widget category-accordions">#}
+                    {#                            <div class="body bordered">#}
+                    {#                                <h1 class="border text-primary">Category Tree</h1>#}
+                    {#                                {% for MainCategory in page.object_list %}#}
+                    {#                                    {% for main in MainCategory.object.main_category %}#}
+                    {#                                        <div class="accordion">#}
+                    {#                                            <div class="accordion-group">#}
+                    {#                                                <div class="accordion-heading">#}
+                    {#                                                    <a class="accordion-toggle active" data-toggle="collapse"#}
+                    {#                                                       href="#{{ main.id }}">#}
+                    {#                                                        {{ main.title }}#}
+                    {#                                                    </a>#}
+                    {#                                                </div>#}
+                    {#                                                <div id="{{ main.id }}" class="accordion-body collapse">#}
+                    {#                                                    <div class="accordion-inner">#}
+                    {#                                                        {% for category in main.object.default_main_category.all %}#}
+                    {#                                                            <ul>#}
+                    {#                                                                <li>#}
+                    {#                                                                    <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>#}
+                    {#                                                                </li>#}
+                    {#                                                            </ul>#}
+                    {#                                                        {% endfor %}#}
+                    {#                                                    </div><!-- /.accordion-inner -->#}
+                    {#                                                </div>#}
+                    {#                                            </div><!-- /.accordion -->#}
+                    {#                                        </div><!-- /.category-accordions -->#}
+                    {#                                    {% endfor %}#}
+                    {#                                {% endfor %}#}
+                    {#                            </div>#}
+                    {#                        </div>#}
+                    {#                        <!-- ========================================= CATEGORY TREE : END ========================================= -->#}
+                    {##}
+                    {##}
+                    {#                        <div class="widget">#}
+                    {#                            <div class="simple-banner">#}
+                    {#                                <a href="#"><img alt="" class="img-responsive"#}
+                    {#                                                 src="{% static 'assets/images/blank.gif' %}"#}
+                    {#                                                 data-echo="{% static 'assets/images/banners/banner-simple.jpg' %}"/></a>#}
+                    {#                            </div>#}
+                    {#                        </div>#}
+                    {#                        <!-- ========================================= FEATURED PRODUCTS ========================================= -->#}
+                    {#                        <div class="widget">#}
+                    {#                            <h1 class="border">Featured Products</h1>#}
+                    {#                            <ul class="product-list">#}
+                    {##}
+                    {#                                <li class="sidebar-product-list-item">#}
+                    {#                                    <div class="row">#}
+                    {#                                        <div class="col-xs-4 col-sm-4 no-margin">#}
+                    {#                                            <a href="#" class="thumb-holder">#}
+                    {#                                                <img alt="" src="{% static 'assets/images/blank.gif' %}"#}
+                    {#                                                     data-echo="{% static 'assets/images/products/product-small-02.jpg' %}"/>#}
+                    {#                                            </a>#}
+                    {#                                        </div>#}
+                    {#                                        {% for course in courses %}#}
+                    {#                                            <div class="col-xs-8 col-sm-8 no-margin">#}
+                    {#                                                <a href="#">{{ course.title }}</a>#}
+                    {#                                                <div class="price">#}
+                    {#                                                    <div class="price-prev">$2000</div>#}
+                    {#                                                    <div class="price-current">$1873</div>#}
+                    {#                                                </div>#}
+                    {#                                            </div>#}
+                    {#                                        {% endfor %}#}
+                    {#                                    </div>#}
+                    {#                                </li><!-- /.sidebar-product-list-item -->#}
+                    {#                            </ul><!-- /.product-list -->#}
+                    {#                        </div><!-- /.widget -->#}
+                    {#                        <!-- ========================================= FEATURED PRODUCTS : END ========================================= -->#}
+                    {#                    </div>#}
 
-                        <!-- ========================================= PRODUCT FILTER ========================================= -->
-
-                        <!-- =========== Category Tree ============= -->
-                        <!-- ========================================= CATEGORY TREE ========================================= -->
-                        <div class="widget accordion-widget category-accordions">
-                            <div class="body bordered">
-                                <h1 class="border text-primary">Category Tree</h1>
-                                {% for MainCategory in page.object_list %}
-                                    {% for main in MainCategory.object.main_category %}
-                                        <div class="accordion">
-                                            <div class="accordion-group">
-                                                <div class="accordion-heading">
-                                                    <a class="accordion-toggle active" data-toggle="collapse"
-                                                       href="#{{ main.id }}">
-                                                        {{ main.title }}
-                                                    </a>
-                                                </div>
-                                                <div id="{{ main.id }}" class="accordion-body collapse">
-                                                    <div class="accordion-inner">
-                                                        {% for category in main.object.default_main_category.all %}
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
-                                                                </li>
-                                                            </ul>
-                                                        {% endfor %}
-                                                    </div><!-- /.accordion-inner -->
-                                                </div>
-                                            </div><!-- /.accordion -->
-                                        </div><!-- /.category-accordions -->
-                                    {% endfor %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <!-- ========================================= CATEGORY TREE : END ========================================= -->
-
-
-                        <div class="widget">
-                            <div class="simple-banner">
-                                <a href="#"><img alt="" class="img-responsive"
-                                                 src="{% static 'assets/images/blank.gif' %}"
-                                                 data-echo="{% static 'assets/images/banners/banner-simple.jpg' %}"/></a>
-                            </div>
-                        </div>
-                        <!-- ========================================= FEATURED PRODUCTS ========================================= -->
-                        <div class="widget">
-                            <h1 class="border">Featured Products</h1>
-                            <ul class="product-list">
-
-                                <li class="sidebar-product-list-item">
-                                    <div class="row">
-                                        <div class="col-xs-4 col-sm-4 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="{% static 'assets/images/blank.gif' %}"
-                                                     data-echo="{% static 'assets/images/products/product-small-02.jpg' %}"/>
-                                            </a>
-                                        </div>
-                                        {% for course in courses %}
-                                            <div class="col-xs-8 col-sm-8 no-margin">
-                                                <a href="#">{{ course.title }}</a>
-                                                <div class="price">
-                                                    <div class="price-prev">$2000</div>
-                                                    <div class="price-current">$1873</div>
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                </li><!-- /.sidebar-product-list-item -->
-                            </ul><!-- /.product-list -->
-                        </div><!-- /.widget -->
-                        <!-- ========================================= FEATURED PRODUCTS : END ========================================= -->
-                    </div>
-
-                    <div class="col-xs-12 col-sm-9 no-margin wide sidebar">
+                    <!-- ========= Search - Course - Start =========-->
+                    <div class="col-md-12">
+                        <h1 class="text-primary"> Search Area </h1>
                         {% for cat_img in category.categoryimage_set.all %}
                             <div id="grid-page-banner">
                                 <img height="227" width="899"
@@ -136,25 +138,33 @@
                         {% endfor %}
                         <section id="gaming">
                             <div class="grid-list-products">
-                                <h2 class="section-title">{{ object_list.title }}</h2>
+                                <h2 class="section-title">{{ object_list.course_title }}</h2>
 
                                 <div class="tab-content">
                                     <div id="list-view" class="products-grid fade tab-pane in active">
 
                                         <div class="products-list">
-                                            {% paginate page.object_list as objects %}
+                                            {% paginate page.object_list as object %}
                                             {% for course in page.object_list %}
 
                                                 <div class="product-item product-item-holder">
-                                                    {% if course.course_provider %}
+                                                    {% if course.course_course_provider %}
                                                         <div class="ribbon red"><span>Course</span>
                                                         </div>
                                                     {% else %}
                                                         <div class="ribbon red"><span>Book</span>
                                                         </div>
                                                     {% endif %}
-                                                    <div class="ribbon green"><span>-{{ course.discount }}% off</span>
-                                                    </div>
+                                                    {% if course.course_discount %}
+                                                        <div class="ribbon green">
+                                                            <span>-{{ course.course_discount }}% off</span>
+                                                        </div>
+                                                    {% else %}
+                                                        <div class="ribbon green">
+                                                            <span>-{{ course.book_discount }}% off</span>
+                                                        </div>
+                                                    {% endif %}
+
 
 
                                                     <div class="row">
@@ -180,86 +190,108 @@
                                                         <div class="no-margin col-xs-12 col-sm-5 body-holder">
                                                             <div class="body">
                                                                 <!--    <div class="label-discount green">-50% sale</div> -->
-                                                                <div class="title">
-                                                                    <a href="{{ course.object.get_absolute_url }}">{{ course.title }}</a>
-                                                                </div>
-                                                                {% if course.sub_title %}
-                                                                    <div class="text-default">{{ course.sub_title | capfirst| truncatechars:'118' }}
+                                                                {% if course.course_title %}
+                                                                    <div class="title">
+                                                                        <a href="{{ course.object.get_absolute_url }}">{{ course.course_title }}</a>
                                                                     </div>
                                                                 {% else %}
-                                                                    <div class="text-default"></div>
+                                                                    <div class="title">
+                                                                        <a href="{{ course.object.get_absolute_url }}">{{ course.book_title }}</a>
+                                                                    </div>
                                                                 {% endif %}
 
-                                                                <div class="excerpt">
-                                                                    <p class="text-default">{{ course.description| safe | truncatechars:'300' }}</p>
-                                                                </div>
+                                                                {% if course.sub_title %}
+                                                                    <div class="text-default">{{ course.course_sub_title | capfirst| truncatechars:'118' }}
+                                                                    </div>
+                                                                {% endif %}
+                                                                {% if course.course_title %}
+                                                                    <div class="excerpt">
+                                                                        <p class="text-default">{{ course.course_description| safe | truncatechars:'300' }}</p>
+                                                                    </div>
+                                                                {% else %}
+                                                                    <div class="excerpt">
+                                                                        <p class="text-default">{{ course.book_description| safe | truncatechars:'300' }}</p>
+                                                                    </div>
+                                                                {% endif %}
                                                                 <div class="title"><a class="review_add" href="#"></a>
                                                                 </div>
                                                             </div>
                                                         </div><!-- /.body-holder -->
                                                         <div class="no-margin col-xs-12 col-sm-3 price-area">
                                                             <div class="right-clmn">
+
                                                                 <div class="price-current">
-                                                                    $ {{ course.sale_price }}</div>
-                                                                <div class="price-prev">
-                                                                    <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
+                                                                    {% if course.course_sale_price %}
+                                                                        $ {{ course.course_sale_price }}</div>
+                                                                    {% else %}
+                                                                        $ {{ course.book_sale_price }}</div>
+                                                                    {% endif %}
+
+                                                            <div class="price-prev">
+                                                                {% if course.course_actual_price %}
+                                                                    <span style="text-decoration: line-through;">$ {{ course.course_actual_price }}</span>
+                                                                {% else %}
+                                                                    <span style="text-decoration: line-through;">$ {{ course.book_actual_price }}</span>
+                                                                {% endif %}
+                                                            </div>
+                                                            {% if course.course_course_provider %}
+                                                                <div class="title ">Provider:
+                                                                    <label class="text-primary">{{ course.course_course_provider }}</label>
                                                                 </div>
-                                                                {% if course.course_provider %}
-                                                                    <div class="title ">Provider:
-                                                                        <label class="text-primary">{{ course.course_provider }}</label>
-                                                                    </div>
-                                                                {% else %}
-                                                                    <div class="title ">Author Name::
-                                                                        <label class="text-primary">{{ course.object.author_name }}</label>
-                                                                    </div>
-                                                                {% endif %}
+                                                            {% else %}
+                                                                <div class="title ">Author Name::
+                                                                    <label class="text-primary">{{ course.object.author_name }}</label>
+                                                                </div>
+                                                            {% endif %}
+                                                            {% if "course" in course.object.get_absolute_url %}
+                                                                <a class="le-button"
+                                                                   href="{{ course.object.get_absolute_url }}">Course</a>
+                                                            {% else %}
+                                                                <a class="le-button"
+                                                                   href="{{ course.object.get_absolute_url }}">Book</a>
+                                                            {% endif %}
 
-                                                                <a class="le-button" href="{{ course.url }}">Course</a>
-                                                                {% if course.student_enrolled %}
-                                                                    <div class="title">Enrolled: <label
-                                                                            class="text-primary">{{ course.student_enrolled }}+
-                                                                        students</label></div>
-                                                                {% else %}
-                                                                    <div class="title"></div>
-                                                                {% endif %}
+                                                            {% if course.course_student_enrolled %}
+                                                                <div class="title">Enrolled: <label
+                                                                        class="text-primary">{{ course.course_student_enrolled }}+
+                                                                    students</label></div>
+                                                            {% else %}
+                                                                <div class="title"></div>
+                                                            {% endif %}
 
-                                                            </div><!-- /.price-area -->
-                                                        </div><!-- /.row -->
-
-
-                                                    </div><!-- /.product-item -->
-
+                                                        </div><!-- /.price-area -->
+                                                    </div><!-- /.row -->
+                                                </div><!-- /.product-item -->
                                                 </div>
-
                                                 <!-- /.products-list -->
                                             {% endfor %}
-                                            {% get_pages %}
+                                        {% get_pages %}
 
-                                        </div><!-- /.products-grid #list-view -->
-                                    </div><!-- /.tab-content -->
-                                </div><!-- /.grid-list-products -->
-                            </div>
+                                    </div><!-- /.products-grid #list-view -->
+                                </div><!-- /.tab-content -->
+                            </div><!-- /.grid-list-products -->
                         </section><!-- /#gaming -->
                     </div><!-- /.col -->
+                    <!-- ========== Search - Course - End ========-->
                     <!-- Pagination Section START -->
                     <div class="col-md-offset-3">
                         <ul class="pagination">
-                            {% if objects.paginated %}
+                            {% if object.paginated %}
                                 <li class="page-item">
-                                    <a class="page-link" href="{{ objects.first.path }}"
+                                    <a class="page-link" href="{{ object.first.path }}"
                                        aria-label="First">
                                         <span aria-hidden="true">&lt;&lt;</span>
                                         <span class="sr-only">First</span>
                                     </a>
                                 </li>
                                 <li class="page-item">
-                                    <a class="page-link" href="{{ objects.previous.path }}"
+                                    <a class="page-link" href="{{ object.previous.path }}"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&lt;</span>
                                         <span class="sr-only">Previous</span>
                                     </a>
                                 </li>
-                                {% for page in objects %}
+                                {% for page in object %}
                                     {% if page == None %}
                                         <li class="page-item disabled">
                                             <a class="page-link" href="#" aria-label="...">
@@ -278,13 +310,13 @@
                                     {% endif %}
                                 {% endfor %}
                                 <li class="page-item">
-                                    <a class="page-link" href="{{ objects.next.path }}" aria-label="Next">
+                                    <a class="page-link" href="{{ pages.next.path }}" aria-label="Next">
                                         <span aria-hidden="true">&gt;</span>
                                         <span class="sr-only">Next</span>
                                     </a>
                                 </li>
                                 <li class="page-item">
-                                    <a class="page-link" href="{{ objects.last.path }}" aria-label="Last">
+                                    <a class="page-link" href="{{ pages.last.path }}" aria-label="Last">
                                         <span aria-hidden="true">&gt;&gt;</span>
                                         <span class="sr-only">Last</span>
                                     </a>
@@ -380,5 +412,4 @@
             {% else %}
                 {# Show some example queries to run, maybe query syntax, something else? #}
             {% endif %}
-    </form>
 {% endblock %}

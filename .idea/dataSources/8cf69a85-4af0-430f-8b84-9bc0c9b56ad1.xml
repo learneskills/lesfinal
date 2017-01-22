@@ -1216,11 +1216,11 @@ model</columns>
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="291" parent="31" name="course_provider">
+    <column id="291" parent="31" name="slug">
       <mandatory>1</mandatory>
       <data-type>VARCHAR(50)(0,-1)|12</data-type>
     </column>
-    <column id="292" parent="31" name="slug">
+    <column id="292" parent="31" name="course_provider_name">
       <mandatory>1</mandatory>
       <data-type>VARCHAR(50)(0,-1)|12</data-type>
     </column>

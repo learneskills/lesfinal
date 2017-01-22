@@ -1,9 +1,12 @@
+from django.db.models import Q
+from django.shortcuts import render
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from taggit.models import Tag
 
 from .models import BlogDetail, BlogCategory, BlogMainCategory
-
+from myproject.models import Course_detail, Category, MainCategory
+from books.models import BookDetail, BookCategory, BookMainCategory
 
 # Create your views here.
 
@@ -18,6 +21,17 @@ class BlogList(ListView):
     model = BlogDetail
     template_name = 'blog/blog.html'
 
+    def get_queryset(self):
+
+        if 'q' in self.request.GET:
+            objects = BlogDetail.objects.filter(
+                Q(title__icontains=self.request.GET['q']) | Q(description__icontains=self.request.GET['q'])
+            )
+        else:
+            objects = BlogDetail.objects.all()
+
+        return objects
+
     def get_context_data(self, **kwargs):
         context = super(BlogList, self).get_context_data(**kwargs)
         context.update({
@@ -26,6 +40,12 @@ class BlogList(ListView):
             'blog_list_content': BlogDetail.objects.order_by('-id'),
             'recent_post': BlogDetail.objects.order_by('-id').distinct()[:5],
             'all_tags': BlogDetail.tags.all(),
+            'main_category': MainCategory.objects.all(),
+            'category': Category.objects.all(),
+            'course_detail': Course_detail.objects.all(),
+            'book_maincategory': BookMainCategory.objects.all(),
+            'book_category': BookCategory.objects.all(),
+            'book_detail': BookDetail.objects.all(),
         })
         return context
 
@@ -42,6 +62,10 @@ class BlogDetailView(DetailView):
             'blog_maincategory': BlogMainCategory.objects.all(),
             'recent_post': BlogDetail.objects.order_by('-id').distinct()[:5],
             'all_tags': BlogDetail.tags.all(),
+            'blog_list_content': BlogDetail.objects.order_by('-id'),
+            'main_category': MainCategory.objects.all(),
+            'category': Category.objects.all(),
+            'course_detail': Course_detail.objects.all(),
         })
         return context
 
@@ -90,9 +114,31 @@ class BlogCategoryDetailView(DetailView):
         context['blogs'] = blogs
         return context
 
+
+class BlogSearchList(ListView):
+    model = BlogDetail
+    template_name = 'blog/blog_search.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogSearchList, self).get_context_data(**kwargs)
+        context.update({
+            'blog_category': BlogCategory.objects.all(),
+            'blog_maincategory': BlogMainCategory.objects.all(),
+            'blog_list_content': BlogDetail.objects.order_by('-id'),
+            'recent_post': BlogDetail.objects.order_by('-id').distinct()[:5],
+            'all_tags': BlogDetail.tags.all(),
+        })
+        return context
+
     def get_queryset(self, **kwargs):
-        qs = super(BlogCategoryDetailView, self).get_queryset()
+        qs = super(BlogSearchList, self).get_queryset()
         query = self.request.GET.get("q", None)
         if query is not None:
             qs = qs.filter(title__icontains=query)
         return qs
+
+
+
+
+
+

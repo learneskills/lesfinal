@@ -12,8 +12,9 @@ from myproject.forms import ContactForm
 from myproject.models import Category, MainCategory
 from webproject import settings
 from .forms import CourseModelForm, CourseModelImage
-from .models import Course_detail
+from .models import Course_detail, CourseProvider
 from books.models import BookMainCategory, BookCategory, BookDetail
+from blog.models import BlogDetail, BlogCategory, BlogMainCategory
 
 
 # Create your views here.
@@ -37,6 +38,7 @@ class SingleProductDetailView(TagMixin, DetailView):
             'main_category': MainCategory.objects.all(),
             'recently_updated': Course_detail.objects.order_by('-id').distinct()[:10],
             'top_discount': Course_detail.objects.order_by('-discount').distinct()[:10],
+
         })
         instance = self.get_object()
         context["related"] = sorted(Course_detail.objects.get_related(instance).distinct()[:10],
@@ -82,6 +84,7 @@ class CategoryListView(ListView):
             'book_all': BookDetail.objects.order_by('-title'),
             'top_discount_book': BookDetail.objects.order_by('-discount').distinct()[:4],
             'recently_updated_book': BookDetail.objects.order_by('-id').distinct()[:4],
+            'course_provider_list': CourseProvider.objects.all(),
         })
         return context
 
@@ -179,6 +182,9 @@ class SearchDetailView(DetailView):
             'book_maincategory': BookMainCategory.objects.all(),
             'book_category': BookCategory.objects.all(),
             'book_list': BookDetail.objects.all(),
+            'blog_detail': BlogDetail.objects.order_by('-id'),
+            'blog_main_category': BlogMainCategory.objects.all(),
+            'blog_category': BlogCategory.objects.all(),
         })
         obj = self.get_object()
         course_set = obj.course_detail_set.all()
@@ -220,6 +226,15 @@ class AllCourse(ListView):
             'main_category': MainCategory.objects.all(),
             'category': Category.objects.all(),
         })
+        return context
+
+
+class CourseProviderStore(DetailView):
+    model = CourseProvider
+    template_name = 'myproject/course_provider_store.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CourseProviderStore, self).get_context_data()
         return context
 
 

@@ -64,22 +64,26 @@ class Category(models.Model):
 
 
 class CourseProvider(models.Model):
-    course_provider = models.CharField(max_length=50)
+    course_provider_name = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50)
 
     def __str__(self):
-        return self.course_provider
+        return self.course_provider_name
 
     def save(self, *args, **kwargs):
         if not self.slug and self.title:
             self.slug = slugify(self.title)
         super(CourseProvider, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse("provider", kwargs={"slug": self.slug})
+
 
 class Course_detail(models.Model):
     Main_Category = models.ForeignKey('MainCategory', blank=True)
     categories = models.ManyToManyField('Category', blank=True)
     default = models.ForeignKey('Category', related_name='default_category', null=True, blank=True)
+    course_provider = models.ForeignKey(CourseProvider, blank=True, null=True)
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(null=True, blank=True, max_length=50)
     sub_title = models.CharField(max_length=200)
@@ -89,7 +93,7 @@ class Course_detail(models.Model):
     discount = models.PositiveIntegerField(null=True)
     review = models.BooleanField(default=True)
     url = models.URLField(blank=True, max_length=200)
-    course_provider = models.ForeignKey(CourseProvider, blank=True, null=True)
+
     student_enrolled = models.PositiveIntegerField(null=True)
     active = models.BooleanField(default=True)
 
