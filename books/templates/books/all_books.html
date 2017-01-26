@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load el_pagination_tags %}
+{% load ratings %}
 
 
 {% block header %}
@@ -71,7 +72,7 @@
                                             {% for category in main.default_main_category.all %}
                                                 <ul>
                                                     <li>
-                                                        <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                                                        <a href="{{ category.get_absolute_url }}">{{ category.title }} ({{ category.bookdetail_set.count }})</a>
                                                     </li>
                                                 </ul>
                                             {% endfor %}
@@ -128,7 +129,7 @@
 
                 <section id="gaming">
                     <div class="grid-list-products">
-                        <h2 class="section-title">All Books</h2>
+                        <h2 class="section-title">All Books ({{ object_list.count }})</h2>
 
                         <div class="tab-content">
 
@@ -162,6 +163,7 @@
                                                         <div class="title">
                                                             <a href="{{ course.get_absolute_url }}">{{ course.title }}</a>
                                                         </div>
+                                                        {% ratings course %}
 
                                                         <div class="text-default">{{ course.sub_title | capfirst| truncatechars:'118' }}
                                                         </div>

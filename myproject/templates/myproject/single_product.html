@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load tinymce_tags %}
+{% load hitcount_tags %}
+{% load ratings %}
+{% load humanize %}
 
 {% block content %}
     <head>
@@ -35,7 +38,7 @@
                                                 {% for category in main.default_main_category.all %}
                                                     <ul>
                                                         <li>
-                                                            <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                                                            <a href="{{ category.get_absolute_url }}">{{ category.title }} ({{ category.course_detail_set.count }})</a>
                                                         </li>
                                                     </ul>
                                                 {% endfor %}
@@ -132,9 +135,13 @@
                         </div><!-- /.gallery-holder -->
                         <div class="no-margin col-xs-12 col-sm-7 body-holder">
                             <div class="body">
+                                {% ratings object %}
                                 <div class="title">
                                     <h1> {{ object.title|title }} </h1>
                                 </div>
+
+                                <div class="title"><span>Student Enrolled:</span> <span class="text-primary bold">{{ object.student_enrolled }}</span> Total views:  <i class="fa fa-eye fa-lg text-primary"> {% get_hit_count for object %} </i></div>
+
                                 <br>
                                 <div class="social-row">
                                     <span class="st_facebook_hcount"><a
@@ -153,9 +160,12 @@
                                 <br>
                                 <div class="buttons-holder">
 
-                                    <a style="color: black" href="{{ object.course_provider.get_absolute_url }}">Course Provider: <span
-                                            class="text-primary bold">{{ object.course_provider }}</span> </a>
+                                    <a style="color: black" href="{{ object.course_provider.get_absolute_url }}">Course
+                                        Provider: <span
+                                                class="text-primary bold">{{ object.course_provider }}</span> </a>
                                 </div>
+                                <br>
+
                                 <div class="excerpt">
                                     <p>{{ object.sub_title }}</p>
                                 </div>

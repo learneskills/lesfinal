@@ -31,6 +31,8 @@ urlpatterns = [
     url(r'^newsletter/', include('newsletter.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^djrichtextfield/', include('djrichtextfield.urls')),
+    url(r'hitcount/', include('hitcount.urls', namespace='hitcount')),
+    url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
     url(r'^$', CategoryListView.as_view(), name='index'),
 
 

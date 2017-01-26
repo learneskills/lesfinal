@@ -7,8 +7,9 @@ from taggit.models import Tag
 from .models import BlogDetail, BlogCategory, BlogMainCategory
 from myproject.models import Course_detail, Category, MainCategory
 from books.models import BookDetail, BookCategory, BookMainCategory
-
+from hitcount.views import HitCountDetailView, HitCountMixin
 # Create your views here.
+
 
 class TagMixin(object):
     def get_context_data(self, **kwargs):
@@ -17,8 +18,9 @@ class TagMixin(object):
         return context
 
 
-class BlogList(ListView):
+class BlogList(HitCountMixin, ListView):
     model = BlogDetail
+    count_hit = True
     template_name = 'blog/blog.html'
 
     def get_queryset(self):
@@ -50,8 +52,9 @@ class BlogList(ListView):
         return context
 
 
-class BlogDetailView(DetailView):
+class BlogDetailView(HitCountDetailView):
     model = BlogDetail
+    count_hit = True
     queryset = BlogDetail.objects.all()
     template_name = 'blog/blog-post.html'
 

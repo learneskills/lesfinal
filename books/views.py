@@ -10,7 +10,7 @@ from taggit.models import Tag
 from books.models import BookMainCategory, BookCategory, BookDetail
 from myproject.forms import ContactForm
 from webproject import settings
-
+from hitcount.views import HitCountDetailView
 
 # Create your views here.
 
@@ -22,8 +22,9 @@ class TagMixin(object):
         return context
 
 
-class SingleBookDetailView(TagMixin, DetailView):
+class SingleBookDetailView(TagMixin, HitCountDetailView):
     model = BookDetail
+    count_hit = True
     queryset = BookDetail.objects.all()
     template_name = 'books/single_book_detail.html'
 

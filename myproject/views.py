@@ -15,9 +15,7 @@ from .forms import CourseModelForm, CourseModelImage
 from .models import Course_detail, CourseProvider
 from books.models import BookMainCategory, BookCategory, BookDetail
 from blog.models import BlogDetail, BlogCategory, BlogMainCategory
-
-
-# Create your views here.
+from hitcount.views import HitCountDetailView, HitCountMixin
 
 
 class TagMixin(object):
@@ -27,8 +25,9 @@ class TagMixin(object):
         return context
 
 
-class SingleProductDetailView(TagMixin, DetailView):
+class SingleProductDetailView(TagMixin, HitCountDetailView):
     model = Course_detail
+    count_hit = True
     queryset = Course_detail.objects.all()
     template_name = 'myproject/single_product.html'
 
@@ -65,8 +64,9 @@ class TagIndexView(TagMixin, ListView):
         return context
 
 
-class CategoryListView(ListView):
+class CategoryListView(HitCountMixin, ListView):
     model = Category
+    count_hit = True
     paginate_by = 4
     template_name = 'index.html'
     context_object_name = 'category_list'

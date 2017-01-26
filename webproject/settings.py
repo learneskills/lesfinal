@@ -14,7 +14,6 @@ import os
 import dj_database_url
 from django.conf import settings
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 
@@ -48,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.humanize',
 
     # Third Part App
     'contact_form',
@@ -64,6 +64,8 @@ INSTALLED_APPS = [
     'pytz',
     'djrichtextfield',
     'disqus',
+    'hitcount',
+    'star_ratings',
 
     # MY Apps
     'myproject',
@@ -168,7 +170,6 @@ MEDIA_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT), "static_in_env", "media
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-
 # Django-Registration-Redux
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
@@ -202,7 +203,6 @@ TINYMCE_DEFAULT_CONFIG = {
 TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
 
-
 # Using django-tinymce
 NEWSLETTER_RICHTEXT_WIDGET = "tinymce.widgets.TinyMCE"
 
@@ -222,3 +222,13 @@ DEFAULT_SETTINGS = {
 
 DISQUS_API_KEY = 'HCD8KawzX5JFPPKPc0KNJmG1Au2M6JohckcJNsmd6KBAUs6EtQJKapwWZwzccWTH'
 DISQUS_WEBSITE_SHORTNAME = 'dealsndiscount'
+
+HITCOUNT_KEEP_HIT_ACTIVE = {'days': 999}
+
+HITCOUNT_KEEP_HIT_IN_DATABASE = {'days': 999}
+
+STAR_RATINGS_ANONYMOUS = True
+
+STAR_RATINGS_RERATE = False
+
+USE_THOUSAND_SEPARATOR = True

@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load crispy_forms_tags %}
+{% load ratings %}
+{% load hitcount_tags %}
 
 {% block header %}
     <header>
@@ -218,10 +220,10 @@
                                                     course</a>
                                             </div>
                                             <div class="wish-compare">
-                                                <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                                <a class="btn-add-to-compare" href="#">compare</a>
-                                                {#                                                <p class="text-center"><span class="title bold text-primary"> {{ course.student_enrolled }}+ students enrolled</span> </p>#}
-
+                                                <a class="text-left" href="#"><i
+                                                        class="fa fa-eye fa-1x text-muted"> {% get_hit_count for course %} </i></a>
+                                                <a class="text-right text-muted" href="#"><span>Enrolled:</span> <span
+                                                        class="text-primary">{{ course.student_enrolled }}+ students</span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -292,8 +294,10 @@
                                                         course</a>
                                                 </div>
                                                 <div class="wish-compare">
-                                                    <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                                    <a class="btn-add-to-compare" href="#">compare</a>
+                                                    <a class="text-left" href="#"><i
+                                                            class="fa fa-eye fa-1x text-muted"> {% get_hit_count for course %} </i></a>
+                                                    <a class="text-right text-muted" href="#"><span>Enrolled:</span>
+                                                        <span class="text-primary">{{ course.student_enrolled }}+ students</span></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -370,8 +374,10 @@
                                                     course</a>
                                             </div>
                                             <div class="wish-compare">
-                                                <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                                <a class="btn-add-to-compare" href="#">compare</a>
+                                                <a class="text-left" href="#"><i
+                                                        class="fa fa-eye fa-1x text-muted"> {% get_hit_count for book %} </i></a>
+                                                <a class="text-right text-muted" href="#"><span></span>
+                                                    <span class="text-primary"></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -443,8 +449,10 @@
                                                     course</a>
                                             </div>
                                             <div class="wish-compare">
-                                                <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                                <a class="btn-add-to-compare" href="#">compare</a>
+                                                <a class="text-left" href="#"><i
+                                                        class="fa fa-eye fa-1x text-muted"> {% get_hit_count for book %} </i></a>
+                                                <a class="text-right text-muted" href="#"><span></span>
+                                                    <span class="text-primary"></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -482,62 +490,63 @@
                 <div id="owl-brands" class="owl-carousel brands-carousel">
 
                     {% for provider in course_provider_list %}
-                    <div class="carousel-item">
-                        <a target="_blank" href="{{ provider.get_absolute_url }}">
-                            <p class="text-primary" style="font-size: x-large">{{ provider.course_provider_name}}</p>
-                        </a>
-                    </div><!-- /.carousel-item -->
+                        <div class="carousel-item">
+                            <a target="_blank" href="{{ provider.get_absolute_url }}">
+                                <p class="text-primary"
+                                   style="font-size: x-large">{{ provider.course_provider_name }}</p>
+                            </a>
+                        </div><!-- /.carousel-item -->
                     {% endfor %}
 
-{#                    <div class="carousel-item">#}
-{#                        <a href="#">#}
-{#                            <img height="35" src="{% static 'assets/images/brands/udelogo.PNG' %}"/>#}
-{#                        </a>#}
-{#                        {% endfor %}#}
-{#                    </div><!-- /.carousel-item -->#}
-{##}
-{#                    <div class="carousel-item">#}
-{#                        <a href="#">#}
-{#                            <img height="35"#}
-{#                                 src="{% static 'assets/images/brands/lynda.com-Logo-and-Website-720x294.jpg' %}"/>#}
-{#                        </a>#}
-{#                    </div><!-- /.carousel-item -->#}
-{##}
-{#                    <div class="carousel-item">#}
-{#                        <a href="#">#}
-{#                            <img height="35" src="{% static 'assets/images/brands/Treehouse.png' %}"/>#}
-{#                        </a>#}
-{#                    </div><!-- /.carousel-item -->#}
-{##}
-{#                    <div class="carousel-item">#}
-{#                        <a href="#">#}
-{#                            <img alt="" src="assets/images/brands/brand-04.jpg"/>#}
-{#                        </a>#}
-{#                    </div><!-- /.carousel-item -->#}
-{##}
-{#                    <div class="carousel-item">#}
-{#                        <a href="#">#}
-{#                            <img alt="" src="assets/images/brands/brand-01.jpg"/>#}
-{#                        </a>#}
-{#                    </div><!-- /.carousel-item -->#}
-{##}
-{#                    <div class="carousel-item">#}
-{#                        <a href="#">#}
-{#                            <img alt="" src="assets/images/brands/brand-02.jpg"/>#}
-{#                        </a>#}
-{#                    </div><!-- /.carousel-item -->#}
-{##}
-{#                    <div class="carousel-item">#}
-{#                        <a href="#">#}
-{#                            <img alt="" src="assets/images/brands/brand-03.jpg"/>#}
-{#                        </a>#}
-{#                    </div><!-- /.carousel-item -->#}
-{##}
-{#                    <div class="carousel-item">#}
-{#                        <a href="#">#}
-{#                            <img alt="" src="assets/images/brands/brand-04.jpg"/>#}
-{#                        </a>#}
-{#                    </div><!-- /.carousel-item -->#}
+                    {#                    <div class="carousel-item">#}
+                    {#                        <a href="#">#}
+                    {#                            <img height="35" src="{% static 'assets/images/brands/udelogo.PNG' %}"/>#}
+                    {#                        </a>#}
+                    {#                        {% endfor %}#}
+                    {#                    </div><!-- /.carousel-item -->#}
+                    {##}
+                    {#                    <div class="carousel-item">#}
+                    {#                        <a href="#">#}
+                    {#                            <img height="35"#}
+                    {#                                 src="{% static 'assets/images/brands/lynda.com-Logo-and-Website-720x294.jpg' %}"/>#}
+                    {#                        </a>#}
+                    {#                    </div><!-- /.carousel-item -->#}
+                    {##}
+                    {#                    <div class="carousel-item">#}
+                    {#                        <a href="#">#}
+                    {#                            <img height="35" src="{% static 'assets/images/brands/Treehouse.png' %}"/>#}
+                    {#                        </a>#}
+                    {#                    </div><!-- /.carousel-item -->#}
+                    {##}
+                    {#                    <div class="carousel-item">#}
+                    {#                        <a href="#">#}
+                    {#                            <img alt="" src="assets/images/brands/brand-04.jpg"/>#}
+                    {#                        </a>#}
+                    {#                    </div><!-- /.carousel-item -->#}
+                    {##}
+                    {#                    <div class="carousel-item">#}
+                    {#                        <a href="#">#}
+                    {#                            <img alt="" src="assets/images/brands/brand-01.jpg"/>#}
+                    {#                        </a>#}
+                    {#                    </div><!-- /.carousel-item -->#}
+                    {##}
+                    {#                    <div class="carousel-item">#}
+                    {#                        <a href="#">#}
+                    {#                            <img alt="" src="assets/images/brands/brand-02.jpg"/>#}
+                    {#                        </a>#}
+                    {#                    </div><!-- /.carousel-item -->#}
+                    {##}
+                    {#                    <div class="carousel-item">#}
+                    {#                        <a href="#">#}
+                    {#                            <img alt="" src="assets/images/brands/brand-03.jpg"/>#}
+                    {#                        </a>#}
+                    {#                    </div><!-- /.carousel-item -->#}
+                    {##}
+                    {#                    <div class="carousel-item">#}
+                    {#                        <a href="#">#}
+                    {#                            <img alt="" src="assets/images/brands/brand-04.jpg"/>#}
+                    {#                        </a>#}
+                    {#                    </div><!-- /.carousel-item -->#}
 
                 </div><!-- /.brands-caresoul -->
 

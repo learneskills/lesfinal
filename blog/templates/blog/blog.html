@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load tinymce_tags %}
 {% load el_pagination_tags %}
+{% load hitcount_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -121,6 +122,7 @@
                                         {% for category in blog.categories.all %}
                                             <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
                                         {% endfor %}
+                                    <li><i class="fa fa-eye fa-x" aria-hidden="true"> {% get_hit_count for blog %} </i></li>
 
                                         {#                                        <li><a href="#">3 Comments</a></li>#}
                                     </ul><!-- /.meta -->

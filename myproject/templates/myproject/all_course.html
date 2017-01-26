@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load el_pagination_tags %}
-
+{% load ratings %}
+{% load hitcount_tags %}
 
 {% block header %}
     <header>
@@ -46,7 +47,7 @@
 
 {% block content %}
 
-<body>
+    <body>
 
     <div class="wrapper">
         <div class="container">
@@ -71,7 +72,7 @@
                                             {% for category in main.default_main_category.all %}
                                                 <ul>
                                                     <li>
-                                                        <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                                                        <a href="{{ category.get_absolute_url }}">{{ category.title }} ({{ category.course_detail_set.count }})</a>
                                                     </li>
                                                 </ul>
                                             {% endfor %}
@@ -128,7 +129,7 @@
 
                 <section id="gaming">
                     <div class="grid-list-products">
-                        <h2 class="section-title">All Courses</h2>
+                        <h2 class="section-title">All Courses ({{ object_list.count }})</h2>
 
                         <div class="tab-content">
 
@@ -162,12 +163,12 @@
                                                         <div class="title">
                                                             <a href="{{ course.get_absolute_url }}">{{ course.title }}</a>
                                                         </div>
-
+                                                        {% ratings course %}
                                                         <div class="text-default">{{ course.sub_title | capfirst| truncatechars:'118' }}
                                                         </div>
 
                                                         <div class="excerpt">
-                                                            <p class="text-default">{{ course.description| safe |truncatechars:'300' }}</p>
+                                                            <p class="text-default">{{ course.description| safe |truncatechars:'150' }}</p>
                                                         </div>
                                                         <div class="title"><a class="review_add" href="#"></a>
                                                         </div>
@@ -179,13 +180,16 @@
                                                         <div class="price-prev">
                                                             <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
                                                         </div>
-                                                        <div class="title ">Provider:
+                                                        <div class="title">Provider:
                                                             <label class="text-primary">{{ course.course_provider }}</label>
                                                         </div>
                                                         <a class="le-button" href="{{ course.url }}">Course</a>
-                                                        <div class="title">Enrolled: <label
+                                                        <div class="title"><span class="text-muted">views:</span> <i class="fa fa-eye fa-1x text-primary"> {% get_hit_count for course %} </i>
+                                                        </div>
+                                                        <div class="title"><span class="text-muted"> Enrolled: </span> <label
                                                                 class="text-primary">{{ course.student_enrolled }}+
-                                                            students </label></div>
+                                                            students </label>
+                                                        </div>
                                                     </div><!-- /.price-area -->
                                                 </div><!-- /.row -->
                                             </div><!-- /.product-item -->
@@ -305,5 +309,5 @@
         </div><!-- /.container -->
         <!-- ============================================================= FOOTER ============================================================= -->
     </div>
-</body>
+    </body>
 {% endblock %}
