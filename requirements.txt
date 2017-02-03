@@ -13,6 +13,7 @@ django-haystack==2.5.1
 django-hitcount==1.2.2
 django-model-utils==2.6.1
 django-newsletter==0.6
+django-newsletter-subscription==0.3.0
 django-pagedown==0.1.1
 django-registration-redux==1.4
 django-richtextfield==1.1
@@ -36,6 +37,7 @@ simplejson==3.10.0
 six==1.10.0
 sorl-thumbnail==12.4a1
 surlex==0.2.0
+towel==0.9.0
 unicodecsv==0.14.1
 urllib3==1.19.1
 virtualenv==15.0.3

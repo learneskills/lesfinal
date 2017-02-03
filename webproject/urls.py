@@ -20,6 +20,7 @@ from django.contrib import admin
 from myproject.views import CategoryListView
 from webproject import settings
 
+
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),

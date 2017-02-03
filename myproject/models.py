@@ -10,7 +10,6 @@ from djrichtextfield.models import RichTextField
 from tinymce.widgets import TinyMCE
 
 
-
 class CourseQuerySet(models.query.QuerySet):
     def active(self):
         return self.filter(active=True)
@@ -143,3 +142,12 @@ class CategoryImage(models.Model):
 
     def __str__(self):
         return self.category_image.title
+
+
+from django.utils.translation import ugettext_lazy as _
+
+from newsletter_subscription.models import SubscriptionBase
+
+
+class Subscription(SubscriptionBase):
+    full_name = models.CharField(_('full name'), max_length=100, blank=True)
