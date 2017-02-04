@@ -72,7 +72,8 @@
                                             {% for category in main.default_main_category.all %}
                                                 <ul>
                                                     <li>
-                                                        <a href="{{ category.get_absolute_url }}">{{ category.title }} ({{ category.course_detail_set.count }})</a>
+                                                        <a href="{{ category.get_absolute_url }}">{{ category.title }}
+                                                            ({{ category.course_detail_set.count }})</a>
                                                     </li>
                                                 </ul>
                                             {% endfor %}
@@ -184,66 +185,19 @@
                                                             <label class="text-primary">{{ course.course_provider }}</label>
                                                         </div>
                                                         <a class="le-button" href="{{ course.url }}">Course</a>
-                                                        <div class="title"><span class="text-muted">views:</span> <i class="fa fa-eye fa-1x text-primary"> {% get_hit_count for course %} </i>
+                                                        <div class="title"><span class="text-muted">views:</span> <i
+                                                                class="fa fa-eye fa-1x text-primary"> {% get_hit_count for course %} </i>
                                                         </div>
-                                                        <div class="title"><span class="text-muted"> Enrolled: </span> <label
-                                                                class="text-primary">{{ course.student_enrolled }}+
-                                                            students </label>
+                                                        <div class="title"><span class="text-muted"> Enrolled: </span>
+                                                            <label
+                                                                    class="text-primary">{{ course.student_enrolled }}+
+                                                                students </label>
                                                         </div>
                                                     </div><!-- /.price-area -->
                                                 </div><!-- /.row -->
                                             </div><!-- /.product-item -->
                                         </div><!-- /.products-list -->
                                     {% endfor %}
-                                    {#                                    {% for course in all_courses %}#}
-                                    {#                                        <div class="product-item product-item-holder">#}
-                                    {#                                            {% if course.discount > 5 %}#}
-                                    {#                                                <div class="ribbon green"><span>-{{ course.discount }}% off</span></div>#}
-                                    {#                                            {% endif %}#}
-                                    {#                                            <div class="row">#}
-                                    {##}
-                                    {#                                                {% for img in course.courseimage_set.all %}#}
-                                    {#                                                    <div class="no-margin col-xs-12 col-sm-4 image-holder">#}
-                                    {#                                                        <div class="image">#}
-                                    {#                                                            <img id="img" alt="" src="{{ img.image.url }} "/>#}
-                                    {#                                                        </div>#}
-                                    {#                                                    </div><!-- /.image-holder -->#}
-                                    {#                                                {% endfor %}#}
-                                    {##}
-                                    {#                                                <div class="no-margin col-xs-12 col-sm-5 body-holder">#}
-                                    {#                                                    <div class="body">#}
-                                    {#                                                        <!--    <div class="label-discount green">-50% sale</div> -->#}
-                                    {#                                                        <div class="title">#}
-                                    {#                                                            <a href="{{ course.get_absolute_url }}">{{ course.title }}</a>#}
-                                    {#                                                        </div>#}
-                                    {#                                                        <div class="brand"><strong> {{ course.sub_title }} </strong>#}
-                                    {#                                                        </div>#}
-                                    {##}
-                                    {#                                                        <div class="excerpt">#}
-                                    {#                                                            <p>{{ course.description|truncatechars:'200' }}</p>#}
-                                    {#                                                        </div>#}
-                                    {#                                                        <div class="title"><a class="review_add" href="#">*****</a>#}
-                                    {#                                                        </div>#}
-                                    {#                                                    </div>#}
-                                    {#                                                </div><!-- /.body-holder -->#}
-                                    {#                                                <div class="no-margin col-xs-12 col-sm-3 price-area">#}
-                                    {#                                                    <div class="right-clmn">#}
-                                    {#                                                        <div class="price-current">$ {{ course.sale_price }}</div>#}
-                                    {#                                                        <div class="price-prev">#}
-                                    {#                                                            <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>#}
-                                    {#                                                        </div>#}
-                                    {#                                                        <div class="availability"><label>Author:</label><span#}
-                                    {#                                                                class="available">Author Name</span></div>#}
-                                    {#                                                        <a class="le-button" href="#">Go To Site</a>#}
-                                    {#                                                    </div>#}
-                                    {##}
-                                    {##}
-                                    {#                                                </div><!-- /.price-area -->#}
-                                    {##}
-                                    {##}
-                                    {#                                            </div><!-- /.row -->#}
-                                    {#                                        </div><!-- /.product-item -->#}
-                                    {#                                    {% endfor %}#}
                                     {% get_pages %}
                                 </div><!-- /.products-list -->
 

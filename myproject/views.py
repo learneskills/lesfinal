@@ -75,8 +75,8 @@ class CategoryListView(HitCountMixin, ListView):
         context = super(CategoryListView, self).get_context_data(**kwargs)
 
         context.update({
-            'course_detail_discount_list': Course_detail.objects.order_by('-discount').distinct()[:6],
-            'course_detail_recently_updated_list': Course_detail.objects.order_by('-pk').distinct()[:4],
+            'course_detail_discount_list': Course_detail.objects.order_by('-discount').distinct()[:8],
+            'course_detail_recently_updated_list': Course_detail.objects.order_by('-pk').distinct()[:8],
             'course_all': Course_detail.objects.order_by('-title'),
             'main_category': MainCategory.objects.all(),
             'book_main_category': BookMainCategory.objects.all(),
