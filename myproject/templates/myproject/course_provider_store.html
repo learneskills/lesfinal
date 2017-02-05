@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load el_pagination_tags %}
+{% load hitcount_tags %}
 
 
 {#<h1> Courses </h1>#}
@@ -33,48 +34,54 @@
 
                             {% for course in object.course_detail_set.all %}
 
-                                    <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">
-                                        <div class="product-item">
-{#                                            <div class="ribbon blue"><span>new!</span></div>#}
-{#                                            <div class="ribbon green"><span>bestseller</span></div>#}
-{#                                            <div class="ribbon red"><span>sale</span></div>#}
-                                            {% for img in course.courseimage_set.all %}
-                                                <div class="image">
-                                                    <a href="{{ course.get_absolute_url }}">
-                                                        <img alt="" src="assets/images/blank.gif" height="180"
-                                                             width="250"
-                                                             data-echo="{{ img.image.url }}"/>
-                                                    </a>
-                                                </div>
-                                            {% endfor %}
-                                            <div class="body">
-                                                <div class="label-discount green">-{{ course.discount }}% sale</div>
-                                                <div class="title">
-                                                    <a href="{{ course.get_absolute_url }}"> {{ course.title | truncatechars:'50' }}</a>
-                                                </div>
-                                                <div class="text-default small">{{ course.sub_title | lower |truncatechars:'70' }}</div>
+                                <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">
+                                    <div class="product-item">
+                                        {#                                            <div class="ribbon blue"><span>new!</span></div>#}
+                                        {#                                            <div class="ribbon green"><span>bestseller</span></div>#}
+                                        {#                                            <div class="ribbon red"><span>sale</span></div>#}
+                                        {% for img in course.courseimage_set.all %}
+                                            <div class="image">
+                                                <a href="{{ course.get_absolute_url }}">
+                                                    <img alt="" src="assets/images/blank.gif" height="180"
+                                                         width="250"
+                                                         data-echo="{{ img.image.url }}"/>
+                                                </a>
                                             </div>
-                                            <div class="prices">
+                                        {% endfor %}
+                                        <div class="body">
+                                            <div class="label-discount green">{{ course.discount }}% off</div>
+                                            <div class="title">
+                                                <a href="{{ course.get_absolute_url }}"> {{ course.title | truncatechars:'50' }}</a>
+                                            </div>
+                                            <div class="text-default small">{{ course.sub_title | lower |truncatechars:'70' }}</div>
+                                        </div>
+                                        <div class="prices">
+                                            {% if course.discount == 100 %}
+                                                <div class="price-prev"></div>
+                                                <div class="price-current pull-right">Free</div>
+                                            {% else %}
                                                 <div class="price-prev">${{ course.actual_price }}</div>
                                                 <div class="price-current pull-right">${{ course.sale_price }}</div>
+                                            {% endif %}
 
+                                        </div>
+
+                                        <div class="hover-area">
+                                            <div class="add-cart-button">
+                                                <a href="{{ course.get_absolute_url }}" class="le-button">take this
+                                                    course</a>
                                             </div>
-
-                                            <div class="hover-area">
-                                                <div class="add-cart-button">
-                                                    <a href="{{ course.get_absolute_url }}" class="le-button">take this
-                                                        course</a>
-                                                </div>
-                                                <div class="wish-compare">
-                                                    <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                                    <a class="btn-add-to-compare" href="#">compare</a>
-                                                </div>
+                                            <div class="wish-compare">
+                                                <a class="text-left" href="#"><i
+                                                        class="fa fa-eye fa-1x text-muted"> {% get_hit_count for course %} </i></a>
+                                                <a class="text-right text-muted" href="#"><span>Enrolled:</span>
+                                                    <span class="text-primary">{{ course.student_enrolled }}+ students</span></a>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
                             {% endfor %}
-
                             <!-- Dynamic Course Detail END -->
                         </div>
                     </div>

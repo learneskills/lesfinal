@@ -157,11 +157,11 @@
                                                     {% endif %}
                                                     {% if course.course_discount %}
                                                         <div class="ribbon green">
-                                                            <span>-{{ course.course_discount }}% off</span>
+                                                            <span>{{ course.course_discount }}% off</span>
                                                         </div>
                                                     {% else %}
                                                         <div class="ribbon green">
-                                                            <span>-{{ course.book_discount }}% off</span>
+                                                            <span>{{ course.book_discount }}% off</span>
                                                         </div>
                                                     {% endif %}
 
@@ -181,7 +181,7 @@
                                                         {% for img in course.object.bookimage_set.all %}
                                                             <div class="no-margin col-xs-12 col-sm-4 image-holder">
                                                                 <div class="image">
-                                                                    <img height="170" width="250" id="img" alt=""
+                                                                    <img height="170" width="190" id="img" alt=""
                                                                          src="{{ img.image.url }} "/>
                                                                 </div>
                                                             </div><!-- /.image-holder -->

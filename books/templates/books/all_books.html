@@ -94,13 +94,13 @@
                 </div>
                 <!-- ========================================= Discount PRODUCTS ========================================= -->
                 <div class="widget">
-                    <h1 class="border"> Books </h1>
+                    <h1 class="border"> Course List </h1>
                     <ul class="product-list">
                         <li class="sidebar-product-list-item">
-                            {% for book in recently_updated_books %}
+                            {% for book in course_detail %}
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-4 no-margin">
-                                        {% for img in book.bookimage_set.all %}
+                                        {% for img in book.courseimage_set.all %}
                                             <a href="{{ img.get_absolute_url }}" class="thumb-holder">
                                                 <img height="70" width="75" src="{{ img }}"
                                                      data-echo="{{ img.image.url }}"/>

@@ -38,7 +38,8 @@
                                                 {% for category in main.default_main_category.all %}
                                                     <ul>
                                                         <li>
-                                                            <a href="{{ category.get_absolute_url }}">{{ category.title }} ({{ category.course_detail_set.count }})</a>
+                                                            <a href="{{ category.get_absolute_url }}">{{ category.title }}
+                                                                ({{ category.course_detail_set.count }})</a>
                                                         </li>
                                                     </ul>
                                                 {% endfor %}
@@ -140,7 +141,9 @@
                                     <h1> {{ object.title|title }} </h1>
                                 </div>
 
-                                <div class="title"><span>Student Enrolled:</span> <span class="text-primary bold">{{ object.student_enrolled }}</span> Total views:  <i class="fa fa-eye fa-lg text-primary"> {% get_hit_count for object %} </i></div>
+                                <div class="title"><span>Student Enrolled:</span> <span
+                                        class="text-primary bold">{{ object.student_enrolled }}</span> Total views: <i
+                                        class="fa fa-eye fa-lg text-primary"> {% get_hit_count for object %} </i></div>
 
                                 <br>
                                 <div class="social-row">
@@ -171,8 +174,13 @@
                                 </div>
 
                                 <div class="prices">
-                                    <div class="price-current">${{ object.sale_price }}</div>
-                                    <div class="price-prev">${{ object.actual_price }}</div>
+                                    {% if object.discount == 100 %}
+                                        <div class="price-current">Free</div>
+                                        <div class="price-prev"></div>
+                                    {% else %}
+                                        <div class="price-current">${{ object.sale_price }}</div>
+                                        <div class="price-prev">${{ object.actual_price }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="qnt-holder">
                                     <a href="{{ object.url }}" class="le-button huge" target="_blank">Take This

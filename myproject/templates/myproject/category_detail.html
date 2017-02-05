@@ -28,7 +28,7 @@
                 </div><!-- /.contact-row -->
                 <!-- ============================================================= SEARCH AREA ============================================================= -->
                 <div class="search-area">
-                    <form action="/search" method="GET" role="form">
+                    <form action="/search/" method="GET" role="form">
                         <div class="control-group">
 
                             <input class="search-field" name="q" placeholder="Search for Tutorials and Books "/>
@@ -110,7 +110,7 @@
                                         <a href="{{ course.get_absolute_url }}">{{ course.title | truncatechars:"30" }}</a>
                                         <div class="price">
                                             {% if course.discount > 5 %}
-                                                <div class="label-discount">-{{ course.discount }}% off</div>
+                                                <div class="label-discount">{{ course.discount }}% off</div>
                                             {% endif %}
                                             <div class="price-prev">${{ course.actual_price }}</div>
                                             <div class="price-current">${{ course.sale_price }}</div>
@@ -146,7 +146,7 @@
                                     {% for course in courses %}
                                         <div class="product-item product-item-holder">
                                             {% if course.discount > 20 %}
-                                                <div class="ribbon green"><span>-{{ course.discount }}% off</span></div>
+                                                <div class="ribbon green"><span>{{ course.discount }}% off</span></div>
                                             {% endif %}
                                             {% if course.id >= 3 %}
                                                 <div class="ribbon blue"><span>new!</span></div>
@@ -183,10 +183,18 @@
                                                 </div><!-- /.body-holder -->
                                                 <div class="no-margin col-xs-12 col-sm-3 price-area">
                                                     <div class="right-clmn">
+                                                      {% if course.discount == 100 %}
+                                                        <div class="price-current">Free</div>
+                                                        <div class="price-prev">
+                                                            <span style="text-decoration: line-through;"></span>
+                                                        </div>
+                                                      {% else %}
                                                         <div class="price-current">$ {{ course.sale_price }}</div>
                                                         <div class="price-prev">
                                                             <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
                                                         </div>
+                                                      {% endif %}
+
                                                         <div class="title">Provider:
                                                             <label class="text-primary">{{ course.course_provider }}</label>
                                                         </div>

@@ -225,6 +225,7 @@ class AllCourse(ListView):
             'recently_updated': Course_detail.objects.all(),
             'main_category': MainCategory.objects.all(),
             'category': Category.objects.all(),
+            'book_detail': BookDetail.objects.order_by('-id').distinct()[:10],
         })
         return context
 

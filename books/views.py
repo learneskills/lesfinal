@@ -11,6 +11,7 @@ from books.models import BookMainCategory, BookCategory, BookDetail
 from myproject.forms import ContactForm
 from webproject import settings
 from hitcount.views import HitCountDetailView
+from myproject.models import Course_detail
 
 # Create your views here.
 
@@ -192,6 +193,7 @@ class AllBook(ListView):
             'recently_updated_books': BookDetail.objects.all(),
             'main_category': BookMainCategory.objects.all(),
             'category': BookCategory.objects.all(),
+            'course_detail': Course_detail.objects.order_by('-id').distinct()[:10],
         })
         return context
 
