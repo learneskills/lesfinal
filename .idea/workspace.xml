@@ -2,33 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49ee4d1d-c919-4bbc-a9fe-9af39496642f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/footer.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_a628hk4cou04hja2.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_o9q97qi1kyl8xcg9.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/MAIN_t591apj2lf463xch.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webproject/whoosh_index/_MAIN_28.toc" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/blog-post.html" afterPath="$PROJECT_DIR$/blog/templates/blog/blog-post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/blog.html" afterPath="$PROJECT_DIR$/blog/templates/blog/blog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/blog_category.html" afterPath="$PROJECT_DIR$/blog/templates/blog/blog_category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/tag_detail.html" afterPath="$PROJECT_DIR$/blog/templates/blog/tag_detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/books/templates/books/all_books.html" afterPath="$PROJECT_DIR$/books/templates/books/all_books.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/books/templates/books/book_category_detail.html" afterPath="$PROJECT_DIR$/books/templates/books/book_category_detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/books/templates/books/recently_add_books_list.html" afterPath="$PROJECT_DIR$/books/templates/books/recently_add_books_list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/books/templates/books/single_book_detail.html" afterPath="$PROJECT_DIR$/books/templates/books/single_book_detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/books/templates/books/tag_book_detail.html" afterPath="$PROJECT_DIR$/books/templates/books/tag_book_detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/books/templates/books/top_discount_books_list.html" afterPath="$PROJECT_DIR$/books/templates/books/top_discount_books_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/books/views.py" afterPath="$PROJECT_DIR$/books/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/templates/myproject/all_course.html" afterPath="$PROJECT_DIR$/myproject/templates/myproject/all_course.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/templates/myproject/category_detail.html" afterPath="$PROJECT_DIR$/myproject/templates/myproject/category_detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/templates/myproject/course_provider_store.html" afterPath="$PROJECT_DIR$/myproject/templates/myproject/course_provider_store.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/templates/myproject/recently_add_list.html" afterPath="$PROJECT_DIR$/myproject/templates/myproject/recently_add_list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/templates/myproject/single_product.html" afterPath="$PROJECT_DIR$/myproject/templates/myproject/single_product.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/templates/myproject/tag_detail.html" afterPath="$PROJECT_DIR$/myproject/templates/myproject/tag_detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/templates/myproject/top_discount_list.html" afterPath="$PROJECT_DIR$/myproject/templates/myproject/top_discount_list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myproject/views.py" afterPath="$PROJECT_DIR$/myproject/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
     </list>
     <ignored path="mytutorials.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,46 +54,122 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <file leaf-file-name="all_books.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/books/templates/books/all_books.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2734">
-              <caret line="600" column="46" selection-start-line="600" selection-start-column="46" selection-end-line="600" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="category_detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/category_detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="111" column="44" selection-start-line="111" selection-start-column="44" selection-end-line="111" selection-end-column="44" />
+            <state relative-caret-position="386">
+              <caret line="312" column="0" selection-start-line="312" selection-start-column="0" selection-end-line="565" selection-end-column="14" />
               <folding>
-                <element signature="e#11330#11368#0#HTML" expanded="true" />
+                <element signature="e#22030#37106#0#HTML" expanded="false" />
+                <element signature="e#32674#32698#0#HTML" expanded="true" />
+                <element signature="e#32947#32971#0#HTML" expanded="true" />
+                <element signature="e#33220#33244#0#HTML" expanded="true" />
+                <element signature="e#33944#33968#0#HTML" expanded="true" />
+                <element signature="e#34247#34271#0#HTML" expanded="true" />
+                <element signature="e#34541#34565#0#HTML" expanded="true" />
+                <element signature="e#35364#35388#0#HTML" expanded="true" />
+                <element signature="e#35683#35707#0#HTML" expanded="true" />
+                <element signature="e#35976#36000#0#HTML" expanded="true" />
+                <element signature="e#36877#36883#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myproject/views.py">
+        <entry file="file://$PROJECT_DIR$/books/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
+            <state relative-caret-position="1261">
+              <caret line="206" column="67" selection-start-line="206" selection-start-column="67" selection-end-line="206" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="recently_add_books_list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/books/templates/books/recently_add_books_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="518">
+              <caret line="477" column="14" selection-start-line="477" selection-start-column="14" selection-end-line="477" selection-end-column="14" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#14448#29524#0#HTML" expanded="false" />
+                <element signature="e#25092#25116#0#HTML" expanded="true" />
+                <element signature="e#25365#25389#0#HTML" expanded="true" />
+                <element signature="e#25638#25662#0#HTML" expanded="true" />
+                <element signature="e#26362#26386#0#HTML" expanded="true" />
+                <element signature="e#26665#26689#0#HTML" expanded="true" />
+                <element signature="e#26959#26983#0#HTML" expanded="true" />
+                <element signature="e#27782#27806#0#HTML" expanded="true" />
+                <element signature="e#28101#28125#0#HTML" expanded="true" />
+                <element signature="e#28394#28418#0#HTML" expanded="true" />
+                <element signature="e#29295#29301#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="single_product.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/single_product.html">
+      <file leaf-file-name="single_book_detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/books/templates/books/single_book_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="226" column="60" selection-start-line="226" selection-start-column="60" selection-end-line="226" selection-end-column="60" />
-              <folding />
+            <state relative-caret-position="518">
+              <caret line="587" column="14" selection-start-line="587" selection-start-column="14" selection-end-line="587" selection-end-column="14" />
+              <folding>
+                <element signature="e#21219#36295#0#HTML" expanded="false" />
+                <element signature="e#31863#31887#0#HTML" expanded="true" />
+                <element signature="e#32136#32160#0#HTML" expanded="true" />
+                <element signature="e#32409#32433#0#HTML" expanded="true" />
+                <element signature="e#33133#33157#0#HTML" expanded="true" />
+                <element signature="e#33436#33460#0#HTML" expanded="true" />
+                <element signature="e#33730#33754#0#HTML" expanded="true" />
+                <element signature="e#34553#34577#0#HTML" expanded="true" />
+                <element signature="e#34872#34896#0#HTML" expanded="true" />
+                <element signature="e#35165#35189#0#HTML" expanded="true" />
+                <element signature="e#36066#36072#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tag_book_detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/books/templates/books/tag_book_detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="518">
+              <caret line="654" column="14" selection-start-line="654" selection-start-column="14" selection-end-line="654" selection-end-column="14" />
+              <folding>
+                <element signature="e#25472#40548#0#HTML" expanded="false" />
+                <element signature="e#36116#36140#0#HTML" expanded="true" />
+                <element signature="e#36389#36413#0#HTML" expanded="true" />
+                <element signature="e#36662#36686#0#HTML" expanded="true" />
+                <element signature="e#37386#37410#0#HTML" expanded="true" />
+                <element signature="e#37689#37713#0#HTML" expanded="true" />
+                <element signature="e#37983#38007#0#HTML" expanded="true" />
+                <element signature="e#38806#38830#0#HTML" expanded="true" />
+                <element signature="e#39125#39149#0#HTML" expanded="true" />
+                <element signature="e#39418#39442#0#HTML" expanded="true" />
+                <element signature="e#40319#40325#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="top_discount_books_list.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/books/templates/books/top_discount_books_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="518">
+              <caret line="468" column="14" selection-start-line="468" selection-start-column="14" selection-end-line="468" selection-end-column="14" />
+              <folding>
+                <element signature="e#13616#28692#0#HTML" expanded="false" />
+                <element signature="e#24260#24284#0#HTML" expanded="true" />
+                <element signature="e#24533#24557#0#HTML" expanded="true" />
+                <element signature="e#24806#24830#0#HTML" expanded="true" />
+                <element signature="e#25530#25554#0#HTML" expanded="true" />
+                <element signature="e#25833#25857#0#HTML" expanded="true" />
+                <element signature="e#26127#26151#0#HTML" expanded="true" />
+                <element signature="e#26950#26974#0#HTML" expanded="true" />
+                <element signature="e#27269#27293#0#HTML" expanded="true" />
+                <element signature="e#27562#27586#0#HTML" expanded="true" />
+                <element signature="e#28463#28469#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -152,31 +216,31 @@
         <option value="$PROJECT_DIR$/templates/newsletter/subscription_subscribe_activated.html" />
         <option value="$PROJECT_DIR$/templates/navigation.html" />
         <option value="$PROJECT_DIR$/webproject/settings.py" />
-        <option value="$PROJECT_DIR$/books/views.py" />
         <option value="$PROJECT_DIR$/myproject/templates/search/search.html" />
         <option value="$PROJECT_DIR$/templates/newsletter/subscription_subscribe.html" />
         <option value="$PROJECT_DIR$/templates/footer.html" />
-        <option value="$PROJECT_DIR$/myproject/templates/myproject/course_provider_store.html" />
-        <option value="$PROJECT_DIR$/myproject/templates/myproject/recently_add_list.html" />
-        <option value="$PROJECT_DIR$/myproject/templates/myproject/tag_detail.html" />
-        <option value="$PROJECT_DIR$/myproject/templates/myproject/top_discount_list.html" />
-        <option value="$PROJECT_DIR$/books/templates/books/all_books.html" />
-        <option value="$PROJECT_DIR$/books/templates/books/book_category_detail.html" />
-        <option value="$PROJECT_DIR$/books/templates/books/recently_add_books_list.html" />
-        <option value="$PROJECT_DIR$/books/templates/books/single_book_detail.html" />
-        <option value="$PROJECT_DIR$/books/templates/books/tag_book_detail.html" />
-        <option value="$PROJECT_DIR$/books/templates/books/top_discount_books_list.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/blog-post.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/blog_category.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/tag_detail.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/myproject/templates/myproject/all_course.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/blog.html" />
         <option value="$PROJECT_DIR$/static/assets/less/footer.less" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/myproject/templates/myproject/category_detail.html" />
+        <option value="$PROJECT_DIR$/myproject/templates/myproject/all_course.html" />
+        <option value="$PROJECT_DIR$/myproject/templates/myproject/course_provider_store.html" />
+        <option value="$PROJECT_DIR$/myproject/templates/myproject/recently_add_list.html" />
+        <option value="$PROJECT_DIR$/myproject/templates/myproject/top_discount_list.html" />
+        <option value="$PROJECT_DIR$/myproject/templates/myproject/tag_detail.html" />
         <option value="$PROJECT_DIR$/myproject/views.py" />
         <option value="$PROJECT_DIR$/myproject/templates/myproject/single_product.html" />
+        <option value="$PROJECT_DIR$/books/templates/books/all_books.html" />
+        <option value="$PROJECT_DIR$/books/templates/books/book_category_detail.html" />
+        <option value="$PROJECT_DIR$/books/views.py" />
+        <option value="$PROJECT_DIR$/books/templates/books/recently_add_books_list.html" />
+        <option value="$PROJECT_DIR$/books/templates/books/single_book_detail.html" />
+        <option value="$PROJECT_DIR$/books/templates/books/tag_book_detail.html" />
+        <option value="$PROJECT_DIR$/books/templates/books/top_discount_books_list.html" />
       </list>
     </option>
   </component>
@@ -246,6 +310,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="books" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dealsndiscount" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dealsndiscount" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="books" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -260,57 +342,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myproject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dealsndiscount" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dealsndiscount" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myproject" />
+              <option name="myItemId" value="books" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dealsndiscount" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dealsndiscount" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myproject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myproject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dealsndiscount" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dealsndiscount" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -833,106 +869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/course_provider_store.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2134">
-          <caret line="306" column="14" selection-start-line="306" selection-start-column="14" selection-end-line="306" selection-end-column="14" />
-          <folding>
-            <element signature="e#5041#17938#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/recently_add_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="448" column="14" selection-start-line="448" selection-start-column="14" selection-end-line="448" selection-end-column="14" />
-          <folding>
-            <element signature="e#15501#28398#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/tag_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="562" column="14" selection-start-line="562" selection-start-column="14" selection-end-line="562" selection-end-column="14" />
-          <folding>
-            <element signature="e#23722#36619#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/top_discount_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="229" column="14" selection-start-line="229" selection-start-column="14" selection-end-line="229" selection-end-column="14" />
-          <folding>
-            <element signature="e#14791#27688#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/books/templates/books/all_books.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="523" column="14" selection-start-line="523" selection-start-column="14" selection-end-line="523" selection-end-column="14" />
-          <folding>
-            <element signature="e#22027#34924#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/books/templates/books/book_category_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="470" column="14" selection-start-line="470" selection-start-column="14" selection-end-line="470" selection-end-column="14" />
-          <folding>
-            <element signature="e#16210#29107#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/books/templates/books/recently_add_books_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="435" column="14" selection-start-line="435" selection-start-column="14" selection-end-line="435" selection-end-column="14" />
-          <folding>
-            <element signature="e#14445#27342#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/books/templates/books/single_book_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="545" column="14" selection-start-line="545" selection-start-column="14" selection-end-line="545" selection-end-column="14" />
-          <folding>
-            <element signature="e#21216#34113#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/books/templates/books/tag_book_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="612" column="14" selection-start-line="612" selection-start-column="14" selection-end-line="612" selection-end-column="14" />
-          <folding>
-            <element signature="e#25469#38366#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/books/templates/books/top_discount_books_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="426" column="14" selection-start-line="426" selection-start-column="14" selection-end-line="426" selection-end-column="14" />
-          <folding>
-            <element signature="e#13613#26510#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/templates/blog/blog_category.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
@@ -995,14 +931,6 @@
             <element signature="n#div#0;n#footer#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#footer#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/books/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1525">
-          <caret line="129" column="33" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1090,15 +1018,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/all_course.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="167" column="69" selection-start-line="167" selection-start-column="69" selection-end-line="167" selection-end-column="69" />
-          <folding />
+        <state relative-caret-position="416">
+          <caret line="538" column="14" selection-start-line="538" selection-start-column="14" selection-end-line="538" selection-end-column="14" />
+          <folding>
+            <element signature="e#17772#33648#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/course_provider_store.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="358" selection-end-column="14" />
+          <folding>
+            <element signature="e#5044#20920#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/recently_add_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="500" selection-end-column="14" />
+          <folding>
+            <element signature="e#15504#31380#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/top_discount_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="494" column="14" selection-start-line="494" selection-start-column="14" selection-end-line="494" selection-end-column="14" />
+          <folding>
+            <element signature="e#14794#30670#0#HTML" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2734">
+        <state relative-caret-position="-3328">
           <caret line="600" column="46" selection-start-line="600" selection-start-column="46" selection-end-line="600" selection-end-column="46" />
           <folding />
         </state>
@@ -1106,29 +1066,180 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/category_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="111" column="44" selection-start-line="111" selection-start-column="44" selection-end-line="111" selection-end-column="44" />
+        <state relative-caret-position="430">
+          <caret line="538" column="14" selection-start-line="275" selection-start-column="0" selection-end-line="538" selection-end-column="14" />
           <folding>
             <element signature="e#11330#11368#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myproject/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#17714#33590#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/single_product.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="226" column="60" selection-start-line="226" selection-start-column="60" selection-end-line="226" selection-end-column="60" />
+        <state relative-caret-position="372">
+          <caret line="323" column="0" selection-start-line="323" selection-start-column="0" selection-end-line="576" selection-end-column="14" />
+          <folding>
+            <element signature="e#20693#35733#0#HTML" expanded="false" />
+            <element signature="e#31301#31325#0#HTML" expanded="true" />
+            <element signature="e#31574#31598#0#HTML" expanded="true" />
+            <element signature="e#31847#31871#0#HTML" expanded="true" />
+            <element signature="e#32571#32595#0#HTML" expanded="true" />
+            <element signature="e#32874#32898#0#HTML" expanded="true" />
+            <element signature="e#33168#33192#0#HTML" expanded="true" />
+            <element signature="e#33991#34015#0#HTML" expanded="true" />
+            <element signature="e#34310#34334#0#HTML" expanded="true" />
+            <element signature="e#34603#34627#0#HTML" expanded="true" />
+            <element signature="e#35504#35510#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myproject/templates/myproject/tag_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="746">
+          <caret line="614" column="14" selection-start-line="614" selection-start-column="14" selection-end-line="614" selection-end-column="14" />
+          <folding>
+            <element signature="e#23725#39601#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myproject/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="75" column="67" selection-start-line="69" selection-start-column="11" selection-end-line="75" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/books/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1261">
+          <caret line="206" column="67" selection-start-line="206" selection-start-column="67" selection-end-line="206" selection-end-column="67" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/books/templates/books/book_category_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="259" column="0" selection-start-line="259" selection-start-column="0" selection-end-line="512" selection-end-column="14" />
+          <folding>
+            <element signature="e#16213#31289#0#HTML" expanded="false" />
+            <element signature="e#26857#26881#0#HTML" expanded="true" />
+            <element signature="e#27130#27154#0#HTML" expanded="true" />
+            <element signature="e#27403#27427#0#HTML" expanded="true" />
+            <element signature="e#28127#28151#0#HTML" expanded="true" />
+            <element signature="e#28430#28454#0#HTML" expanded="true" />
+            <element signature="e#28724#28748#0#HTML" expanded="true" />
+            <element signature="e#29547#29571#0#HTML" expanded="true" />
+            <element signature="e#29866#29890#0#HTML" expanded="true" />
+            <element signature="e#30159#30183#0#HTML" expanded="true" />
+            <element signature="e#31060#31066#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/books/templates/books/all_books.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="312" column="0" selection-start-line="312" selection-start-column="0" selection-end-line="565" selection-end-column="14" />
+          <folding>
+            <element signature="e#22030#37106#0#HTML" expanded="false" />
+            <element signature="e#32674#32698#0#HTML" expanded="true" />
+            <element signature="e#32947#32971#0#HTML" expanded="true" />
+            <element signature="e#33220#33244#0#HTML" expanded="true" />
+            <element signature="e#33944#33968#0#HTML" expanded="true" />
+            <element signature="e#34247#34271#0#HTML" expanded="true" />
+            <element signature="e#34541#34565#0#HTML" expanded="true" />
+            <element signature="e#35364#35388#0#HTML" expanded="true" />
+            <element signature="e#35683#35707#0#HTML" expanded="true" />
+            <element signature="e#35976#36000#0#HTML" expanded="true" />
+            <element signature="e#36877#36883#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/books/templates/books/recently_add_books_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="477" column="14" selection-start-line="477" selection-start-column="14" selection-end-line="477" selection-end-column="14" />
+          <folding>
+            <element signature="e#14448#29524#0#HTML" expanded="false" />
+            <element signature="e#25092#25116#0#HTML" expanded="true" />
+            <element signature="e#25365#25389#0#HTML" expanded="true" />
+            <element signature="e#25638#25662#0#HTML" expanded="true" />
+            <element signature="e#26362#26386#0#HTML" expanded="true" />
+            <element signature="e#26665#26689#0#HTML" expanded="true" />
+            <element signature="e#26959#26983#0#HTML" expanded="true" />
+            <element signature="e#27782#27806#0#HTML" expanded="true" />
+            <element signature="e#28101#28125#0#HTML" expanded="true" />
+            <element signature="e#28394#28418#0#HTML" expanded="true" />
+            <element signature="e#29295#29301#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/books/templates/books/single_book_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="587" column="14" selection-start-line="587" selection-start-column="14" selection-end-line="587" selection-end-column="14" />
+          <folding>
+            <element signature="e#21219#36295#0#HTML" expanded="false" />
+            <element signature="e#31863#31887#0#HTML" expanded="true" />
+            <element signature="e#32136#32160#0#HTML" expanded="true" />
+            <element signature="e#32409#32433#0#HTML" expanded="true" />
+            <element signature="e#33133#33157#0#HTML" expanded="true" />
+            <element signature="e#33436#33460#0#HTML" expanded="true" />
+            <element signature="e#33730#33754#0#HTML" expanded="true" />
+            <element signature="e#34553#34577#0#HTML" expanded="true" />
+            <element signature="e#34872#34896#0#HTML" expanded="true" />
+            <element signature="e#35165#35189#0#HTML" expanded="true" />
+            <element signature="e#36066#36072#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/books/templates/books/tag_book_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="654" column="14" selection-start-line="654" selection-start-column="14" selection-end-line="654" selection-end-column="14" />
+          <folding>
+            <element signature="e#25472#40548#0#HTML" expanded="false" />
+            <element signature="e#36116#36140#0#HTML" expanded="true" />
+            <element signature="e#36389#36413#0#HTML" expanded="true" />
+            <element signature="e#36662#36686#0#HTML" expanded="true" />
+            <element signature="e#37386#37410#0#HTML" expanded="true" />
+            <element signature="e#37689#37713#0#HTML" expanded="true" />
+            <element signature="e#37983#38007#0#HTML" expanded="true" />
+            <element signature="e#38806#38830#0#HTML" expanded="true" />
+            <element signature="e#39125#39149#0#HTML" expanded="true" />
+            <element signature="e#39418#39442#0#HTML" expanded="true" />
+            <element signature="e#40319#40325#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/books/templates/books/top_discount_books_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="468" column="14" selection-start-line="468" selection-start-column="14" selection-end-line="468" selection-end-column="14" />
+          <folding>
+            <element signature="e#13616#28692#0#HTML" expanded="false" />
+            <element signature="e#24260#24284#0#HTML" expanded="true" />
+            <element signature="e#24533#24557#0#HTML" expanded="true" />
+            <element signature="e#24806#24830#0#HTML" expanded="true" />
+            <element signature="e#25530#25554#0#HTML" expanded="true" />
+            <element signature="e#25833#25857#0#HTML" expanded="true" />
+            <element signature="e#26127#26151#0#HTML" expanded="true" />
+            <element signature="e#26950#26974#0#HTML" expanded="true" />
+            <element signature="e#27269#27293#0#HTML" expanded="true" />
+            <element signature="e#27562#27586#0#HTML" expanded="true" />
+            <element signature="e#28463#28469#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

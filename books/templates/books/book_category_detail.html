@@ -258,67 +258,36 @@
 {% endblock %}
 
 {% block footer_content %}
- <div class="container">
+    <footer id="footer" class="color-bg">
+        <div class="container">
             <div class="row no-margin widgets-row">
                 <div class="col-xs-12  col-sm-4 no-margin-left">
                     <!-- ============================================================= FEATURED PRODUCTS ============================================================= -->
                     <div class="widget">
-                        <h2>Featured products</h2>
+                        <h2>New Arrivals Courses</h2>
                         <div class="body">
                             <ul>
                                 <li>
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">Netbook Acer Travel B113-E-10072</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
+                                        {% for course in recently_course_footer %}
+                                            <div class="col-xs-12 col-sm-9 no-margin">
+                                                <a href="{{ course.get_absolute_url }}">{{ course.title | truncatechars:'55' }}</a>
+                                                <div class="price">
+                                                    <div class="price-prev">$ {{ course.actual_price }}</div>
+                                                    <div class="price-current"><span
+                                                            class="bold">$ {{ course.sale_price }}</span></div>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-01.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-02.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-03.jpg"/>
-                                            </a>
-                                        </div>
+                                            {% for img in course.courseimage_set.all %}
+                                                <div class="col-xs-12 col-sm-3 no-margin">
+                                                    <a href="#" class="thumb-holder">
+                                                        <img alt="" src="" height="60" width="75"
+                                                             data-echo="{{ img.image.url }}"/>
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        {% endfor %}
                                     </div>
                                 </li>
                             </ul>
@@ -330,64 +299,32 @@
                 <div class="col-xs-12 col-sm-4 ">
                     <!-- ============================================================= ON SALE PRODUCTS ============================================================= -->
                     <div class="widget">
-                        <h2>On-Sale Products</h2>
+                        <h2>Top Discount Courses</h2>
                         <div class="body">
                             <ul>
                                 <li>
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">HP Scanner 2910P</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
+                                        {% for course in discount_course_footer %}
+                                            <div class="col-xs-12 col-sm-9 no-margin">
+                                                <a href="{{ course.get_absolute_url }}">{{ course.title | truncatechars:'55' }}</a>
+                                                <div class="price">
+
+                                                    <div class="price-prev">$ {{ course.actual_price }}</div>
+                                                    <div class="price-current"><span
+                                                            class="bold">$ {{ course.sale_price }}</span></div>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-04.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
+                                            {% for img in course.courseimage_set.all %}
 
-                                </li>
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">Galaxy Tab 3 GT-P5210 16GB, Wi-Fi, 10.1in
-                                                - White</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-05.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-06.jpg"/>
-                                            </a>
-                                        </div>
+                                                <div class="col-xs-12 col-sm-3 no-margin">
+                                                    <a href="#" class="thumb-holder">
+                                                        <img alt="" src="" height="60" width="75"
+                                                             data-echo="{{ img.image.url }}"/>
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        {% endfor %}
                                     </div>
                                 </li>
                             </ul>
@@ -399,65 +336,30 @@
                 <div class="col-xs-12 col-sm-4 ">
                     <!-- ============================================================= TOP RATED PRODUCTS ============================================================= -->
                     <div class="widget">
-                        <h2>Top Rated Products</h2>
+                        <h2>Featured Blog Post</h2>
                         <div class="body">
                             <ul>
                                 <li>
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">Galaxy Tab GT-P5210, 10" 16GB Wi-Fi</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
+                                        {% for blog in blog_footer %}
+                                            <div class="col-xs-12 col-sm-9 no-margin">
+                                                <a href="{{ blog.get_absolute_url }}">{{ blog.title | truncatechars:'60' }}</a>
+                                                <div class="price">
+                                                    <div class="price-prev"></div>
+                                                    <div class="price-current"><span
+                                                            class="bold"></span></div>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-07.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-08.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">Surface RT 64GB, Wi-Fi, 10.6in - Dark
-                                                Titanium</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-09.jpg"/>
-                                            </a>
-                                        </div>
-
+                                            {% for img in blog.blogimage_set.all %}
+                                                <div class="col-xs-12 col-sm-3 no-margin">
+                                                    <a href="#" class="thumb-holder">
+                                                        <img alt="" src="" height="57" width="75"
+                                                             data-echo="{{ img.image.url }}"/>
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        {% endfor %}
                                     </div>
                                 </li>
                             </ul>
@@ -468,4 +370,144 @@
 
             </div><!-- /.widgets-row-->
         </div><!-- /.container -->
+
+        <div class="sub-form-row">
+            <div class="container">
+                <div class="sub-form-row">
+                    <div class="container">
+                        <div class="col-xs-12 col-sm-8 col-sm-offset-2 no-padding">
+                            <form role="form" action="/newsletter/dealsndiscount/subscribe/" method="POST">
+                                {% csrf_token %}
+                                <input placeholder="Subscribe to our newsletter">
+                                <button class="le-button">Subscribe</button>
+                            </form>
+                        </div>
+                    </div><!-- /.container -->
+                </div><!-- /.sub-form-row -->
+            </div><!-- /.container -->
+        </div><!-- /.sub-form-row -->
+
+        <div class="link-list-row">
+            <div class="container no-padding">
+                <div class="col-xs-12 col-md-4 ">
+                    <!-- ============================================================= CONTACT INFO ============================================================= -->
+                    <div class="contact-info">
+                        <div class="footer-logo">
+                            <div class="logo">
+                                <a href="{% url 'index' %}">
+                                    <img alt="logo" src="{% static 'assets/images/logo.png' %}" width="233"
+                                         height="54"/>
+                                </a>
+                            </div><!-- /.logo -->
+                        </div><!-- /.footer-logo -->
+
+                        <p class="regular-bold"> Feel free to contact us via email.</p>
+
+                        <i class="fa fa-envelope"></i><span class="le-color"> hello@learneskills.com</span>
+
+                        <div class="social-icons">
+                            <h3>Get in touch</h3>
+                            <ul>
+                                <li><a href="http://facebook.com/transvelo" class="fa fa-facebook"></a></li>
+                                <li><a href="#" class="fa fa-twitter"></a></li>
+                                <li><a href="#" class="fa fa-pinterest"></a></li>
+                                <li><a href="#" class="fa fa-linkedin"></a></li>
+                                <li><a href="#" class="fa fa-stumbleupon"></a></li>
+                                <li><a href="#" class="fa fa-dribbble"></a></li>
+                                <li><a href="#" class="fa fa-vk"></a></li>
+                            </ul>
+                        </div><!-- /.social-icons -->
+
+                    </div>
+                    <!-- ============================================================= CONTACT INFO : END ============================================================= -->
+                </div>
+
+                <div class="col-xs-12 col-md-8 no-margin">
+                    <!-- ============================================================= LINKS FOOTER ============================================================= -->
+                    <div class="link-widget">
+                        <div class="widget">
+                            <h3 class="text-success">Courses Tag List</h3>
+                            {% for tag in course_tags %}
+
+                                {% if forloop.counter|divisibleby:'3' %}
+                                    <a style="font-size: 13pt;"
+                                       href="{% url 'tagged' tag.slug %}"><span class="text-muted">{{ tag }},</span></a>
+
+                                {% elif tag.name == 'programming' and 'development' %}
+                                    <a style="font-size: 18pt;"
+                                       href="{% url 'tagged' tag.slug %}"> <span
+                                            class="text-muted">{{ tag }},</span></a>
+                                {% else %}
+                                    <a style="font-size: 10pt;"
+                                       href="{% url 'tagged' tag.slug %}"><span class="text-muted">{{ tag }},</span></a>
+                                {% endif %}
+
+                            {% endfor %}
+                        </div><!-- /.widget -->
+                    </div><!-- /.link-widget -->
+
+                    <div class="link-widget">
+                        <div class="widget">
+                            <h3 class="text-success">Books Tag List</h3>
+                            <div class="tagcloud">
+                                {% for tag in book_tags %}
+                                    {% if forloop.counter|divisibleby:'3' %}
+                                        <a style="font-size: 14pt;"
+                                           href="{% url 'book-tagged' tag.slug %}"><span
+                                                class="text-muted">{{ tag }},</span></a>
+
+                                    {% elif tag.name %}
+                                        <a style="font-size: 10pt;"
+                                           href="{% url 'book-tagged' tag.slug %}"> <span
+                                                class="text-muted">{{ tag }},</span></a>
+                                    {% else %}
+                                        <a style="font-size: 16pt;"
+                                           href="{% url 'book_tagged' tag.slug %}"><span
+                                                class="text-muted">{{ tag }},</span></a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div><!-- /.widget -->
+                    </div><!-- /.link-widget -->
+
+                    <div class="link-widget">
+                        <div class="widget">
+                            <h3 class="text-success">Blog Tag List</h3>
+                            <div class="tagcloud">
+
+                                {% for tag in blog_tags %}
+                                    {% if forloop.counter|divisibleby:'3' %}
+                                        <a style="font-size: 13pt;"
+                                           href="{% url 'blog_tagged' tag.slug %}"><span
+                                                class="text-muted">{{ tag }}</span></a>
+
+                                    {% elif tag.name == 'programming' %}
+                                        <a style="font-size: 18pt;"
+                                           href="{% url 'blog_tagged' tag.slug %}"><span
+                                                class="text-muted">{{ tag }},</span></a>
+                                    {% else %}
+                                        <a style="font-size: 10pt;"
+                                           href="{% url 'blog_tagged' tag.slug %}"><span
+                                                class="text-muted">{{ tag }},</span></a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div><!-- /.widget -->
+                    </div><!-- /.link-widget -->
+                    <!-- ============================================================= LINKS FOOTER : END ============================================================= -->
+                </div>
+            </div><!-- /.container -->
+        </div><!-- /.link-list-row -->
+
+        <div class="copyright-bar">
+            <div class="container">
+                <div class="col-xs-12 col-sm-6 no-margin">
+                    <div class="copyright">
+                        &copy; <a href="index.html">learnEskills</a> - all rights reserved
+                    </div><!-- /.copyright -->
+                </div>
+            </div><!-- /.container -->
+        </div><!-- /.copyright-bar -->
+
+    </footer><!-- /#footer -->
 {% endblock %}
