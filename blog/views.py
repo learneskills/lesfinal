@@ -8,6 +8,8 @@ from .models import BlogDetail, BlogCategory, BlogMainCategory
 from myproject.models import Course_detail, Category, MainCategory
 from books.models import BookDetail, BookCategory, BookMainCategory
 from hitcount.views import HitCountDetailView, HitCountMixin
+
+
 # Create your views here.
 
 
@@ -48,6 +50,14 @@ class BlogList(HitCountMixin, ListView):
             'book_maincategory': BookMainCategory.objects.all(),
             'book_category': BookCategory.objects.all(),
             'book_detail': BookDetail.objects.all(),
+            'blog_tags': BlogDetail.tags.all(),
+            'book_tags': BookDetail.tags.all(),
+            'course_tags': Course_detail.tags.all(),
+            'recently_course_footer': Course_detail.objects.order_by('-id').filter(discount__range=(0, 99)).distinct()[
+                                      :5],
+            'discount_course_footer': Course_detail.objects.order_by('-discount').filter(
+                discount__range=('1', '99')).distinct()[:5],
+            'book_footer': BookDetail.objects.order_by('-id').distinct()[:5],
         })
         return context
 
@@ -69,6 +79,14 @@ class BlogDetailView(HitCountDetailView):
             'main_category': MainCategory.objects.all(),
             'category': Category.objects.all(),
             'course_detail': Course_detail.objects.all(),
+            'blog_tags': BlogDetail.tags.all(),
+            'book_tags': BookDetail.tags.all(),
+            'course_tags': Course_detail.tags.all(),
+            'recently_course_footer': Course_detail.objects.order_by('-id').filter(discount__range=(0, 99)).distinct()[
+                                      :5],
+            'discount_course_footer': Course_detail.objects.order_by('-discount').filter(
+                discount__range=('1', '99')).distinct()[:5],
+            'book_footer': BookDetail.objects.order_by('-id').distinct()[:5],
         })
         return context
 
@@ -89,6 +107,14 @@ class TagIndexView(TagMixin, ListView):
             'recent_post': BlogDetail.objects.order_by('-id').distinct()[:5],
             'all_blog': BlogDetail.objects.all(),
             'all_tags': BlogDetail.tags.all(),
+            'blog_tags': BlogDetail.tags.all(),
+            'book_tags': BookDetail.tags.all(),
+            'course_tags': Course_detail.tags.all(),
+            'recently_course_footer': Course_detail.objects.order_by('-id').filter(discount__range=(0, 99)).distinct()[
+                                      :5],
+            'discount_course_footer': Course_detail.objects.order_by('-discount').filter(
+                discount__range=('1', '99')).distinct()[:5],
+            'book_footer': BookDetail.objects.order_by('-id').distinct()[:5],
 
         })
         return context
@@ -109,6 +135,14 @@ class BlogCategoryDetailView(DetailView):
             'blog_list_content': BlogDetail.objects.order_by('-id'),
             'recent_post': BlogDetail.objects.order_by('-id').distinct()[:5],
             'all_tags': BlogDetail.tags.all(),
+            'blog_tags': BlogDetail.tags.all(),
+            'book_tags': BookDetail.tags.all(),
+            'course_tags': Course_detail.tags.all(),
+            'recently_course_footer': Course_detail.objects.order_by('-id').filter(discount__range=(0, 99)).distinct()[
+                                      :5],
+            'discount_course_footer': Course_detail.objects.order_by('-discount').filter(
+                discount__range=('1', '99')).distinct()[:5],
+            'book_footer': BookDetail.objects.order_by('-id').distinct()[:5],
         })
         obj = self.get_object()
         blog_set = obj.blogdetail_set.all()
@@ -139,9 +173,3 @@ class BlogSearchList(ListView):
         if query is not None:
             qs = qs.filter(title__icontains=query)
         return qs
-
-
-
-
-
-
