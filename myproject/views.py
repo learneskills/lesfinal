@@ -75,16 +75,25 @@ class CategoryListView(HitCountMixin, ListView):
         context = super(CategoryListView, self).get_context_data(**kwargs)
 
         context.update({
-            'course_detail_discount_list': Course_detail.objects.order_by('-discount').distinct()[:8],
+            'course_detail_discount_list': Course_detail.objects.order_by('-discount').filter(
+                discount__range=('10', '99')).distinct()[:8],
             'course_detail_recently_updated_list': Course_detail.objects.order_by('-pk').distinct()[:8],
             'course_all': Course_detail.objects.order_by('-title'),
             'main_category': MainCategory.objects.all(),
             'book_main_category': BookMainCategory.objects.all(),
             'book_category': BookCategory.objects.all(),
             'book_all': BookDetail.objects.order_by('-title'),
-            'top_discount_book': BookDetail.objects.order_by('-discount').distinct()[:4],
+            'top_discount_book': BookDetail.objects.order_by('-discount').filter(
+                discount__range=('0', '97')).distinct()[:4],
             'recently_updated_book': BookDetail.objects.order_by('-id').distinct()[:4],
             'course_provider_list': CourseProvider.objects.all(),
+            'blog_tags': BlogDetail.tags.all(),
+            'book_tags': BookDetail.tags.all(),
+            'course_tags': Course_detail.tags.all(),
+            'course_footer': Course_detail.objects.all().order_by('-student_enrolled').filter(
+                student_enrolled__range=(20000, 200000)).filter(discount__range=(1, 99)).distinct()[:5],
+            'book_footer': BookDetail.objects.all().filter(discount__range=(5, 99)).distinct()[:5],
+            'blog_footer': BlogDetail.objects.all().distinct()[:5],
         })
         return context
 
@@ -105,7 +114,14 @@ class CategoryDetailView(DetailView):
         context = super(CategoryDetailView, self).get_context_data(**kwargs)
         context.update({
             'main_category': MainCategory.objects.all(),
-            'top_discount': Course_detail.objects.order_by('-discount').distinct()[:10],
+            'top_discount': Course_detail.objects.order_by('-discount').filter(discount__range=(1, 99)).distinct()[:10],
+            'blog_tags': BlogDetail.tags.all(),
+            'book_tags': BookDetail.tags.all(),
+            'course_tags': Course_detail.tags.all(),
+            'recently_book_footer': BookDetail.objects.order_by('-id').filter(discount__range=(0, 99)).distinct()[:5],
+            'discount_book_footer': BookDetail.objects.order_by('-discount').filter(
+                discount__range=('1', '99')).distinct()[:5],
+            'blog_footer': BlogDetail.objects.all().distinct()[:5],
         })
         obj = self.get_object()
         course_set = obj.course_detail_set.all()

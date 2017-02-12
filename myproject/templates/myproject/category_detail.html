@@ -32,7 +32,7 @@
                         <div class="control-group">
 
                             <input class="search-field" name="q" placeholder="Search for Tutorials and Books "/>
-                            <a type="submit" value="Search" class="search-button"></a>
+                            <a type="submit" class="search-button"></a>
                         </div>
                     </form>
                 </div><!-- /.search-area -->
@@ -109,9 +109,7 @@
                                     <div class="col-xs-8 col-sm-8 no-margin">
                                         <a href="{{ course.get_absolute_url }}">{{ course.title | truncatechars:"30" }}</a>
                                         <div class="price">
-                                            {% if course.discount > 5 %}
-                                                <div class="label-discount">{{ course.discount }}% off</div>
-                                            {% endif %}
+                                            <div class="label-discount">{{ course.discount }}% off</div>
                                             <div class="price-prev">${{ course.actual_price }}</div>
                                             <div class="price-current">${{ course.sale_price }}</div>
                                         </div>
@@ -130,7 +128,6 @@
                     <div id="grid-page-banner">
                         <img height="227" width="899"
                              src="{{ cat_img.image.url }}" alt=""/>
-                        {# {% static 'assets/images/banners/web-development-banner-cheapes.jpg' %} #}
                     </div>
                 {% endfor %}
 
@@ -139,7 +136,6 @@
                         <h2 class="section-title">Course: <span class="text-primary">{{ object.title }}</span></h2>
 
                         <div class="tab-content">
-
                             <div id="list-view" class="products-grid fade tab-pane in active">
                                 <div class="products-list">
                                     {% paginate courses %}
@@ -166,7 +162,6 @@
 
                                                 <div class="no-margin col-xs-12 col-sm-5 body-holder">
                                                     <div class="body">
-                                                        <!--    <div class="label-discount green">-50% sale</div> -->
                                                         <div class="title">
                                                             <a href="{{ course.get_absolute_url }}">{{ course.title }}</a>
                                                         </div>
@@ -183,17 +178,17 @@
                                                 </div><!-- /.body-holder -->
                                                 <div class="no-margin col-xs-12 col-sm-3 price-area">
                                                     <div class="right-clmn">
-                                                      {% if course.discount == 100 %}
-                                                        <div class="price-current">Free</div>
-                                                        <div class="price-prev">
-                                                            <span style="text-decoration: line-through;"></span>
-                                                        </div>
-                                                      {% else %}
-                                                        <div class="price-current">$ {{ course.sale_price }}</div>
-                                                        <div class="price-prev">
-                                                            <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
-                                                        </div>
-                                                      {% endif %}
+                                                        {% if course.discount == 100 %}
+                                                            <div class="price-current">Free</div>
+                                                            <div class="price-prev">
+                                                                <span style="text-decoration: line-through;"></span>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="price-current">$ {{ course.sale_price }}</div>
+                                                            <div class="price-prev">
+                                                                <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
+                                                            </div>
+                                                        {% endif %}
 
                                                         <div class="title">Provider:
                                                             <label class="text-primary">{{ course.course_provider }}</label>
@@ -270,136 +265,275 @@
                             </div>
                         </div><!-- /.tab-content -->
                     </div><!-- /.grid-list-products -->
-
                 </section><!-- /#gaming -->
-                {#                <section id="gaming">#}
-                {#                    <div class="grid-list-products">#}
-                {#                        <h2 class="section-title">Course: <span class="text-primary">{{ object.title }}</span></h2>#}
-                {##}
-                {#                        <div class="tab-content">#}
-                {#                            <div id="list-view" class="products-grid fade tab-pane in active">#}
-                {#                                <div class="products-list">#}
-                {#                                    {% paginate courses %}#}
-                {#                                    {% for course in courses %}#}
-                {#                                        <div class="product-item product-item-holder">#}
-                {#                                        {% if course.discount > 20 %}#}
-                {#                                            <div class="ribbon green"><span>-{{ course.discount }}% off</span></div>#}
-                {#                                        {% endif %}#}
-                {#                                        {% if course.id >= 3 %}#}
-                {#                                            <div class="ribbon blue"><span>new!</span></div>#}
-                {#                                        {% endif %}#}
-                {#                                        {% if course.discount > 70 %}#}
-                {#                                            <div class="ribbon red"><span>sale</span></div>#}
-                {#                                        {% endif %}#}
-                {#                                        <div class="row">#}
-                {#                                            {% for img in course.courseimage_set.all %}#}
-                {#                                                <div class="no-margin col-xs-12 col-sm-4 image-holder">#}
-                {#                                                    <div class="image">#}
-                {#                                                        <img height="170" width="250" id="img" alt=""#}
-                {#                                                             src="{{ img.image.url }} "/>#}
-                {#                                                    </div>#}
-                {#                                                </div><!-- /.image-holder -->#}
-                {#                                            {% endfor %}#}
-                {##}
-                {#                                            <div class="no-margin col-xs-12 col-sm-5 body-holder">#}
-                {#                                                <div class="body">#}
-                {#                                                    <!--    <div class="label-discount green">-50% sale</div> -->#}
-                {#                                                    <div class="title">#}
-                {#                                                        <a href="{{ course.get_absolute_url }}">{{ course.title }}</a>#}
-                {#                                                    </div>#}
-                {##}
-                {#                                                    <div class="text-default">{{ course.sub_title | capfirst| truncatechars:'118' }}#}
-                {#                                                    </div>#}
-                {##}
-                {#                                                    <div class="excerpt">#}
-                {#                                                        <p class="text-default">{{ course.description | safe | lower | truncatechars:'250' }}</p>#}
-                {#                                                    </div>#}
-                {#                                                    <div class="title"><a class="review_add" href="#"></a>#}
-                {#                                                    </div>#}
-                {#                                                </div>#}
-                {#                                            </div><!-- /.body-holder -->#}
-                {#                                            <div class="no-margin col-xs-12 col-sm-3 price-area">#}
-                {#                                                <div class="right-clmn">#}
-                {#                                                    <div class="price-current">$ {{ course.sale_price }}</div>#}
-                {#                                                    <div class="price-prev">#}
-                {#                                                        <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>#}
-                {#                                                    </div>#}
-                {#                                                    <div class="title ">Provider:#}
-                {#                                                        <label class="text-primary">{{ course.course_provider }}</label>#}
-                {#                                                    </div>#}
-                {#                                                    <a class="le-button" href="{{ course.url }}">Course</a>#}
-                {#                                                    <div class="title"><span class="text-muted">views:</span> <i#}
-                {#                                                            class="fa fa-eye fa-1x text-primary"> {% get_hit_count for course %} </i>#}
-                {#                                                        <div class="title">Enrolled: <label#}
-                {#                                                                class="text-primary">{{ course.student_enrolled }}+#}
-                {#                                                            students </label></div>#}
-                {#                                                    </div><!-- /.price-area -->#}
-                {#                                                </div><!-- /.row -->#}
-                {#                                            </div><!-- /.product-item -->#}
-                {#                                        </div><!-- /.products-list -->#}
-                {#                                    {% endfor %}#}
-                {#                                    {% get_pages %}#}
-                {#                                    </div><!-- /.products-grid #list-view -->#}
-                {#                                    <!-- Pagination Section START -->#}
-                {#                                    <div class="col-md-offset-3">#}
-                {#                                        <ul class="pagination">#}
-                {#                                            {% if pages.paginated %}#}
-                {#                                                <li class="page-item">#}
-                {#                                                    <a class="page-link" href="{{ pages.first.path }}"#}
-                {#                                                       aria-label="First">#}
-                {#                                                        <span aria-hidden="true">&lt;&lt;</span>#}
-                {#                                                        <span class="sr-only">First</span>#}
-                {#                                                    </a>#}
-                {#                                                </li>#}
-                {#                                                <li class="page-item">#}
-                {#                                                    <a class="page-link" href="{{ pages.previous.path }}"#}
-                {#                                                       aria-label="Previous">#}
-                {#                                                        <span aria-hidden="true">&lt;</span>#}
-                {#                                                        <span class="sr-only">Previous</span>#}
-                {#                                                    </a>#}
-                {#                                                </li>#}
-                {#                                                {% for page in pages %}#}
-                {#                                                    {% if page == None %}#}
-                {#                                                        <li class="page-item disabled">#}
-                {#                                                            <a class="page-link" href="#" aria-label="...">#}
-                {#                                                                <span aria-hidden="true">...</span>#}
-                {#                                                                <span class="sr-only">...</span>#}
-                {#                                                            </a>#}
-                {#                                                        </li>#}
-                {#                                                    {% else %}#}
-                {#                                                        <li class="page-item {% if page.is_current %} active {% endif %}">#}
-                {#                                                            <a class="page-link" href="{{ page.path }}"#}
-                {#                                                               aria-label="Page {{ page.number }}">#}
-                {#                                                                <span aria-hidden="true">{{ page.label|safe }}</span>#}
-                {#                                                                <span class="sr-only">Page {{ page.number }}</span>#}
-                {#                                                            </a>#}
-                {#                                                        </li>#}
-                {#                                                    {% endif %}#}
-                {#                                                {% endfor %}#}
-                {#                                                <li class="page-item">#}
-                {#                                                    <a class="page-link" href="{{ pages.next.path }}" aria-label="Next">#}
-                {#                                                        <span aria-hidden="true">&gt;</span>#}
-                {#                                                        <span class="sr-only">Next</span>#}
-                {#                                                    </a>#}
-                {#                                                </li>#}
-                {#                                                <li class="page-item">#}
-                {#                                                    <a class="page-link" href="{{ pages.last.path }}" aria-label="Last">#}
-                {#                                                        <span aria-hidden="true">&gt;&gt;</span>#}
-                {#                                                        <span class="sr-only">Last</span>#}
-                {#                                                    </a>#}
-                {#                                                </li>#}
-                {#                                            {% endif %}#}
-                {#                                        </ul>#}
-                {#                                    </div>#}
-                {#                                    <!-- /.pagination-holder -->#}
-                {#                                </div><!-- /.tab-content -->#}
-                {#                            </div><!-- /.grid-list-products -->#}
-                {#                        </div>#}
-                {#                </section><!-- /#gaming -->#}
-
             </div><!-- /.col -->
             <!-- ========================================= CONTENT : END ========================================= -->
         </div><!-- /.container -->
     </div>
     </body>
+{% endblock %}
+
+{% block footer_content %}
+    <footer id="footer" class="color-bg">
+        <div class="container">
+            <div class="row no-margin widgets-row">
+                <div class="col-xs-12  col-sm-4 no-margin-left">
+                    <!-- ============================================================= FEATURED PRODUCTS ============================================================= -->
+                    <div class="widget">
+                        <h2>New Arrivals Books</h2>
+                        <div class="body">
+                            <ul>
+                                <li>
+                                     <div class="row">
+                                        {% for book in recently_book_footer %}
+                                            <div class="col-xs-12 col-sm-9 no-margin">
+                                                <a href="{{ book.get_absolute_url }}">{{ book.title | truncatechars:'55' }}</a>
+                                                <div class="price">
+                                                    <div class="price-prev">$ {{ book.actual_price }}</div>
+                                                    <div class="price-current"><span
+                                                            class="bold">$ {{ book.sale_price }}</span></div>
+                                                </div>
+                                            </div>
+
+                                            {% for img in book.bookimage_set.all %}
+                                                <div class="col-xs-12 col-sm-3 no-margin">
+                                                    <a href="#" class="thumb-holder">
+                                                        <img alt="" src="" height="60" width="75"
+                                                             data-echo="{{ img.image.url }}"/>
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- /.body -->
+                    </div> <!-- /.widget -->
+                    <!-- ============================================================= FEATURED PRODUCTS : END ============================================================= -->
+                </div><!-- /.col -->
+
+                <div class="col-xs-12 col-sm-4 ">
+                    <!-- ============================================================= ON SALE PRODUCTS ============================================================= -->
+                    <div class="widget">
+                        <h2>Top Discount Books</h2>
+                        <div class="body">
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                        {% for book in discount_book_footer %}
+                                            <div class="col-xs-12 col-sm-9 no-margin">
+                                                <a href="{{ book.get_absolute_url }}">{{ book.title | truncatechars:'55' }}</a>
+                                                <div class="price">
+
+                                                    <div class="price-prev">$ {{ book.actual_price }}</div>
+                                                    <div class="price-current"><span
+                                                            class="bold">$ {{ book.sale_price }}</span></div>
+                                                </div>
+                                            </div>
+
+                                            {% for img in book.bookimage_set.all %}
+
+                                                <div class="col-xs-12 col-sm-3 no-margin">
+                                                    <a href="#" class="thumb-holder">
+                                                        <img alt="" src="" height="60" width="75"
+                                                             data-echo="{{ img.image.url }}"/>
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- /.body -->
+                    </div> <!-- /.widget -->
+                    <!-- ============================================================= ON SALE PRODUCTS : END ============================================================= -->
+                </div><!-- /.col -->
+
+                <div class="col-xs-12 col-sm-4 ">
+                    <!-- ============================================================= TOP RATED PRODUCTS ============================================================= -->
+                    <div class="widget">
+                        <h2>Featured Blog Post</h2>
+                        <div class="body">
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                        {% for blog in blog_footer %}
+                                            <div class="col-xs-12 col-sm-9 no-margin">
+                                                <a href="{{ blog.get_absolute_url }}">{{ blog.title | truncatechars:'60' }}</a>
+                                                <div class="price">
+                                                    <div class="price-prev"></div>
+                                                    <div class="price-current"><span
+                                                            class="bold"></span></div>
+                                                </div>
+                                            </div>
+
+                                            {% for img in blog.blogimage_set.all %}
+                                                <div class="col-xs-12 col-sm-3 no-margin">
+                                                    <a href="#" class="thumb-holder">
+                                                        <img alt="" src="" height="57" width="75"
+                                                             data-echo="{{ img.image.url }}"/>
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- /.body -->
+                    </div><!-- /.widget -->
+                    <!-- ============================================================= TOP RATED PRODUCTS : END ============================================================= -->
+                </div><!-- /.col -->
+
+            </div><!-- /.widgets-row-->
+        </div><!-- /.container -->
+
+        <div class="sub-form-row">
+            <div class="container">
+                <div class="sub-form-row">
+                    <div class="container">
+                        <div class="col-xs-12 col-sm-8 col-sm-offset-2 no-padding">
+                            <form role="form" action="/newsletter/dealsndiscount/subscribe/" method="POST">
+                                {% csrf_token %}
+                                <input placeholder="Subscribe to our newsletter">
+                                <button class="le-button">Subscribe</button>
+                            </form>
+                        </div>
+                    </div><!-- /.container -->
+                </div><!-- /.sub-form-row -->
+            </div><!-- /.container -->
+        </div><!-- /.sub-form-row -->
+
+        <div class="link-list-row">
+            <div class="container no-padding">
+                <div class="col-xs-12 col-md-4 ">
+                    <!-- ============================================================= CONTACT INFO ============================================================= -->
+                    <div class="contact-info">
+                        <div class="footer-logo">
+                            <div class="logo">
+                                <a href="{% url 'index' %}">
+                                    <img alt="logo" src="{% static 'assets/images/logo.png' %}" width="233"
+                                         height="54"/>
+                                </a>
+                            </div><!-- /.logo -->
+                        </div><!-- /.footer-logo -->
+
+                        <p class="regular-bold"> Feel free to contact us via email.</p>
+
+                        <i class="fa fa-envelope"></i><span class="le-color"> hello@learneskills.com</span>
+
+                        <div class="social-icons">
+                            <h3>Get in touch</h3>
+                            <ul>
+                                <li><a href="http://facebook.com/transvelo" class="fa fa-facebook"></a></li>
+                                <li><a href="#" class="fa fa-twitter"></a></li>
+                                <li><a href="#" class="fa fa-pinterest"></a></li>
+                                <li><a href="#" class="fa fa-linkedin"></a></li>
+                                <li><a href="#" class="fa fa-stumbleupon"></a></li>
+                                <li><a href="#" class="fa fa-dribbble"></a></li>
+                                <li><a href="#" class="fa fa-vk"></a></li>
+                            </ul>
+                        </div><!-- /.social-icons -->
+
+                    </div>
+                    <!-- ============================================================= CONTACT INFO : END ============================================================= -->
+                </div>
+
+                <div class="col-xs-12 col-md-8 no-margin">
+                    <!-- ============================================================= LINKS FOOTER ============================================================= -->
+                    <div class="link-widget">
+                        <div class="widget">
+                            <h3 class="text-success">Courses Tag List</h3>
+                            {% for tag in course_tags %}
+
+                                {% if forloop.counter|divisibleby:'3' %}
+                                    <a style="font-size: 13pt;"
+                                       href="{% url 'tagged' tag.slug %}"><span class="text-muted">{{ tag }},</span></a>
+
+                                {% elif tag.name == 'programming' and 'development' %}
+                                    <a style="font-size: 18pt;"
+                                       href="{% url 'tagged' tag.slug %}"> <span
+                                            class="text-muted">{{ tag }},</span></a>
+                                {% else %}
+                                    <a style="font-size: 10pt;"
+                                       href="{% url 'tagged' tag.slug %}"><span class="text-muted">{{ tag }},</span></a>
+                                {% endif %}
+
+                            {% endfor %}
+                        </div><!-- /.widget -->
+                    </div><!-- /.link-widget -->
+
+                    <div class="link-widget">
+                        <div class="widget">
+                            <h3 class="text-success">Books Tag List</h3>
+                            <div class="tagcloud">
+                                {% for tag in book_tags %}
+                                    {% if forloop.counter|divisibleby:'3' %}
+                                        <a style="font-size: 14pt;"
+                                           href="{% url 'book-tagged' tag.slug %}"><span
+                                                class="text-muted">{{ tag }},</span></a>
+
+                                    {% elif tag.name %}
+                                        <a style="font-size: 10pt;"
+                                           href="{% url 'book-tagged' tag.slug %}"> <span
+                                                class="text-muted">{{ tag }},</span></a>
+                                    {% else %}
+                                        <a style="font-size: 16pt;"
+                                           href="{% url 'book_tagged' tag.slug %}"><span
+                                                class="text-muted">{{ tag }},</span></a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div><!-- /.widget -->
+                    </div><!-- /.link-widget -->
+
+                    <div class="link-widget">
+                        <div class="widget">
+                            <h3 class="text-success">Blog Tag List</h3>
+                            <div class="tagcloud">
+
+                                {% for tag in blog_tags %}
+                                    {% if forloop.counter|divisibleby:'3' %}
+                                        <a style="font-size: 13pt;"
+                                           href="{% url 'blog_tagged' tag.slug %}"><span
+                                                class="text-muted">{{ tag }}</span></a>
+
+                                    {% elif tag.name == 'programming' %}
+                                        <a style="font-size: 18pt;"
+                                           href="{% url 'blog_tagged' tag.slug %}"><span
+                                                class="text-muted">{{ tag }},</span></a>
+                                    {% else %}
+                                        <a style="font-size: 10pt;"
+                                           href="{% url 'blog_tagged' tag.slug %}"><span
+                                                class="text-muted">{{ tag }},</span></a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div><!-- /.widget -->
+                    </div><!-- /.link-widget -->
+                    <!-- ============================================================= LINKS FOOTER : END ============================================================= -->
+                </div>
+            </div><!-- /.container -->
+        </div><!-- /.link-list-row -->
+
+        <div class="copyright-bar">
+            <div class="container">
+                <div class="col-xs-12 col-sm-6 no-margin">
+                    <div class="copyright">
+                        &copy; <a href="index.html">learnEskills</a> - all rights reserved
+                    </div><!-- /.copyright -->
+                </div>
+                {#                <div class="col-xs-12 col-sm-6 no-margin">#}
+                {#                    <div class="payment-methods ">#}
+                {#                        <ul>#}
+                {#                            <li><img alt="" src="assets/images/payments/payment-visa.png"></li>#}
+                {#                            <li><img alt="" src="assets/images/payments/payment-master.png"></li>#}
+                {#                            <li><img alt="" src="assets/images/payments/payment-paypal.png"></li>#}
+                {#                            <li><img alt="" src="assets/images/payments/payment-skrill.png"></li>#}
+                {#                        </ul>#}
+                {#                    </div><!-- /.payment-methods -->#}
+                {#                </div>#}
+            </div><!-- /.container -->
+        </div><!-- /.copyright-bar -->
+
+    </footer><!-- /#footer -->
 {% endblock %}

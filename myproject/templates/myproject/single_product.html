@@ -197,7 +197,7 @@
 
                                 <ul class="nav nav-tabs simple">
                                     <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
-                                    <li><a href="#additional-info" data-toggle="tab">Course Information</a></li>
+{#                                    <li><a href="#additional-info" data-toggle="tab">Course Information</a></li>#}
                                 </ul><!-- /.nav-tabs -->
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="description">
@@ -224,54 +224,7 @@
                                             </div><!-- /.inline -->
                                         </div><!-- /.meta-row -->
                                     </div><!-- /.tab-pane #description -->
-
-                                    <div class="tab-pane" id="additional-info">
-                                        <ul class="tabled-data">
-                                            <li>
-                                                <label>Video Contents</label>
-                                                <div class="value">100</div>
-                                            </li>
-                                            <li>
-                                                <label>hrs</label>
-                                                <div class="value">6.4 hrs</div>
-                                            </li>
-                                            <li>
-                                                <label>Level</label>
-                                                <div class="value">For alls</div>
-                                            </li>
-                                            <li>
-                                                <label>color</label>
-                                                <div class="value">white</div>
-                                            </li>
-                                            <li>
-                                                <label>guarantee</label>
-                                                <div class="value">5 years</div>
-                                            </li>
-                                        </ul><!-- /.tabled-data -->
-
-                                        <div class="meta-row">
-                                            <div class="inline">
-                                                <label>categories:</label>
-                                                <span><a
-                                                        href="{{ object.get_absolute_url }}">{{ object.default }}</a></span>
-
-                                            </div><!-- /.inline -->
-
-                                            <span class="seperator">/</span>
-
-                                            <div class="inline">
-                                                <label>tag:</label>
-                                                {% for tag in course_detail.tags.all %}
-                                                    <span><a href="{% url 'tagged' tag.slug %}"><span
-                                                            class="tag tag-success"
-                                                            style="color: white; font-size:15px">{{ tag }} </span></a></span>
-                                                {% endfor %}
-
-                                            </div><!-- /.inline -->
-                                        </div><!-- /.meta-row -->
-                                    </div><!-- /.tab-pane #additional-info -->
                                 </div><!-- /.tab-content -->
-
                             </div><!-- /.tab-holder -->
                         </div><!-- /.container -->
                     </section><!-- /#single-product-tab -->
@@ -319,8 +272,8 @@
                                                             Course</a>
                                                     </div>
                                                     <div class="wish-compare">
-                                                        <a class="btn-add-to-wishlist" href="#">Add to Wishlist</a>
-                                                        <a class="btn-add-to-compare" href="#">Compare</a>
+{#                                                        <a class="btn-add-to-wishlist" href="#">Add to Wishlist</a>#}
+{#                                                        <a class="btn-add-to-compare" href="#">Compare</a>#}
                                                     </div>
                                                 </div>
 
@@ -366,4 +319,217 @@
     </div><!-- /.wrapper -->
 
     </body>
+{% endblock %}
+
+{% block footer_content %}
+ <div class="container">
+            <div class="row no-margin widgets-row">
+                <div class="col-xs-12  col-sm-4 no-margin-left">
+                    <!-- ============================================================= FEATURED PRODUCTS ============================================================= -->
+                    <div class="widget">
+                        <h2>Featured products</h2>
+                        <div class="body">
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">Netbook Acer Travel B113-E-10072</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-01.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-02.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-03.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- /.body -->
+                    </div> <!-- /.widget -->
+                    <!-- ============================================================= FEATURED PRODUCTS : END ============================================================= -->
+                </div><!-- /.col -->
+
+                <div class="col-xs-12 col-sm-4 ">
+                    <!-- ============================================================= ON SALE PRODUCTS ============================================================= -->
+                    <div class="widget">
+                        <h2>On-Sale Products</h2>
+                        <div class="body">
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">HP Scanner 2910P</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-04.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">Galaxy Tab 3 GT-P5210 16GB, Wi-Fi, 10.1in
+                                                - White</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-05.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-06.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- /.body -->
+                    </div> <!-- /.widget -->
+                    <!-- ============================================================= ON SALE PRODUCTS : END ============================================================= -->
+                </div><!-- /.col -->
+
+                <div class="col-xs-12 col-sm-4 ">
+                    <!-- ============================================================= TOP RATED PRODUCTS ============================================================= -->
+                    <div class="widget">
+                        <h2>Top Rated Products</h2>
+                        <div class="body">
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">Galaxy Tab GT-P5210, 10" 16GB Wi-Fi</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-07.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-08.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">Surface RT 64GB, Wi-Fi, 10.6in - Dark
+                                                Titanium</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-09.jpg"/>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- /.body -->
+                    </div><!-- /.widget -->
+                    <!-- ============================================================= TOP RATED PRODUCTS : END ============================================================= -->
+                </div><!-- /.col -->
+
+            </div><!-- /.widgets-row-->
+        </div><!-- /.container -->
 {% endblock %}

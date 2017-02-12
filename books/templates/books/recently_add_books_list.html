@@ -1,18 +1,436 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-
+{% load el_pagination_tags %}
 
 
 {% block content %}
-    <div class="container">
-        <div class="jumbotron">
-            <div class="container">
-                <h1>Page Under Construction !!</h1><br><br>
-                <p> Go to Home Page,</p>
-                <p>
-                    <a class="btn btn-primary btn-lg" href="{% url 'index' %}">Home Page</a>
-                </p>
+
+    <body>
+
+    <div class="wrapper">
+        <div class="container">
+            <!-- ========================================= SIDEBAR ========================================= -->
+            <div class="col-xs-12 col-sm-3 no-margin sidebar narrow">
+
+                <!-- ========================================= CATEGORY TREE ========================================= -->
+                <div class="widget accordion-widget category-accordions">
+                    <div class="body bordered">
+                        <h1 class="border text-primary">Category Tree</h1>
+                        {% for main in main_category %}
+                            <div class="accordion">
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle active" data-toggle="collapse" href="#{{ main.id }}">
+                                            {{ main.title }}
+                                        </a>
+                                    </div>
+                                    <div id="{{ main.id }}" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            {% for category in main.default_main_category.all %}
+                                                <ul>
+                                                    <li>
+                                                        <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                                                    </li>
+                                                </ul>
+                                            {% endfor %}
+                                        </div><!-- /.accordion-inner -->
+                                    </div>
+                                </div><!-- /.accordion -->
+                            </div><!-- /.category-accordions -->
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- ========================================= CATEGORY TREE : END ========================================= -->
+
+
+                <!-- ========================================= PRODUCT FILTER ========================================= -->
+
+                <div class="widget">
+                    <div class="simple-banner">
+                        <a href="#"><img alt="" class="img-responsive" src="{% static 'assets/images/blank.gif' %}"
+                                         data-echo="{% static 'assets/images/banners/banner-simple.jpg' %}"/></a>
+                    </div>
+                </div>
+                <!-- ========================================= Discount PRODUCTS ========================================= -->
+                <div class="widget">
+                    <h1 class="border">Top Discount Books </h1>
+                    <ul class="product-list">
+                        <li class="sidebar-product-list-item">
+                            {% for course in top_discount %}
+                                <div class="row">
+                                    <div class="col-xs-4 col-sm-4 no-margin">
+                                        {% for img in course.bookimage_set.all %}
+                                            <a href="{{ img.get_absolute_url }}" class="thumb-holder">
+                                                <img height="70" width="75" src="{{ img }}"
+                                                     data-echo="{{ img.image.url }}"/>
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-xs-8 col-sm-8 no-margin">
+                                        <a href="{{ course.get_absolute_url }}">{{ course.title | truncatechars:"30" }}</a>
+
+                                        <div class="price">
+                                            {% if course.discount > 10 %}
+                                                <div class="label-discount">-{{ course.discount }}% off</div>
+                                            {% endif %}
+                                            {% if course.discount == 100 %}
+                                                <div class="price-prev"></div>
+                                                <div class="price-current">Free</div>
+                                            {% else %}
+                                                <div class="price-prev">${{ course.actual_price }}</div>
+                                                <div class="price-current">${{ course.sale_price }}</div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            {% endfor %}
+                        </li><!-- /.sidebar-product-list-item -->
+
+                    </ul><!-- /.product-list -->
+                </div><!-- /.widget -->
+                <!-- ========================================= Top Discount PRODUCTS : END ========================================= -->
             </div>
-        </div>
+
+            <div class="col-xs-12 col-sm-9 no-margin wide sidebar">
+
+                <section id="gaming">
+                    <div class="grid-list-products">
+                        <h2 class="section-title">Recently Updated Books</h2>
+
+                        <div class="tab-content">
+
+                            <div id="list-view" class="products-grid fade tab-pane in active">
+                                <div class="products-list">
+                                    {% paginate recently_updated %}
+                                    {% for course in recently_updated %}
+                                        <div class="product-item product-item-holder">
+                                            {% if course.discount > 5 %}
+                                                <div class="ribbon green"><span>-{{ course.discount }}% off</span></div>
+                                            {% endif %}
+                                            <div class="row">
+
+                                                {% for img in course.bookimage_set.all %}
+                                                    <div class="no-margin col-xs-12 col-sm-4 image-holder">
+                                                        <div class="image">
+                                                            <img id="img" height="180" width="180" alt=""
+                                                                 src="{{ img.image.url }} "/>
+                                                        </div>
+                                                    </div><!-- /.image-holder -->
+                                                {% endfor %}
+
+                                                <div class="no-margin col-xs-12 col-sm-5 body-holder">
+                                                    <div class="body">
+                                                        <!--    <div class="label-discount green">-50% sale</div> -->
+                                                        <div class="title">
+                                                            <a href="{{ course.get_absolute_url }}">{{ course.title }}</a>
+                                                        </div>
+
+                                                        <div class="excerpt">
+                                                            <p class="text-default">{{ course.description| safe | lower |truncatechars:'400' }}</p>
+                                                        </div>
+                                                        <div class="title"><a class="review_add" href="#"></a>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- /.body-holder -->
+                                                <div class="no-margin col-xs-12 col-sm-3 price-area">
+                                                    <div class="right-clmn">
+                                                        <div class="price-current">$ {{ course.sale_price }}</div>
+                                                        <div class="price-prev">
+                                                            <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
+                                                        </div>
+                                                        <div class="title ">Author:
+                                                            <label class="text-primary">{{ course.author_name }}</label>
+                                                        </div>
+                                                        <br>
+                                                        <a class="le-button" href="{{ course.get_absolute_url }}">Get This</a>
+                                                        {#                                                        <div class="title">Enrolled: <label#}
+                                                        {#                                                                class="text-primary">{{ course.student_enrolled }}+#}
+                                                        {#                                                            students </label></div>#}
+                                                    </div><!-- /.price-area -->
+                                                </div><!-- /.row -->
+
+
+                                            </div><!-- /.row -->
+                                        </div><!-- /.product-item -->
+                                    {% endfor %}
+                                    {% get_pages %}
+                                </div><!-- /.products-list -->
+
+                            </div><!-- /.products-grid #list-view -->
+
+                            <!-- Pagination Section START -->
+                            <div class="col-md-offset-3">
+                                <ul class="pagination">
+                                    {% if pages.paginated %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ pages.first.path }}"
+                                               aria-label="First">
+                                                <span aria-hidden="true">&lt;&lt;</span>
+                                                <span class="sr-only">First</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ pages.previous.path }}"
+                                               aria-label="Previous">
+                                                <span aria-hidden="true">&lt;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        {% for page in pages %}
+                                            {% if page == None %}
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#" aria-label="...">
+                                                        <span aria-hidden="true">...</span>
+                                                        <span class="sr-only">...</span>
+                                                    </a>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item {% if page.is_current %} active {% endif %}">
+                                                    <a class="page-link" href="{{ page.path }}"
+                                                       aria-label="Page {{ page.number }}">
+                                                        <span aria-hidden="true">{{ page.label|safe }}</span>
+                                                        <span class="sr-only">Page {{ page.number }}</span>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ pages.next.path }}" aria-label="Next">
+                                                <span aria-hidden="true">&gt;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ pages.last.path }}" aria-label="Last">
+                                                <span aria-hidden="true">&gt;&gt;</span>
+                                                <span class="sr-only">Last</span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div><!-- /.tab-content -->
+                    </div><!-- /.grid-list-products -->
+
+                </section><!-- /#gaming -->
+            </div><!-- /.col -->
+            <!-- ========================================= CONTENT : END ========================================= -->
+        </div><!-- /.container -->
+        <!-- ============================================================= FOOTER ============================================================= -->
     </div>
+    </body>
+{% endblock %}
+
+{% block footer_content %}
+ <div class="container">
+            <div class="row no-margin widgets-row">
+                <div class="col-xs-12  col-sm-4 no-margin-left">
+                    <!-- ============================================================= FEATURED PRODUCTS ============================================================= -->
+                    <div class="widget">
+                        <h2>Featured products</h2>
+                        <div class="body">
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">Netbook Acer Travel B113-E-10072</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-01.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-02.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-03.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- /.body -->
+                    </div> <!-- /.widget -->
+                    <!-- ============================================================= FEATURED PRODUCTS : END ============================================================= -->
+                </div><!-- /.col -->
+
+                <div class="col-xs-12 col-sm-4 ">
+                    <!-- ============================================================= ON SALE PRODUCTS ============================================================= -->
+                    <div class="widget">
+                        <h2>On-Sale Products</h2>
+                        <div class="body">
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">HP Scanner 2910P</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-04.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">Galaxy Tab 3 GT-P5210 16GB, Wi-Fi, 10.1in
+                                                - White</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-05.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-06.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- /.body -->
+                    </div> <!-- /.widget -->
+                    <!-- ============================================================= ON SALE PRODUCTS : END ============================================================= -->
+                </div><!-- /.col -->
+
+                <div class="col-xs-12 col-sm-4 ">
+                    <!-- ============================================================= TOP RATED PRODUCTS ============================================================= -->
+                    <div class="widget">
+                        <h2>Top Rated Products</h2>
+                        <div class="body">
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">Galaxy Tab GT-P5210, 10" 16GB Wi-Fi</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-07.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-08.jpg"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-9 no-margin">
+                                            <a href="single-product.html">Surface RT 64GB, Wi-Fi, 10.6in - Dark
+                                                Titanium</a>
+                                            <div class="price">
+                                                <div class="price-prev">$2000</div>
+                                                <div class="price-current">$1873</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 no-margin">
+                                            <a href="#" class="thumb-holder">
+                                                <img alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/product-small-09.jpg"/>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- /.body -->
+                    </div><!-- /.widget -->
+                    <!-- ============================================================= TOP RATED PRODUCTS : END ============================================================= -->
+                </div><!-- /.col -->
+
+            </div><!-- /.widgets-row-->
+        </div><!-- /.container -->
 {% endblock %}
