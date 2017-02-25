@@ -47,7 +47,7 @@
 
 {% block content %}
 
-<body>
+    <body>
 
     <div class="wrapper">
         <div class="container">
@@ -72,7 +72,8 @@
                                             {% for category in main.default_main_category.all %}
                                                 <ul>
                                                     <li>
-                                                        <a href="{{ category.get_absolute_url }}">{{ category.title }} ({{ category.bookdetail_set.count }})</a>
+                                                        <a href="{{ category.get_absolute_url }}">{{ category.title }}
+                                                            ({{ category.bookdetail_set.count }})</a>
                                                     </li>
                                                 </ul>
                                             {% endfor %}
@@ -178,24 +179,25 @@
                                                 </div><!-- /.body-holder -->
                                                 <div class="no-margin col-xs-12 col-sm-3 price-area">
                                                     <div class="right-clmn">
-                                                     {% if course.discount == 100 %}
-                                                        <div class="price-current"></div>
-                                                        <div class="price-prev">
-                                                            <span style="text-decoration: line-through;"></span>
-                                                        </div>
-                                                     {% else %}
-                                                         <div class="price-current">$ {{ course.sale_price }}</div>
-                                                        <div class="price-prev">
-                                                            <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
-                                                        </div>
-                                                     {% endif %}
+                                                        {% if course.sale_price == course.actual_price %}
+                                                            <div class="price-current">$ {{ course.sale_price }}</div>
+                                                        {% elif course.discount == 100 %}
+                                                            <div class="price-current">Free</div>
+                                                        {% else %}
+                                                            <div class="price-current">$ {{ course.sale_price }}</div>
+                                                            <div class="price-prev">
+                                                                <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
+                                                            </div>
+                                                        {% endif %}
                                                         <div class="title ">Author:
                                                             <label class="text-primary">{{ course.author_name }}</label>
-                                                        </div><br>
-                                                        <a class="le-button" href="{{ course.get_absolute_url}}">Book Detail</a>
-{#                                                        <div class="title">Enrolled: <label#}
-{#                                                                class="text-primary">{{ course.student_enrolled }}+#}
-{#                                                            students </label></div>#}
+                                                        </div>
+                                                        <br>
+                                                        <a class="le-button" href="{{ course.get_absolute_url }}">Book
+                                                            Detail</a>
+                                                        {#                                                        <div class="title">Enrolled: <label#}
+                                                        {#                                                                class="text-primary">{{ course.student_enrolled }}+#}
+                                                        {#                                                            students </label></div>#}
                                                     </div><!-- /.price-area -->
                                                 </div><!-- /.row -->
                                             </div><!-- /.product-item -->
@@ -315,7 +317,7 @@
         </div><!-- /.container -->
         <!-- ============================================================= FOOTER ============================================================= -->
     </div>
-</body>
+    </body>
 {% endblock %}
 
 {% block footer_content %}

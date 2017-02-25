@@ -105,11 +105,11 @@
                                     {% paginate recently_updated %}
                                     {% for course in recently_updated %}
                                         <div class="product-item product-item-holder">
-                                            {% if course.id <= 5 %}
+                                            {% if course.id >= 10 %}
                                                 <div class="ribbon blue"><span>new!</span></div>
                                             {% endif %}
                                             {% if course.discount > 10 %}
-                                                <div class="ribbon green"><span>-{{ course.discount }}% off</span></div>
+                                                <div class="ribbon green"><span>{{ course.discount }}% off</span></div>
                                             {% endif %}
                                             <div class="row">
 
@@ -141,18 +141,19 @@
                                                 </div><!-- /.body-holder -->
                                                 <div class="no-margin col-xs-12 col-sm-3 price-area">
                                                     <div class="right-clmn">
-                                                        {% if course.discount == 100 %}
+                                                         {% if course.discount == 100 %}
                                                             <div class="price-current">Free</div>
-                                                            <div class="price-prev">
-                                                                <span style="text-decoration: line-through;"></span>
-                                                            </div>
+
+                                                        {% elif course.sale_price == course.actual_price %}
+                                                            <div class="price-current">$ {{ course.sale_price }}</div>
+
                                                         {% else %}
                                                             <div class="price-current">$ {{ course.sale_price }}</div>
                                                             <div class="price-prev">
                                                                 <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
                                                             </div>
-
                                                         {% endif %}
+
                                                         <div class="title ">Provider:
                                                             <label class="text-primary">{{ course.course_provider }}</label>
                                                         </div>

@@ -125,22 +125,6 @@
 
                     <aside class="sidebar blog-sidebar">
 
-                        <div class="widget clearfix">
-                            <div class="body">
-                                <form role="search" class="search-form">
-                                    <div class="form-group">
-                                        <label class="sr-only" for="page-search">Type your search here</label>
-                                        <input id="page-search" class="search-input form-control" type="search"
-                                               placeholder="Enter Keywords...">
-                                    </div>
-                                    <button class="page-search-button">
-                        <span class="fa fa-search">
-                            <span class="sr-only">Search</span>
-                        </span>
-                                    </button><!-- /.page-search-button-->
-                                </form><!-- /.search-form -->
-                            </div>
-                        </div><!-- /.widget -->
                         <div class="widget">
                             <h4>About Blog</h4>
                             <div class="body">
@@ -196,6 +180,116 @@
                             </div><!-- /.body -->
                         </div><!-- /.widget -->
                         <!-- ========================================= RECENT POST : END ========================================= -->
+
+                         <div class="widget">
+                            <div class="simple-banner">
+                                <a href="#"><img alt="" class="img-responsive"
+                                                 src="{% static 'assets/images/blank.gif' %}"
+                                                 data-echo="{% static 'assets/images/banners/banner-simple.jpg' %}"/>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- ========================================= New Arrivals Course : START ========================================= -->
+                        <div class="widget">
+                            <h4>New Arrival Courses</h4>
+                            <div class="body">
+                                <ul class="recent-post-list">
+                                    <li class="sidebar-recent-post-item">
+                                        {% for recent_course in new_arrival_course %}
+                                            <div class="media">
+
+                                                {% for img in recent_course.courseimage_set.all %}
+                                                    <a href="{{ recent_course.get_absolute_url }}"
+                                                       class="thumb-holder pull-left">
+                                                        <img src="{{ img.image.url }}"/>
+                                                    </a>
+
+                                                {% endfor %}
+                                                <div class="media-body">
+                                                    <h5>
+                                                        <a href="{{ recent_course.get_absolute_url }}"><span
+                                                                class=""> {{ recent_course.title|truncatechars:'50' }}</span></a>
+                                                    </h5>
+                                                    <div class="price">
+                                                        {% if recent_course.discount >= 5 %}
+                                                            <div class="label-discount">{{ recent_course.discount }}%
+                                                                off
+                                                            </div>
+                                                        {% endif %}
+                                                        {% if recent_course.discount == 100 %}
+                                                            <div class="price-prev"></div>
+                                                            <div class="price-current">Free</div>
+                                                        {% else %}
+                                                            <div class="price-current">
+                                                                ${{ recent_course.sale_price }}</div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        {% endfor %}
+                                    </li><!-- /.sidebar-recent-post-item -->
+                                </ul><!-- /.recent-post-list -->
+                            </div><!-- /.body -->
+                        </div><!-- /.widget -->
+
+                        <!-- ========================================= New Arrivals Course : END ========================================= -->
+                        <div class="widget">
+                            <div class="simple-banner">
+                                <a href="#"><img alt="" class="img-responsive"
+                                                 src="{% static 'assets/images/blank.gif' %}"
+                                                 data-echo="{% static 'assets/images/banners/banner-simple.jpg' %}"/>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- ========================================= New Arrivals Books : START ========================================= -->
+                        <div class="widget">
+                            <h4>New Arrival Books</h4>
+                            <div class="body">
+                                <ul class="recent-post-list">
+                                    <li class="sidebar-recent-post-item">
+                                        {% for recent_book in new_arrival_book %}
+                                            <div class="media">
+
+                                                {% for img in recent_book.bookimage_set.all %}
+                                                    <a href="{{ recent_book.get_absolute_url }}"
+                                                       class="thumb-holder pull-left">
+                                                        <img src="{{ img.image.url }}"/>
+                                                    </a>
+
+                                                {% endfor %}
+                                                <div class="media-body">
+                                                    <h5>
+                                                        <a href="{{ recent_book.get_absolute_url }}"><span
+                                                                class=""> {{ recent_book.title|truncatechars:'50' }}</span></a>
+                                                    </h5>
+                                                    <div class="price">
+                                                        {% if recent_book.discount >= 5 %}
+                                                            <div class="label-discount">{{ recent_book.discount }}%
+                                                                off
+                                                            </div>
+                                                        {% endif %}
+                                                        {% if recent_book.discount == 100 %}
+                                                            <div class="price-prev"></div>
+                                                            <div class="price-current">Free</div>
+                                                        {% else %}
+                                                            <div class="price-current">
+                                                                ${{ recent_book.sale_price }}</div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        {% endfor %}
+                                    </li><!-- /.sidebar-recent-post-item -->
+                                </ul><!-- /.recent-post-list -->
+                            </div><!-- /.body -->
+                        </div><!-- /.widget -->
+
+                        <!-- ========================================= New Arrivals Books : END ========================================= -->
+
                         <div class="widget">
                             <h4>Popular Tags</h4>
                             <div class="body">

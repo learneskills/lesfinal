@@ -14,6 +14,7 @@ from webproject import settings
 from hitcount.views import HitCountDetailView
 from myproject.models import Course_detail
 
+
 # Create your views here.
 
 
@@ -35,7 +36,7 @@ class SingleBookDetailView(TagMixin, HitCountDetailView):
         context.update({
             'main_category': BookMainCategory.objects.all(),
             'recently_updated': BookDetail.objects.order_by('-id').distinct()[:10],
-            'top_discount': BookDetail.objects.order_by('-discount').distinct()[:10],
+            'top_discount': BookDetail.objects.order_by('-discount').filter(discount__range=(0, 99)).distinct()[:10],
             'blog_tags': BlogDetail.tags.all(),
             'book_tags': BookDetail.tags.all(),
             'course_tags': Course_detail.tags.all(),
@@ -131,8 +132,8 @@ class BookCategoryDetailView(DetailView):
             'blog_footer': BlogDetail.objects.all().distinct()[:5],
         })
         obj = self.get_object()
-        book_set = obj.bookdetail_set.all()
-        default_product = obj.default_category.all()
+        book_set = obj.bookdetail_set.order_by('-id').distinct()
+        default_product = obj.default_category.order_by('-id').distinct()
         courses = (book_set | default_product)
         context['courses'] = courses
         return context
@@ -166,7 +167,7 @@ class RecentlyUpdatedBookList(ListView):
         context = super(RecentlyUpdatedBookList, self).get_context_data()
         context.update({
             'recently_updated': BookDetail.objects.order_by(str('-pk')).distinct(),
-            'top_discount': BookDetail.objects.order_by('-discount').distinct(),
+            'top_discount': BookDetail.objects.order_by('-discount').filter(discount__range=(0, 99)).distinct()[:8],
             'main_category': BookMainCategory.objects.all(),
             'blog_tags': BlogDetail.tags.all(),
             'book_tags': BookDetail.tags.all(),
@@ -195,7 +196,7 @@ class TopDiscountBookList(ListView):
         context = super(TopDiscountBookList, self).get_context_data()
         context.update({
             'top_discount': BookDetail.objects.order_by('-discount').distinct(),
-            'recently_updated': BookDetail.objects.order_by('-pk').distinct(),
+            'recently_updated': BookDetail.objects.order_by('-pk').filter(discount__range=(0, 99)).distinct()[:8],
             'main_category': BookMainCategory.objects.all(),
             'blog_tags': BlogDetail.tags.all(),
             'book_tags': BookDetail.tags.all(),
@@ -246,7 +247,8 @@ class AllBook(ListView):
             'blog_tags': BlogDetail.tags.all(),
             'book_tags': BookDetail.tags.all(),
             'course_tags': Course_detail.tags.all(),
-            'recently_course_footer': Course_detail.objects.order_by('-id').filter(discount__range=(0, 99)).distinct()[:5],
+            'recently_course_footer': Course_detail.objects.order_by('-id').filter(discount__range=(0, 99)).distinct()[
+                                      :5],
             'discount_course_footer': Course_detail.objects.order_by('-discount').filter(
                 discount__range=('1', '99')).distinct()[:5],
             'blog_footer': BlogDetail.objects.all().distinct()[:5],

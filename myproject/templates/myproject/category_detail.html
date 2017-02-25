@@ -148,7 +148,7 @@
                                             {% endif %}
 
                                             {% if course.id > 15 %}
-                                            <div class="ribbon blue"><span>new!</span></div>
+                                                <div class="ribbon blue"><span>new!</span></div>
                                             {% else %}
 
                                             {% endif %}
@@ -188,9 +188,10 @@
                                                     <div class="right-clmn">
                                                         {% if course.discount == 100 %}
                                                             <div class="price-current">Free</div>
-                                                            <div class="price-prev">
-                                                                <span style="text-decoration: line-through;"></span>
-                                                            </div>
+
+                                                        {% elif course.sale_price == course.actual_price %}
+                                                            <div class="price-current">$ {{ course.sale_price }}</div>
+
                                                         {% else %}
                                                             <div class="price-current">$ {{ course.sale_price }}</div>
                                                             <div class="price-prev">

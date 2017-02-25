@@ -57,12 +57,12 @@
 
                             <li class="dropdown menu-item">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ main.title }}</a>
-                                <ul class="dropdown-menu mega-menu">
+                                <ul class="dropdown-menu">
                                     <li class="yamm-content">
 
                                         <!-- ================================== MEGAMENU VERTICAL ================================== -->
                                         <div class="row">
-                                            <div class="col-xs-12 col-lg-4">
+                                            <div class="">
                                                 <ul>
                                                     {% for category in main.category_set.all %}
                                                         <li>
@@ -204,11 +204,11 @@
                                             </div>
                                         {% endfor %}
                                         <div class="body">
-                                          {% if course.discount == 0 %}
-                                            <div class="label-discount green"></div>
-                                          {% else %}
-                                            <div class="label-discount green">{{ course.discount }}% off</div>
-                                          {% endif %}
+                                            {% if course.discount == 0 %}
+                                                <div class="label-discount green"></div>
+                                            {% else %}
+                                                <div class="label-discount green">{{ course.discount }}% off</div>
+                                            {% endif %}
 
 
                                             <div class="title">
@@ -376,9 +376,9 @@
                                         {% endfor %}
                                         <div class="body">
                                             {% if book.discount == 0 %}
-                                            <div class="label-discount green"></div>
+                                                <div class="label-discount green"></div>
                                             {% else %}
-                                            <div class="label-discount green">{{ book.discount }}% off</div>
+                                                <div class="label-discount green">{{ book.discount }}% off</div>
                                             {% endif %}
                                             <div class="title">
                                                 <a href="{{ book.get_absolute_url }}"> {{ book.title | truncatechars:'50' }}</a>
@@ -389,21 +389,8 @@
                                         <div class="prices">
                                             <div class="price-prev">${{ book.actual_price }}</div>
                                             <div class="price-current pull-right">${{ book.sale_price }}</div>
-
                                         </div>
 
-                                        <div class="hover-area">
-                                            <div class="add-cart-button">
-                                                <a href="{{ book.get_absolute_url }}" class="le-button">Take This
-                                                    Book</a>
-                                            </div>
-                                            {#                                            <div class="wish-compare">#}
-                                            {#                                                <a class="text-left" href="#"><i#}
-                                            {#                                                        class="fa fa-eye fa-1x text-muted"> {% get_hit_count for book %} </i></a>#}
-                                            {#                                                <a class="text-right text-muted" href="#"><span></span>#}
-                                            {#                                                    <span class="text-primary"></span></a>#}
-                                            {#                                            </div>#}
-                                        </div>
                                     </div>
                                 </div>
 
@@ -464,20 +451,6 @@
                                         <div class="prices">
                                             <div class="price-prev">${{ book.actual_price }}</div>
                                             <div class="price-current pull-right">${{ book.sale_price }}</div>
-
-                                        </div>
-
-                                        <div class="hover-area">
-                                            <div class="add-cart-button">
-                                                <a href="{{ book.get_absolute_url }}" class="le-button">take this
-                                                    Book</a>
-                                            </div>
-                                            <div class="wish-compare">
-                                                {#                                                <a class="text-left" href="#"><i#}
-                                                {#                                                        class="fa fa-eye fa-1x text-muted"> {% get_hit_count for book %} </i></a>#}
-                                                {#                                                <a class="text-right text-muted" href="#"><span></span>#}
-                                                {#                                                    <span class="text-primary"></span></a>#}
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -611,7 +584,7 @@
                         <div class="body">
                             <ul>
                                 <li>
-                                   <div class="row">
+                                    <div class="row">
                                         {% for blog in blog_footer %}
                                             <div class="col-xs-12 col-sm-9 no-margin">
                                                 <a href="{{ blog.get_absolute_url }}">{{ blog.title | truncatechars:'60' }}</a>

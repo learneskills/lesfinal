@@ -1,3 +1,5 @@
+import random
+
 from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import DetailView
@@ -8,6 +10,7 @@ from .models import BlogDetail, BlogCategory, BlogMainCategory
 from myproject.models import Course_detail, Category, MainCategory
 from books.models import BookDetail, BookCategory, BookMainCategory
 from hitcount.views import HitCountDetailView, HitCountMixin
+
 
 
 # Create your views here.
@@ -25,24 +28,13 @@ class BlogList(HitCountMixin, ListView):
     count_hit = True
     template_name = 'blog/blog.html'
 
-    def get_queryset(self):
-
-        if 'q' in self.request.GET:
-            objects = BlogDetail.objects.filter(
-                Q(title__icontains=self.request.GET['q']) | Q(description__icontains=self.request.GET['q'])
-            )
-        else:
-            objects = BlogDetail.objects.all()
-
-        return objects
-
     def get_context_data(self, **kwargs):
         context = super(BlogList, self).get_context_data(**kwargs)
         context.update({
             'blog_category': BlogCategory.objects.all(),
             'blog_maincategory': BlogMainCategory.objects.all(),
             'blog_list_content': BlogDetail.objects.order_by('-id'),
-            'recent_post': BlogDetail.objects.order_by('-id').distinct()[:5],
+            'popular_post': BlogDetail.objects.all().distinct()[:5],
             'all_tags': BlogDetail.tags.all(),
             'main_category': MainCategory.objects.all(),
             'category': Category.objects.all(),
@@ -58,6 +50,8 @@ class BlogList(HitCountMixin, ListView):
             'discount_course_footer': Course_detail.objects.order_by('-discount').filter(
                 discount__range=('1', '99')).distinct()[:5],
             'book_footer': BookDetail.objects.order_by('-id').distinct()[:5],
+            'new_arrival_course': Course_detail.objects.order_by('-id')[:8],
+            'new_arrival_book': BookDetail.objects.order_by('-id')[:8],
         })
         return context
 
@@ -87,6 +81,8 @@ class BlogDetailView(HitCountDetailView):
             'discount_course_footer': Course_detail.objects.order_by('-discount').filter(
                 discount__range=('1', '99')).distinct()[:5],
             'book_footer': BookDetail.objects.order_by('-id').distinct()[:5],
+            'new_arrival_course': Course_detail.objects.order_by('-id')[:8],
+            'new_arrival_book': BookDetail.objects.order_by('-id')[:8],
         })
         return context
 
@@ -143,6 +139,8 @@ class BlogCategoryDetailView(DetailView):
             'discount_course_footer': Course_detail.objects.order_by('-discount').filter(
                 discount__range=('1', '99')).distinct()[:5],
             'book_footer': BookDetail.objects.order_by('-id').distinct()[:5],
+            'new_arrival_course': Course_detail.objects.order_by('-id')[:8],
+            'new_arrival_book': BookDetail.objects.order_by('-id')[:8],
         })
         obj = self.get_object()
         blog_set = obj.blogdetail_set.all()

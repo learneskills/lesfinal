@@ -71,11 +71,18 @@
                                         <a href="{{ course.get_absolute_url }}">{{ course.title | truncatechars:"30" }}</a>
 
                                         <div class="price">
+                                            {% if course.discount >= 5 %}
+                                                <div class="label-discount">{{ course.discount }}% off</div>
+                                            {% endif %}
                                             {% if course.discount == 100 %}
                                                 <div class="price-prev"></div>
                                                 <div class="price-current">Free</div>
                                             {% else %}
-                                                <div class="price-prev">${{ course.actual_price }}</div>
+                                                {% if course.actual_price == course.sale_price %}
+                                                    <div class="price-prev"></div>
+                                                {% else %}
+                                                    <div class="price-prev">${{ course.actual_price }}</div>
+                                                {% endif %}
                                                 <div class="price-current">${{ course.sale_price }}</div>
                                             {% endif %}
                                         </div>
@@ -103,8 +110,12 @@
                                     {% paginate top_discount %}
                                     {% for course in top_discount %}
                                         <div class="product-item product-item-holder">
-                                            {% if course.discount > 5 %}
-                                                <div class="ribbon green"><span>-{{ course.discount }}% off</span></div>
+                                            {% if course.discount > 99 %}
+                                                <div class="ribbon green"><span>Free</span></div>
+                                            {% elif course.discount == 0 %}
+
+                                            {% else %}
+                                                <div class="ribbon green"><span>{{ course.discount }}% Off</span></div>
                                             {% endif %}
                                             <div class="row">
 
@@ -138,15 +149,17 @@
                                                     <div class="right-clmn">
                                                         {% if course.discount == 100 %}
                                                             <div class="price-current">Free</div>
-                                                            <div class="price-prev">
-                                                                <span style="text-decoration: line-through;"></span>
-                                                            </div>
+
+                                                        {% elif course.sale_price == course.actual_price %}
+                                                            <div class="price-current">$ {{ course.sale_price }}</div>
+
                                                         {% else %}
                                                             <div class="price-current">$ {{ course.sale_price }}</div>
                                                             <div class="price-prev">
                                                                 <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
                                                             </div>
                                                         {% endif %}
+
                                                         <div class="title ">Provider:
                                                             <label class="text-primary">{{ course.course_provider }}</label>
                                                         </div>
@@ -240,7 +253,7 @@
                         <div class="body">
                             <ul>
                                 <li>
-                                     <div class="row">
+                                    <div class="row">
                                         {% for book in recently_book_footer %}
                                             <div class="col-xs-12 col-sm-9 no-margin">
                                                 <a href="{{ book.get_absolute_url }}">{{ book.title | truncatechars:'55' }}</a>
