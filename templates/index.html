@@ -179,7 +179,7 @@
             <div class="tab-holder">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#new-arrivals" data-toggle="tab">new arrival Courses</a></li>
+                    <li class="active"><a href="#new-arrivals" data-toggle="tab">new arrivals course</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -204,7 +204,12 @@
                                             </div>
                                         {% endfor %}
                                         <div class="body">
+                                          {% if course.discount == 0 %}
+                                            <div class="label-discount green"></div>
+                                          {% else %}
                                             <div class="label-discount green">{{ course.discount }}% off</div>
+                                          {% endif %}
+
 
                                             <div class="title">
                                                 <a href="{{ course.get_absolute_url }}"> {{ course.title | truncatechars:'50' }}</a>
@@ -370,7 +375,11 @@
                                             </div><br>
                                         {% endfor %}
                                         <div class="body">
+                                            {% if book.discount == 0 %}
+                                            <div class="label-discount green"></div>
+                                            {% else %}
                                             <div class="label-discount green">{{ book.discount }}% off</div>
+                                            {% endif %}
                                             <div class="title">
                                                 <a href="{{ book.get_absolute_url }}"> {{ book.title | truncatechars:'50' }}</a>
                                             </div>

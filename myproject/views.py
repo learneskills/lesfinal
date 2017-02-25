@@ -138,10 +138,11 @@ class CategoryDetailView(DetailView):
             'blog_footer': BlogDetail.objects.all().distinct()[:5],
         })
         obj = self.get_object()
-        course_set = obj.course_detail_set.all()
-        default_product = obj.default_category.all()
+        course_set = obj.course_detail_set.order_by('-id').distinct()
+        default_product = obj.default_category.order_by('-id').distinct()
         courses = (course_set | default_product)
         context['courses'] = courses
+
         return context
 
     def get_queryset(self, **kwargs):
@@ -172,8 +173,8 @@ class RecentlyUpdatedList(ListView):
     def get_context_data(self, **kwargs):
         context = super(RecentlyUpdatedList, self).get_context_data()
         context.update({
-            'recently_updated': Course_detail.objects.order_by(str('-pk')).distinct(),
-            'top_discount': Course_detail.objects.order_by('-discount').distinct(),
+            'recently_updated': Course_detail.objects.order_by(str('-pk')).distinct()[:8],
+            'top_discount': Course_detail.objects.order_by('-discount').distinct()[:8],
             'main_category': MainCategory.objects.all(),
             'blog_tags': BlogDetail.tags.all(),
             'book_tags': BookDetail.tags.all(),

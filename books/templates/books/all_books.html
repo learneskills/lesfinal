@@ -139,10 +139,11 @@
                                     {% for course in all_courses %}
                                         <div class="product-item product-item-holder">
                                             {% if course.discount > 20 %}
-                                                <div class="ribbon green"><span>-{{ course.discount }}% off</span></div>
+                                                <div class="ribbon green"><span>{{ course.discount }}% off</span></div>
                                             {% endif %}
-                                            {% if course.id >= 3 %}
+                                            {% if course.id > 5 %}
                                                 <div class="ribbon blue"><span>new!</span></div>
+                                            {% else %}
                                             {% endif %}
                                             {% if course.discount > 70 %}
                                                 <div class="ribbon red"><span>sale</span></div>
@@ -177,10 +178,17 @@
                                                 </div><!-- /.body-holder -->
                                                 <div class="no-margin col-xs-12 col-sm-3 price-area">
                                                     <div class="right-clmn">
-                                                        <div class="price-current">$ {{ course.sale_price }}</div>
+                                                     {% if course.discount == 100 %}
+                                                        <div class="price-current"></div>
+                                                        <div class="price-prev">
+                                                            <span style="text-decoration: line-through;"></span>
+                                                        </div>
+                                                     {% else %}
+                                                         <div class="price-current">$ {{ course.sale_price }}</div>
                                                         <div class="price-prev">
                                                             <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
                                                         </div>
+                                                     {% endif %}
                                                         <div class="title ">Author:
                                                             <label class="text-primary">{{ course.author_name }}</label>
                                                         </div><br>

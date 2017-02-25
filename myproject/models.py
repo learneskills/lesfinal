@@ -3,11 +3,8 @@ from django.db import models
 
 # Create your models here.
 from django.utils.text import slugify
-from django.db.models.signals import post_save, pre_save
 from taggit.managers import TaggableManager
 from tinymce import models as tinymce_models
-from djrichtextfield.models import RichTextField
-from tinymce.widgets import TinyMCE
 
 
 class CourseQuerySet(models.query.QuerySet):
@@ -92,7 +89,8 @@ class Course_detail(models.Model):
     discount = models.PositiveIntegerField(null=True)
     review = models.BooleanField(default=True)
     url = models.URLField(blank=True, max_length=200)
-
+    pub_date = models.DateTimeField(auto_now=True, auto_now_add=False)
+    updated_date = models.DateTimeField(auto_now_add=True, auto_now=False)
     student_enrolled = models.PositiveIntegerField(null=True)
     active = models.BooleanField(default=True)
 

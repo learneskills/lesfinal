@@ -133,7 +133,9 @@
 
                 <section id="gaming">
                     <div class="grid-list-products">
-                        <h2 class="section-title">Course: <span class="text-primary">{{ object.title }}</span></h2>
+                        <h2 class="section-title"><span
+                                class="text-primary">{{ object.title }} ({{ object.course_detail_set.count }})</span>
+                        </h2>
 
                         <div class="tab-content">
                             <div id="list-view" class="products-grid fade tab-pane in active">
@@ -144,11 +146,17 @@
                                             {% if course.discount > 20 %}
                                                 <div class="ribbon green"><span>{{ course.discount }}% off</span></div>
                                             {% endif %}
-                                            {% if course.id >= 3 %}
-                                                <div class="ribbon blue"><span>new!</span></div>
+
+                                            {% if course.id > 15 %}
+                                            <div class="ribbon blue"><span>new!</span></div>
+                                            {% else %}
+
                                             {% endif %}
-                                            {% if course.discount > 85 %}
-                                                <div class="ribbon red"><span>sale</span></div>
+
+                                            {% if course.discount > 99 %}
+                                            {% elif course.discount > 85 %}
+                                                <div class="ribbon red"><span>Sale</span></div>
+                                            {% else %}
                                             {% endif %}
                                             <div class="row">
                                                 {% for img in course.courseimage_set.all %}
@@ -284,7 +292,7 @@
                         <div class="body">
                             <ul>
                                 <li>
-                                     <div class="row">
+                                    <div class="row">
                                         {% for book in recently_book_footer %}
                                             <div class="col-xs-12 col-sm-9 no-margin">
                                                 <a href="{{ book.get_absolute_url }}">{{ book.title | truncatechars:'55' }}</a>
