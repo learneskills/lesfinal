@@ -17,8 +17,13 @@ class CourseDetailModelAdmin(admin.ModelAdmin):
     }
 
 
+class CourseImageModelAdmin(admin.ModelAdmin):
+    actions_on_top = True
+admin.site.register(CourseImage, CourseImageModelAdmin)
+
+
+
 admin.site.register(Course_detail, CourseDetailModelAdmin)
-admin.site.register(CourseImage)
 admin.site.register(MainCategory)
 admin.site.register(Category)
 admin.site.register(CategoryImage)

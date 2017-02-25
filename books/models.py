@@ -74,6 +74,7 @@ class BookDetail(models.Model):
     url = models.URLField(blank=True, max_length=200)
     paperback = models.IntegerField(null=True)
     active = models.BooleanField(default=True)
+    pub_date = models.DateTimeField(auto_now=True, auto_now_add=False)
 
     objects = BookManager()
     tags = TaggableManager()

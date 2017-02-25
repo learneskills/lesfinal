@@ -50,8 +50,8 @@ class BlogList(HitCountMixin, ListView):
             'discount_course_footer': Course_detail.objects.order_by('-discount').filter(
                 discount__range=('1', '99')).distinct()[:5],
             'book_footer': BookDetail.objects.order_by('-id').distinct()[:5],
-            'new_arrival_course': Course_detail.objects.order_by('-id')[:8],
-            'new_arrival_book': BookDetail.objects.order_by('-id')[:8],
+            'new_arrival_course': Course_detail.objects.all()[:8],
+            'new_arrival_book': BookDetail.objects.all()[:8],
         })
         return context
 
@@ -81,8 +81,8 @@ class BlogDetailView(HitCountDetailView):
             'discount_course_footer': Course_detail.objects.order_by('-discount').filter(
                 discount__range=('1', '99')).distinct()[:5],
             'book_footer': BookDetail.objects.order_by('-id').distinct()[:5],
-            'new_arrival_course': Course_detail.objects.order_by('-id')[:8],
-            'new_arrival_book': BookDetail.objects.order_by('-id')[:8],
+            'new_arrival_course': Course_detail.objects.all()[:8],
+            'new_arrival_book': BookDetail.objects.all()[:8],
         })
         return context
 
@@ -139,8 +139,8 @@ class BlogCategoryDetailView(DetailView):
             'discount_course_footer': Course_detail.objects.order_by('-discount').filter(
                 discount__range=('1', '99')).distinct()[:5],
             'book_footer': BookDetail.objects.order_by('-id').distinct()[:5],
-            'new_arrival_course': Course_detail.objects.order_by('-id')[:8],
-            'new_arrival_book': BookDetail.objects.order_by('-id')[:8],
+            'new_arrival_course': Course_detail.objects.all()[:8],
+            'new_arrival_book': BookDetail.objects.all()[:8],
         })
         obj = self.get_object()
         blog_set = obj.blogdetail_set.all()
