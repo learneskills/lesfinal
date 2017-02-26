@@ -1,18 +1,10 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load i18n %}
+{% load staticfiles %}
 
 {% block content %}
 
-    <head>
-        <meta charset="utf-8">
-        <title>{% block title %}{% trans "Newsletter subscribe" %}{% endblock title %}</title>
-        {% block header %}
-        {% endblock header %}
-    </head>
-
-
-    {% block body %}
         <h1 class="col-sm-6 col-md-offset-3">{% trans "Newsletter subscribe" %} {{ newsletter.title }}</h1>
 
         {% if error %}
@@ -24,7 +16,7 @@
 
         {% endcomment %}
         {% else %}
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-offset-2">
                 <form enctype="multipart/form-data" method="post" action=".">
                     <div class="row field-row">
                         <div class="col-xs-6 col-sm-6 col-md-offset-2">{% csrf_token %}
@@ -36,7 +28,8 @@
             </div>
 
         {% endif %}
-    {% endblock body %}
+
+
 
 {% endblock %}
 

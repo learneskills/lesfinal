@@ -215,30 +215,6 @@ class TopDiscountList(ListView):
         return context
 
 
-class SearchDetailView(DetailView):
-    model = Category
-    queryset = Category.objects.all()
-    template_name = 'search/search.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(SearchDetailView, self).get_context_data(**kwargs)
-        context.update({
-            'main_category': MainCategory.objects.all(),
-            'book_maincategory': BookMainCategory.objects.all(),
-            'book_category': BookCategory.objects.all(),
-            'book_list': BookDetail.objects.all(),
-            'blog_detail': BlogDetail.objects.order_by('-id'),
-            'blog_main_category': BlogMainCategory.objects.all(),
-            'blog_category': BlogCategory.objects.all(),
-        })
-        obj = self.get_object()
-        course_set = obj.course_detail_set.all()
-        default_product = obj.default_category.all()
-        courses = (course_set | default_product)
-        context['books'] = courses
-        return context
-
-
 @login_required
 def course_model_form(request):
     title = "Course Detail Form"
@@ -333,6 +309,15 @@ def email(request):
     context = {
         "form": form,
         "title": title,
+        'blog_tags': BlogDetail.tags.all(),
+        'book_tags': BookDetail.tags.all(),
+        'course_tags': Course_detail.tags.all(),
+        'recently_course_footer': Course_detail.objects.order_by('-id').filter(discount__range=(0, 99)).distinct()[
+                                  :5],
+        'discount_course_footer': Course_detail.objects.order_by('-discount').filter(
+            discount__range=('1', '99')).distinct()[:5],
+        'blog_footer': BlogDetail.objects.all().distinct()[:5],
+
     }
     return render(request, "contact.html", context)
 

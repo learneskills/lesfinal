@@ -1,15 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% load i18n %}
-<!DOCTYPE html>
-<html>
+{% load staticfiles %}
+
+{% block content %}
+
     <head>
+
         <meta charset="utf-8">
         <title>{% block title %}{% trans "Newsletter" %}{% endblock title %}</title>
         {% block header %}
         {% endblock header %}
+
     </head>
 
     <body>
-        {% block body %}
-        {% endblock body %}
+    <div class="container">
+        <div class="text-center">
+
+            {% block body %}
+            {% endblock body %}
+            <br>
+            <button class="btn center-block"><span class="text-info"><a
+                    href="{% url 'index' %}"> Go to Home Page</a></span></button>
+        </div>
+    </div>
     </body>
-</html>
+
+{% endblock %}
