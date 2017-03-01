@@ -98,8 +98,8 @@ class CategoryListView(HitCountMixin, ListView):
             'book_category': BookCategory.objects.all(),
             'book_all': BookDetail.objects.order_by('-title'),
             'top_discount_book': BookDetail.objects.order_by('-discount').filter(
-                discount__range=('0', '97')).distinct()[:4],
-            'recently_updated_book': BookDetail.objects.order_by('-id').distinct()[:4],
+                discount__range=('0', '99')).distinct()[:8],
+            'recently_updated_book': BookDetail.objects.order_by('-id').distinct()[:8],
             'course_provider_list': CourseProvider.objects.all(),
             'blog_tags': BlogDetail.tags.all(),
             'book_tags': BookDetail.tags.all(),

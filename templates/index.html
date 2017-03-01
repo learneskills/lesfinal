@@ -359,40 +359,96 @@
 
                             <!-- Dynamic Course Details -->
 
-                            {% for book in recently_updated_book %}
-
+                            {% for course in recently_updated_book %}
                                 <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">
                                     <div class="product-item">
                                         <div class="ribbon blue"><span>new!</span></div>
-                                        {#                                         <div class="ribbon green"><span>bestseller</span></div>#}
-                                        {#                                        <div class="ribbon red"><span>sale</span></div>#}
-                                        {% for img in book.bookimage_set.all %}
+
+                                        {% if course.discount == 100 %}
+                                            <div class="ribbon green"><span>Free</span></div>
+                                        {% endif %}
+                                        {# <div class="ribbon red"><span>sale</span></div>#}
+                                        {% for img in course.bookimage_set.all %}
                                             <div class="image">
-                                                <a href="{{ book.get_absolute_url }}">
-                                                    <img alt="" src="assets/images/blank.gif" height="200" width="220"
+                                                <a href="{{ course.get_absolute_url }}">
+                                                    <img alt="" src="#" height="210" width="220"
                                                          data-echo="{{ img.image.url }}"/>
                                                 </a>
-                                            </div><br>
+                                            </div>
                                         {% endfor %}
+
                                         <div class="body">
-                                            {% if book.discount == 0 %}
-                                                <div class="label-discount green"></div>
-                                            {% else %}
-                                                <div class="label-discount green">{{ book.discount }}% off</div>
-                                            {% endif %}
+                                          {% if course.discount == 0 %}
+                                            <div class=""></div>
+                                        {% else %}
+                                            <div class="label-discount green">{{ course.discount }}% off</div>
+                                        {% endif %}
+
                                             <div class="title">
-                                                <a href="{{ book.get_absolute_url }}"> {{ book.title | truncatechars:'50' }}</a>
+                                                <a href="{{ course.get_absolute_url }}"> {{ course.title | truncatechars:'50' }}</a>
                                             </div>
-                                            <div class="text-default small">by <strong>{{ book.author_name }}</strong>
+                                            <br>
+                                            <div class="text-default small">By:
+                                                <strong>{{ course.author_name }}</strong>
                                             </div>
-                                        </div>
-                                        <div class="prices">
-                                            <div class="price-prev">${{ book.actual_price }}</div>
-                                            <div class="price-current pull-right">${{ book.sale_price }}</div>
+
+
                                         </div>
 
+                                        <div class="prices">
+                                            {% if course.discount == 100 %}
+                                                <div class="price-prev"></div>
+                                                <div class="price-current pull-right">Free</div>
+                                            {% else %}
+                                                <div class="price-prev">${{ course.actual_price }}</div>
+                                                <div class="price-current pull-right">${{ course.sale_price }}</div>
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
+
+
+                                {#                                <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">#}
+                                {#                                    <div class="product-item">#}
+                                {#                                        <div class="ribbon blue"><span>new!</span></div>#}
+                                {#                                         <div class="ribbon green"><span>bestseller</span></div>#}
+                                {#                                        <div class="ribbon red"><span>sale</span></div>#}
+                                {#                                        {% for img in book.bookimage_set.all %}#}
+                                {#                                            <div class="image">#}
+                                {#                                                <a href="{{ book.get_absolute_url }}">#}
+                                {#                                                    <img alt="" src="assets/images/blank.gif" height="200" width="220"#}
+                                {#                                                         data-echo="{{ img.image.url }}"/>#}
+                                {#                                                </a>#}
+                                {#                                            </div><br>#}
+                                {#                                        {% endfor %}#}
+                                {#                                        <div class="body">#}
+                                {#                                            {% if book.discount == 0 %}#}
+                                {#                                                <div class="label-discount green"></div>#}
+                                {#                                            {% else %}#}
+                                {#                                                <div class="label-discount green">{{ book.discount }}% off</div>#}
+                                {#                                            {% endif %}#}
+                                {#                                            <div class="title">#}
+                                {#                                                <a href="{{ book.get_absolute_url }}"> {{ book.title | truncatechars:'50' }}</a>#}
+                                {#                                            </div>#}
+                                {#                                            <div class="text-default small">by <strong>{{ book.author_name }}</strong>#}
+                                {#                                            </div>#}
+                                {#                                        </div>#}
+                                {#                                        <div class="prices">#}
+                                {#                                            <div class="price-prev">${{ book.actual_price }}</div>#}
+                                {#                                            <div class="price-current pull-right">${{ book.sale_price }}</div>#}
+                                {#                                        </div>#}
+                                {#                                        <div class="hover-area">#}
+                                {#                                            <div class="add-cart-button">#}
+                                {#                                                <a href="{{ course.get_absolute_url }}" class="le-button">take this#}
+                                {#                                                    course</a>#}
+                                {#                                            </div>#}
+                                {#                                            <div class="wish-compare">#}
+                                {##}
+                                {#                                            </div>#}
+                                {#                                        </div>#}
+                                {##}
+                                {#                                    </div>#}
+                                {#                                </div>#}
 
                             {% endfor %}
 
@@ -426,31 +482,51 @@
 
                             <!-- Dynamic Course Details -->
 
-                            {% for book in top_discount_book %}
+                            {% for course in top_discount_book %}
 
-                                <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">
+                             <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">
                                     <div class="product-item">
-                                        {# <div class="ribbon blue"><span>new!</span></div>#}
-                                        {# <div class="ribbon green"><span>bestseller</span></div>#}
-                                        <div class="ribbon red"><span>{{ book.discount }}% off</span></div>
-                                        {% for img in book.bookimage_set.all %}
+                                        <div class="ribbon blue"><span>new!</span></div>
+
+                                        {% if course.discount == 100 %}
+                                            <div class="ribbon green"><span>Free</span></div>
+                                        {% endif %}
+                                        {# <div class="ribbon red"><span>sale</span></div>#}
+                                        {% for img in course.bookimage_set.all %}
                                             <div class="image">
-                                                <a href="{{ book.get_absolute_url }}">
-                                                    <img alt="" src="assets/images/blank.gif" height="220" width="220"
+                                                <a href="{{ course.get_absolute_url }}">
+                                                    <img alt="" src="#" height="210" width="220"
                                                          data-echo="{{ img.image.url }}"/>
                                                 </a>
                                             </div>
                                         {% endfor %}
+
                                         <div class="body">
+                                          {% if course.discount == 0 %}
+                                            <div class=""></div>
+                                        {% else %}
+                                            <div class="label-discount green">{{ course.discount }}% off</div>
+                                        {% endif %}
+
                                             <div class="title">
-                                                <a href="{{ book.get_absolute_url }}"> {{ book.title | truncatechars:'50' }}</a>
+                                                <a href="{{ course.get_absolute_url }}"> {{ course.title | truncatechars:'50' }}</a>
                                             </div>
-                                            <div class="text-default small">by <strong>{{ book.author_name }}</strong>
+                                            <br>
+                                            <div class="text-default small">By:
+                                                <strong>{{ course.author_name }}</strong>
                                             </div>
+
+
                                         </div>
+
                                         <div class="prices">
-                                            <div class="price-prev">${{ book.actual_price }}</div>
-                                            <div class="price-current pull-right">${{ book.sale_price }}</div>
+                                            {% if course.discount == 100 %}
+                                                <div class="price-prev"></div>
+                                                <div class="price-current pull-right">Free</div>
+                                            {% else %}
+                                                <div class="price-prev">${{ course.actual_price }}</div>
+                                                <div class="price-current pull-right">${{ course.sale_price }}</div>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -620,7 +696,8 @@
                 <div class="sub-form-row">
                     <div class="container">
                         <div class="col-xs-12 col-sm-8 col-sm-offset-2 no-padding">
-                            <form role="form" action="/newsletter/dealsndiscount/subscribe/" method="POST">{% csrf_token %}
+                            <form role="form" action="/newsletter/dealsndiscount/subscribe/"
+                                  method="POST">{% csrf_token %}
 
                                 <input placeholder="Subscribe to our newsletter">
                                 <button class="le-button">Subscribe</button>
