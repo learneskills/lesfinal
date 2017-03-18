@@ -93,7 +93,7 @@ class CategoryListView(HitCountMixin, ListView):
                 discount__range=('10', '99')).distinct()[:8],
             'course_detail_recently_updated_list': Course_detail.objects.order_by('-pk').distinct()[:8],
             'course_all': Course_detail.objects.order_by('-title'),
-            'main_category': MainCategory.objects.order_by('-id'),
+            'main_category': MainCategory.objects.order_by('id'),
             'book_main_category': BookMainCategory.objects.all(),
             'book_category': BookCategory.objects.all(),
             'book_all': BookDetail.objects.order_by('-title'),
