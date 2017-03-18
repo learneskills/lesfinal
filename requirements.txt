@@ -28,7 +28,7 @@ ldif3==3.1.1
 mock==2.0.0
 pbr==1.10.0
 Pillow==3.4.2
-psycopg2==2.6.1
+psycopg2
 pyelasticsearch==1.4
 python-card-me==0.9.3
 python-dateutil==2.6.0
@@ -44,5 +44,5 @@ virtualenv==15.0.3
 waitress==1.0.1
 WebOb==1.7.0
 WebTest==2.0.24
-whitenoise==2.0.6
+whitenoise==3.3.0
 Whoosh==2.7.4
