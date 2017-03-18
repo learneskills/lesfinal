@@ -169,7 +169,7 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT), "static_in_env", "media_root")
+MEDIA_ROOT = os.path.join(BASE_DIR, "static_in_env", "media_root", )
 
 # Django-Registration-Redux
 ACCOUNT_ACTIVATION_DAYS = 7
