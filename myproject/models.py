@@ -58,6 +58,9 @@ class Category(models.Model):
             return cat_img.image.url
         return cat_img
 
+    class Meta:
+        ordering = ["-title"]
+
 
 class CourseProvider(models.Model):
     course_provider_name = models.CharField(max_length=50)
