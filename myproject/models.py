@@ -59,7 +59,7 @@ class Category(models.Model):
         return cat_img
 
     class Meta:
-        ordering = ["-title"]
+        ordering = ["id"]
 
 
 class CourseProvider(models.Model):
