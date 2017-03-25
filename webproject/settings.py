@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'disqus',
     'hitcount',
     'star_ratings',
+    'django_nose',
 
     # MY Apps
     'myproject',
@@ -233,3 +234,5 @@ STAR_RATINGS_ANONYMOUS = True
 STAR_RATINGS_RERATE = False
 
 USE_THOUSAND_SEPARATOR = True
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
