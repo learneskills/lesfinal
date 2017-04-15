@@ -127,7 +127,7 @@ class Course_detail(models.Model):
 # Course Images
 class CourseImage(models.Model):
     course = models.ForeignKey(Course_detail)
-    image = models.ImageField(upload_to='media_root/')
+    image = models.ImageField(upload_to='media_root/course/')
     image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
     image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
 
@@ -137,7 +137,7 @@ class CourseImage(models.Model):
 
 class CategoryImage(models.Model):
     category_image = models.ForeignKey(Category)
-    image = models.ImageField(upload_to='media_root/')
+    image = models.ImageField(upload_to='media_root/course/')
     image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
     image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
 

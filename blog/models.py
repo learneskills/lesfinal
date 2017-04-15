@@ -113,7 +113,7 @@ class BlogDetail(models.Model):
 # Course Images
 class BlogImage(models.Model):
     course = models.ForeignKey(BlogDetail)
-    image = models.ImageField(upload_to='media_root/')
+    image = models.ImageField(upload_to='media_root/blog/')
     image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
     image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
 
@@ -123,7 +123,7 @@ class BlogImage(models.Model):
 
 class BlogCategoryImage(models.Model):
     category_image = models.ForeignKey(BlogCategory)
-    image = models.ImageField(upload_to='media_root/')
+    image = models.ImageField(upload_to='media_root/blog/')
     image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
     image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
 

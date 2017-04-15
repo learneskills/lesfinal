@@ -67,7 +67,7 @@
                                             </div>
                                         {% endfor %}
                                         <div class="col-xs-8 col-sm-8 no-margin">
-                                            <a href="{{ course.get_absolute_url }}">{{ course.title|truncatechars:'30' }}</a>
+                                            <a href="{{ course.get_absolute_url }}"><span style="font-weight: 500">{{ course.title|truncatechars:'30' }}</span></a>
                                             <div class="price">
                                                 {% if course.discount >= 5 %}
                                                     <div class="label-discount">{{ course.discount }}% off</div>
@@ -109,7 +109,7 @@
                                             </div>
                                         {% endfor %}
                                         <div class="col-xs-8 col-sm-8 no-margin">
-                                            <a href="{{ course.get_absolute_url }}">{{ course.title|truncatechars:'30' }}</a>
+                                            <a href="{{ course.get_absolute_url }}"><span style="font-weight: 500">{{ course.title|truncatechars:'30' }}</span></a>
                                             <div class="price">
                                                 {% if course.discount >= 5 %}
                                                     <div class="label-discount">{{ course.discount }}% off</div>
@@ -232,7 +232,7 @@
                                             <div class="inline">
                                                 <label>categories:</label>
                                                 <span><a
-                                                        href="{{ object.default.get_absolute_url }}">{{ object.default }}</a></span>
+                                                        href="{{ object.default.get_absolute_url }}"><span style="color: green; font-size: 15px; font-weight: 500">{{ object.default }}</span></a></span>
                                                 <span><a href="#"></a></span>
                                                 <span><a href="#"></a></span>
                                             </div><!-- /.inline -->
@@ -244,7 +244,7 @@
                                                 {% for tag in course_detail.tags.all %}
                                                     <span><a href="{% url 'tagged' tag.slug %}"><span
                                                             class="tag tag-default"
-                                                            style="color: green; font-size: 15px; font-weight: 700">{{ tag }}, </span></a></span>
+                                                            style="color: green; font-size: 15px; font-weight: 500">{{ tag }}, </span></a></span>
                                                 {% endfor %}
 
                                             </div><!-- /.inline -->
@@ -329,6 +329,7 @@
                     </section><!-- /#recently-reviewd -->
                     <!-- ========================================= RECENTLY VIEWED : END ========================================= -->
                     <div id="disqus_thread"></div>
+
                     <script>
 
                         /**
@@ -375,7 +376,7 @@
                                     <div class="row">
                                         {% for book in recently_book_footer %}
                                             <div class="col-xs-12 col-sm-9 no-margin">
-                                                <a href="{{ book.get_absolute_url }}">{{ book.title | truncatechars:'55' }}</a>
+                                                <a href="{{ book.get_absolute_url }}"><span style="font-weight: 500">{{ book.title | truncatechars:'55' }}</span></a>
                                                 <div class="price">
                                                     <div class="price-prev">$ {{ book.actual_price }}</div>
                                                     <div class="price-current"><span
@@ -410,7 +411,7 @@
                                     <div class="row">
                                         {% for book in discount_book_footer %}
                                             <div class="col-xs-12 col-sm-9 no-margin">
-                                                <a href="{{ book.get_absolute_url }}">{{ book.title | truncatechars:'55' }}</a>
+                                                <a href="{{ book.get_absolute_url }}"><span style="font-weight: 500">{{ book.title | truncatechars:'55' }}</span></a>
                                                 <div class="price">
 
                                                     <div class="price-prev">$ {{ book.actual_price }}</div>
@@ -447,7 +448,7 @@
                                     <div class="row">
                                         {% for blog in blog_footer %}
                                             <div class="col-xs-12 col-sm-9 no-margin">
-                                                <a href="{{ blog.get_absolute_url }}">{{ blog.title | truncatechars:'60' }}</a>
+                                                <a href="{{ blog.get_absolute_url }}"><span style="font-weight: 500"> {{ blog.title | truncatechars:'60' }}</span></a>
                                                 <div class="price">
                                                     <div class="price-prev"></div>
                                                     <div class="price-current"><span
@@ -479,7 +480,7 @@
             <div class="container">
                 <div class="sub-form-row">
                     <div class="container">
-                        <div class="col-xs-12 col-sm-8 col-sm-offset-2 no-padding">
+                        <div class="col-md-10">
                             <form role="form" action="/newsletter/dealsndiscount/subscribe/" method="POST">
                                 {% csrf_token %}
                                 <input placeholder="Subscribe to our newsletter">

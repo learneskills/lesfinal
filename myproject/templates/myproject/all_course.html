@@ -12,7 +12,7 @@
                 <!-- ============================================================= LOGO ============================================================= -->
                 <div class="logo">
                     <a href="{% url 'index' %}">
-                        <img alt="logo" src="{% static 'assets/images/logo.png' %}" width="233" height="54"/>
+                        <img alt="logo" src="{% static 'assets/images/logo_new1.png' %}" width="233" height="54"/>
                     </a>
                 </div><!-- /.logo -->
                 <!-- ============================================================= LOGO : END ============================================================= -->
@@ -109,7 +109,7 @@
                                         {% endfor %}
                                     </div>
                                     <div class="col-xs-8 col-sm-8 no-margin">
-                                        <a href="{{ book.get_absolute_url }}">{{ book.title | truncatechars:"30" }}</a>
+                                        <a href="{{ book.get_absolute_url }}"><span style="font-weight: 500">{{ book.title | truncatechars:"30" }}</span></a>
 
                                         <div class="price">
                                             {% if book.discount >= 5 %}
@@ -298,7 +298,7 @@
                                     <div class="row">
                                         {% for book in recently_book_footer %}
                                             <div class="col-xs-12 col-sm-9 no-margin">
-                                                <a href="{{ book.get_absolute_url }}">{{ book.title | truncatechars:'55' }}</a>
+                                                <a href="{{ book.get_absolute_url }}"><span style="font-weight: 500">{{ book.title | truncatechars:'55' }}</span></a>
                                                 <div class="price">
                                                     <div class="price-prev">$ {{ book.actual_price }}</div>
                                                     <div class="price-current"><span
@@ -333,7 +333,7 @@
                                     <div class="row">
                                         {% for book in discount_book_footer %}
                                             <div class="col-xs-12 col-sm-9 no-margin">
-                                                <a href="{{ book.get_absolute_url }}">{{ book.title | truncatechars:'55' }}</a>
+                                                <a href="{{ book.get_absolute_url }}"><span style="font-weight: 500">{{ book.title | truncatechars:'55' }}</span></a>
                                                 <div class="price">
 
                                                     <div class="price-prev">$ {{ book.actual_price }}</div>
@@ -370,7 +370,7 @@
                                     <div class="row">
                                         {% for blog in blog_footer %}
                                             <div class="col-xs-12 col-sm-9 no-margin">
-                                                <a href="{{ blog.get_absolute_url }}">{{ blog.title | truncatechars:'60' }}</a>
+                                                <a href="{{ blog.get_absolute_url }}"><span style="font-weight: 500">{{ blog.title | truncatechars:'60' }}</span></a>
                                                 <div class="price">
                                                     <div class="price-prev"></div>
                                                     <div class="price-current"><span
@@ -402,7 +402,7 @@
             <div class="container">
                 <div class="sub-form-row">
                     <div class="container">
-                        <div class="col-xs-12 col-sm-8 col-sm-offset-2 no-padding">
+                        <div class="col-md-10">
                             <form role="form" action="/newsletter/dealsndiscount/subscribe/" method="POST">
                                 {% csrf_token %}
                                 <input placeholder="Subscribe to our newsletter">
@@ -422,7 +422,7 @@
                         <div class="footer-logo">
                             <div class="logo">
                                 <a href="{% url 'index' %}">
-                                    <img alt="logo" src="{% static 'assets/images/logo.png' %}" width="233"
+                                    <img alt="logo" src="{% static 'assets/images/logo_new1.png.png' %}" width="233"
                                          height="54"/>
                                 </a>
                             </div><!-- /.logo -->
@@ -530,7 +530,7 @@
             <div class="container">
                 <div class="col-xs-12 col-sm-6 no-margin">
                     <div class="copyright">
-                        &copy; <a href="index.html">learnEskills</a> - all rights reserved
+                        &copy; <a href="{% url 'index' %}">learnEskills</a> - all rights reserved
                     </div><!-- /.copyright -->
                 </div>
                 {#                <div class="col-xs-12 col-sm-6 no-margin">#}
