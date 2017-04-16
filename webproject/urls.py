@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.http import HttpResponse
 
 from myproject.views import CategoryListView
 from webproject import settings
@@ -34,6 +35,8 @@ urlpatterns = [
     url(r'^djrichtextfield/', include('djrichtextfield.urls')),
     url(r'hitcount/', include('hitcount.urls', namespace='hitcount')),
     url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
+    url(r'^robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow:", content_type="text/plain"),
+        name="robots_file"),
     url(r'^$', CategoryListView.as_view(), name='index'),
 
 
