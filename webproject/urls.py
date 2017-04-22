@@ -16,11 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.sitemaps.views import sitemap
 from django.http import HttpResponse
 
-from myproject.views import CategoryListView
+from myproject.views import CategoryListView, CourseSitemap, BookSitemap, BlogSitemap
 from webproject import settings
 
+sitemaps = {
+    'Course_detail': CourseSitemap,
+    'BookDetail': BookSitemap,
+    'BlogDetail': BlogSitemap,
+
+}
 
 urlpatterns = [
 
@@ -38,7 +45,7 @@ urlpatterns = [
     url(r'^robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow:", content_type="text/plain"),
         name="robots_file"),
     url(r'^$', CategoryListView.as_view(), name='index'),
-
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
 ]
 
