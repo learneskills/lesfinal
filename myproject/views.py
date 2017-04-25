@@ -324,3 +324,40 @@ def email(request):
 
 def success(request):
     return HttpResponse('Success! Thank you for your message.')
+
+
+from django.contrib.sitemaps import Sitemap
+
+
+class CourseSitemap(Sitemap):
+    changefreq = "daily"
+    priority = 0.5
+
+    def items(self):
+        return Course_detail.objects.all()
+
+    def lastmod(self, obj):
+        return obj.pub_date
+
+
+class BookSitemap(Sitemap):
+    changefreq = "daily"
+    priority = 0.5
+
+    def items(self):
+        return BookDetail.objects.all()
+
+    def lastmod(self, obj):
+        return obj.pub_date
+
+
+class BlogSitemap(Sitemap):
+    changefreq = "daily"
+    priority = 0.5
+
+    def items(self):
+        return BlogDetail.objects.all()
+
+    def lastmod(self, obj):
+        return obj.update
+

@@ -29,15 +29,16 @@ SECRET_KEY = '(@u9y1bg1vxe*zl#izh^uwhjzy3e=()4m)19_2_4)1o^6usa!z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['learneskill.com', 'www.learneskill.com', 'blog.learneskill.com']
+ALLOWED_HOSTS = ['learneskill.com']
 
 # Application definition
+DEFAULT_FROM_EMAIL = "learnEskill <learneskill@gmail.com>"
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'automail.empower@gmail.com'
 EMAIL_HOST_PASSWORD = 'samsungS3'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = "learnEskill <learneskill@gmail.com>"
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -68,6 +69,7 @@ INSTALLED_APPS = [
     'hitcount',
     'star_ratings',
     'django_nose',
+    'django.contrib.sitemaps',
 
     # MY Apps
     'myproject',
@@ -181,7 +183,7 @@ LOGIN_REDIRECT_URL = '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-EL_PAGINATION_PER_PAGE = 5
+EL_PAGINATION_PER_PAGE = 10
 
 HAYSTACK_CONNECTIONS = {
     'default': {
