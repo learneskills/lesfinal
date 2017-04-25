@@ -3,15 +3,11 @@ from django.conf.urls import url
 from .views import CategoryDetailView, SingleProductDetailView, TopDiscountList, \
     RecentlyUpdatedList, TagIndexView, AllCourse, email, success, course_model_form, CourseProviderStore
 
-from books.views import AllBook
-
-
 urlpatterns = [
     # Course URLS
-    url(r'^all-course/$', AllBook.as_view(), name='all_course'),
+    url(r'^all-course/$', AllCourse.as_view(), name='all_course'),
     url(r'^recently-updated-list/$', RecentlyUpdatedList.as_view(), name='recently_added'),
     url(r'^top-discount-list/$', TopDiscountList.as_view(), name='top_discount'),
-
 
     url(r'^email/$', email, name='email'),
     url(r'^success/$', success, name='success'),
