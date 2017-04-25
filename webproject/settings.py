@@ -29,7 +29,7 @@ SECRET_KEY = '(@u9y1bg1vxe*zl#izh^uwhjzy3e=()4m)19_2_4)1o^6usa!z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['learneskill.com']
+ALLOWED_HOSTS = ['learneskill.com', 'www.learneskill.com', ]
 
 # For email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
