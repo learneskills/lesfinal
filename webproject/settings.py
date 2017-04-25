@@ -27,18 +27,26 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '(@u9y1bg1vxe*zl#izh^uwhjzy3e=()4m)19_2_4)1o^6usa!z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['learneskill.com']
 
-# Application definition
-DEFAULT_FROM_EMAIL = "learnEskill <learneskill@gmail.com>"
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'automail.empower@gmail.com'
-EMAIL_HOST_PASSWORD = 'samsungS3'
+# For email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_HOST_USER = 'automail.empower@gmail.com'
+
+# Must generate specific password for your app in [gmail settings][1]
+EMAIL_HOST_PASSWORD = 'samsungS3'
+
 EMAIL_PORT = 587
 
+# This did the trick
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 INSTALLED_APPS = [
     'django.contrib.admin',

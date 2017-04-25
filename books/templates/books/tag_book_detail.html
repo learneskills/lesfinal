@@ -237,12 +237,13 @@
                                                             <div class="price-prev">
                                                                 <span style="text-decoration: line-through;">$ {{ course.actual_price }}</span>
                                                             </div>
-                                                            <div class="title ">Provider:
-                                                                <label class="text-primary">{{ course.course_provider }}</label>
-                                                            </div>
-                                                            <a class="le-button" href="{{ course.url }}">Learn More</a>
-                                                            <div class="title">Enrolled: <label class="text-primary">5,000+
-                                                                students</label></div>
+                                                           <div class="title ">Author:
+                                                             <label class="text-primary">{{ course.author_name }}</label>
+                                                           </div>
+                                                            <br>
+                                                            <a class="le-button" href="{{ course.url }}">Book Detail</a>
+{#                                                            <div class="title">Enrolled: <label class="text-primary">5,000+#}
+{#                                                                students</label></div>#}
                                                         </div><!-- /.price-area -->
                                                     </div><!-- /.row -->
 

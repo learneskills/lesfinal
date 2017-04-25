@@ -5,9 +5,10 @@ from .views import CategoryDetailView, SingleProductDetailView, TopDiscountList,
 
 urlpatterns = [
     # Course URLS
+    url(r'^all-course/$', AllCourse.as_view(), name='all_course'),
     url(r'^recently-updated-list/$', RecentlyUpdatedList.as_view(), name='recently_added'),
     url(r'^top-discount-list/$', TopDiscountList.as_view(), name='top_discount'),
-    url(r'^all-course/$', AllCourse.as_view(), name='all_course'),
+
 
     url(r'^email/$', email, name='email'),
     url(r'^success/$', success, name='success'),
