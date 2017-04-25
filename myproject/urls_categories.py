@@ -9,7 +9,6 @@ urlpatterns = [
     url(r'^recently-updated-list/$', RecentlyUpdatedList.as_view(), name='recently_added'),
     url(r'^top-discount-list/$', TopDiscountList.as_view(), name='top_discount'),
 
-
     url(r'^email/$', email, name='email'),
     url(r'^success/$', success, name='success'),
     url(r'^submit/$', course_model_form, name='submit'),
