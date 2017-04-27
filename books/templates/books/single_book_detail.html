@@ -4,6 +4,8 @@
 {% load hitcount_tags %}
 {% load ratings %}
 
+{% block title %}<title> {{ object.title }} | learneskill.com </title>{% endblock title %}
+
 {% block content %}
     <head>
         {% tinymce_preview "preview-content" %}
