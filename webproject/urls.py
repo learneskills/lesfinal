@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.http import HttpResponse
 
-from myproject.views import CategoryListView, CourseSitemap, BookSitemap, BlogSitemap
+from myproject.views import CategoryListView, CourseSitemap, BookSitemap, BlogSitemap, AllCourse
 from webproject import settings
 
 sitemaps = {
@@ -32,6 +32,7 @@ sitemaps = {
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
+    url(r'^all-course/$', AllCourse.as_view(), name='all_course'),
     url(r'^search/', include('haystack.urls'), name='search'),
     url(r'^course/', include('myproject.urls_categories')),
     url(r'^books/', include('books.urls')),
