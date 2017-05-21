@@ -1,7 +1,6 @@
 from django.conf.urls import url
 from books.views import AllBook, RecentlyUpdatedBookList, TopDiscountBookList, SingleBookDetailView, TagIndexBookView, \
     BookCategoryDetailView
-from myproject.views import AllCourse
 
 urlpatterns = [
 
@@ -9,7 +8,7 @@ urlpatterns = [
     url(r'^recently-updated-books-list/$', RecentlyUpdatedBookList.as_view(), name='recently_added_book_list'),
     url(r'^top-discount-books-list/$', TopDiscountBookList.as_view(), name='top_discount_book_list'),
     url(r'^all-books/$', AllBook.as_view(), name='all_books'),
-    url(r'^all-course/$', AllCourse.as_view(), name='all_course'),
+
 
     # Books URL
     url(r'^(?P<slug>[\w-]+)/$', BookCategoryDetailView.as_view(), name='book_category_detail'),
